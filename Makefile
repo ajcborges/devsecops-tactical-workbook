@@ -1,4 +1,4 @@
-.PHONY: docker docs 
+.PHONY: docker docs python
 
 # Used for colorizing output of echo messages
 BLUE := "\\033[1\;36m"
