@@ -3,3 +3,9 @@
 .strike {
     text-decoration: line-through;
 }
+@font-face {
+font-family: AnonymousPro;
+font-weight: normal;
+font-style: normal;
+src: url(&quot;fonts/Anonymous Pro.ttf&quot;);
+}
