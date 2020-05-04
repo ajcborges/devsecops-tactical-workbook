@@ -1,1 +1,3 @@
 .vscode
+docs/_build
+pygments-css

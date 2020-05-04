@@ -16,7 +16,7 @@
 
    01-framework/python
    01-framework/docker
-   01-framework/makefile
+   01-framework/makefiles
 
 .. toctree::
    :maxdepth: 2
