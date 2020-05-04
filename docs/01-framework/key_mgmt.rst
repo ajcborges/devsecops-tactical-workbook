@@ -1,11 +1,8 @@
 .. include:: ../global.rst
 
-======
-Docker
-======
-
-.. image:: ../images/container-4203677_1920.jpg
-   :align: center
+====
+Keys
+====
 
 You could use virtualenv with Python to accompish this but it's more portable
 to use Docker.
