@@ -101,19 +101,7 @@ html_domain_indices = False
 
 # -- Options for LaTeX output --------------------------------------------------
 
-latex_elements = {
-     'papersize': '',
-     'fontpkg': '',
-     'fncychap': '',
-     'maketitle': '\\cover',
-     'pointsize': '',
-     'preamble': '',
-     'releasename': "",
-     'babel': '',
-     'printindex': '',
-     'fontenc': '',
-     'inputenc': '',
-     'classoptions': '',
-     'utf8extra': '',
-     
-}
+
+
+# -- Options for PDF output --------------------------------------------------
+#pdf_documents = [('index', 'documentation', My Docs', 'Me'), ]

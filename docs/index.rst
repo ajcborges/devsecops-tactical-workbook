@@ -12,6 +12,7 @@
 
 .. toctree::
    :maxdepth: 2
+   :numbered:
    :caption: framework
 
 
@@ -45,7 +46,7 @@
 
 .. toctree::
    :maxdepth: 2
+   :numbered:
    :caption: reference
 
-   99-reference/citations
    99-reference/pictures
