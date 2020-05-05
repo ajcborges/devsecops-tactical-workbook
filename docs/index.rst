@@ -1,56 +1,17 @@
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
-.. toctree::
-   :maxdepth: 2
-   :numbered:
-   :caption: introduction
-
-   00-introduction/introduction
-   00-introduction/setup
-
-.. toctree::
-   :maxdepth: 2
-   :numbered:
-   :caption: framework
-
-
-   01-framework/revision
-   01-framework/python
-   01-framework/docker
-   01-framework/makefiles
-   01-framework/key_mgmt
-
-.. toctree::
-   :maxdepth: 2
-   :numbered:
-   :caption: cont-int-dep
-
-   02-cont-int-dep/about-ci-cd
-   02-cont-int-dep/scanners
-   
-.. toctree::
-   :maxdepth: 2
-   :numbered:
-   :caption: infrastructure
-
-   03-infrastrcuture/gcp
-   03-infrastrcuture/aws
-   03-infrastructure/packer
-   03-infrastructure/terraform
-
-
-.. toctree::
-   :maxdepth: 2
-   :numbered:
-   :caption: firewalls
-
-   04-firewalls/about-firewalls
-
-.. toctree::
-   :maxdepth: 2
-   :numbered:
-   :caption: reference
-
-   99-reference/pictures
+   _source/foreward
+   _source/introduction
+   _source/setup
+   _source/revision
+   _source/python
+   _source/docker
+   _source/makefiles
+   _source/key_mgmt
+   _source/about-ci-cd
+   _source/scanners
+   _source/infrastructure
+   _source/tools
+   _source/about-firewalls
+   _source/pictures

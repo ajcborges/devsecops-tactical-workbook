@@ -103,16 +103,16 @@ html_domain_indices = False
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
-latex_documents = [
-  ('index', '.tex', project,
-   author, 'manual'),
-]
+#latex_documents = [
+#  ('index', '.tex', project,
+#   author, 'manual'),
+#]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
-latex_logo = 'images/owl-50267_1920.jpg'
+#latex_logo = 'images/owl-50267_1920.jpg'
 
-latex_additional_files = ['sphinxmanual.cls'] 
+#latex_additional_files = ['sphinxmanual.cls'] 
 
 # -- Options for PDF output --------------------------------------------------
 #pdf_documents = [('index', 'documentation', My Docs', 'Me'), ]
