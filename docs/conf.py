@@ -21,7 +21,8 @@ author = u'Franklin Diaz'
 # The short X.Y version
 version = ''
 # The full version, including alpha/beta/rc tags
-release = '0.0.1'
+# this will show on title page if uncommented
+#release = '0.0.1'
 
 
 # -- General configuration ---------------------------------------------------
@@ -77,8 +78,7 @@ html_theme_path = ['.'] # make sphinx search for themes in current dir
 # documentation.
 html_theme_options = {
     # Disable showing the sidebar. Defaults to 'false'
-    'nosidebar': True,
-    "relbarbgcolor": "black"
+    'nosidebar': True
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -107,12 +107,12 @@ html_domain_indices = False
 #  ('index', '.tex', project,
 #   author, 'manual'),
 #]
-
+#latex_elements = { 'maketitle': copyright }
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
-#latex_logo = 'images/owl-50267_1920.jpg'
+latex_logo = 'images/owl-50267_1920.jpg'
 
-#latex_additional_files = ['sphinxmanual.cls'] 
+latex_additional_files = ['sphinxmanual.cls'] 
 
 # -- Options for PDF output --------------------------------------------------
 #pdf_documents = [('index', 'documentation', My Docs', 'Me'), ]
