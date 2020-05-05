@@ -1,9 +1,5 @@
 .. include:: ../global.rst
 
-.. meta::
-   :description: The CloudLab Inroduction
-   :keywords: cloud, lab
-
 ============
 Introduction
 ============
@@ -17,4 +13,8 @@ to decrease in the coming years [f1]_.
 In this book, we will explore a combination of techniques that can refresh 
 your skills and align your projects with current techniques. We can use small
 bits and pieces from various technolgies to create a secure build pipeline
-for our lab and development work.
+for our lab and development work, even production environments.
+
+Who Should Read This Book?
+--------------------------
+

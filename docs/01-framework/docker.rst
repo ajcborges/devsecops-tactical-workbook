@@ -7,5 +7,14 @@ Docker
 .. image:: ../images/container-4203677_1920.jpg
    :align: center
 
-You could use virtualenv with Python to accompish this but it's more portable
-to use Docker.
+With containerization of our projects, we can take advantge of 
+immutability [f2]_, starting in our development environment, 
+to test and even production. Using immutable containers means we
+have hosts that are ephemeral. Ephemerality is the concept of 
+things being transitory, existing only briefly [f3]_. Rather than spending a great 
+deal of time patching and upgrading VM's or bare metal, we're 
+going to quickly create a new container in place of the old one.
+
+Using Docker also gives us the benefit of being able to switch 
+quickly between base OS images with just a few lines of change
+to our project.
