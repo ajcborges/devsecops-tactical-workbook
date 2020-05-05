@@ -33,9 +33,13 @@
 .. toctree::
    :maxdepth: 2
    :numbered:
-   :caption: packer
+   :caption: infrastructure
 
-   03-packer/about-packer
+   03-infrastrcuture/gcp
+   03-infrastrcuture/aws
+   03-infrastructure/packer
+   03-infrastructure/terraform
+
 
 .. toctree::
    :maxdepth: 2

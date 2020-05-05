@@ -1,5 +1,5 @@
 FROM debian:buster
-LABEL AUTHOR="fdiaz@paloaltonetworks.com"
+LABEL AUTHOR="franklin@bitsmasher.net"
 ENV DEBIAN_FRONTEND noninteractive
 
 ADD . /book

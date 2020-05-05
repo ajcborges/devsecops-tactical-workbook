@@ -14,9 +14,9 @@
 # -- Project information -----------------------------------------------------
 
 # General information about the project.
-project = 'CloudLab'
-copyright = '2020, Franklin Diaz'
-author = 'Franklin Diaz'
+project = u'CloudLab'
+copyright = u'Franklin Diaz, 2020'
+author = u'Franklin Diaz'
 
 # The short X.Y version
 version = ''
@@ -101,7 +101,19 @@ html_domain_indices = False
 
 # -- Options for LaTeX output --------------------------------------------------
 
+# Grouping the document tree into LaTeX files. List of tuples
+# (source start file, target name, title, author, documentclass [howto/manual]).
+latex_documents = [
+  ('index', '.tex', project,
+   author, 'manual'),
+]
 
+# The name of an image file (relative to this directory) to place at the top of
+# the title page.
+latex_logo = 'images/owl-50267_1920.jpg'
+
+latex_additional_files = ['sphinxmanual.cls'] 
 
 # -- Options for PDF output --------------------------------------------------
 #pdf_documents = [('index', 'documentation', My Docs', 'Me'), ]
+
