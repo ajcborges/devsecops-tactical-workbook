@@ -25,5 +25,10 @@ So far our relevant files and folders are organized like so:
       "/home/franklin" [shape=folder];
       "cloudlab" [shape=folder];
       "python" [shape=folder];
-      "/home/franklin" -> "cloudlab" -> "python";
+      "requirements.txt" [shape=rect];
+      "__init__.py" [shape=rect];
+      "/home/franklin" -> "cloudlab";
+      "cloudlab" -> "python";
+      "python" -> "__init__.py";
+      "python" -> "requirements.txt";
    }

@@ -15,13 +15,9 @@ can simply type `make docker` and have everything build as desired.
 .. index::
    single: Makefile
 
-Basic Layout
-------------
-
-
-
+*******************
 The PHONY Directive 
--------------------
+*******************
 
 If a file or directory exists with the same name as a stanza in the 
 Makefile, you will need to specify it under the *PHONY* directive. This
@@ -34,3 +30,24 @@ and python) and we also have three Makefile directives of the same name:
 
     .PHONY: docker docs python
 
+*******************
+Directory Structure
+*******************
+
+So far our relevant files and folders are organized like so:
+
+.. graphviz::
+   :caption: Project Directory
+   :align: center
+
+   digraph folders {
+      "/home/franklin" [shape=folder];
+      "cloudlab" [shape=folder];
+      "python" [shape=folder];
+      "docker" [shape=folder];
+      "Makefile" [shape=rect];
+      "/home/franklin" -> "cloudlab";
+      "cloudlab" -> "python";
+      "cloudlab" -> "docker";
+      "cloudlab" -> "Makefile";
+   }

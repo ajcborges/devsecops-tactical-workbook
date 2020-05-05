@@ -30,3 +30,27 @@ safely and efficiently[#]_.
 
 .. index::
    single: Terraform
+
+*******************
+Directory Structure
+*******************
+
+So far our relevant files and folders are organized like so:
+
+.. graphviz::
+   :caption: Project Directory
+   :align: center
+
+   digraph folders {
+      "/home/franklin" [shape=folder];
+      "cloudlab" [shape=folder];
+      "python" [shape=folder];
+      "docker" [shape=folder];
+      "packer" [shape=folder];
+      "cloudlab.json" [shape=rect];
+      "/home/franklin" -> "cloudlab";
+      "cloudlab" -> "python";
+      "cloudlab" -> "docker";
+      "cloudlab" -> "packer";
+      "packer" -> "cloudlab.json";
+   }

@@ -9,7 +9,7 @@
    _source/python
    _source/docker
    _source/makefiles
-   _source/infrastructure
    _source/tools
+   _source/infrastructure
    _source/about-firewalls
    _source/pictures

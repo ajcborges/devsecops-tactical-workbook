@@ -34,12 +34,39 @@ Docker[#]_.
 docker-compose.yml
 ******************
 
+.. code-block:: bash
+
+   version: '3'
+   services:
+   cloudlab:
+      hostname: cloudlab
+      container_name: cloudlab
+      volumes:
+         - ..:/book
+      build:
+         context: ..
+         dockerfile: docker/Dockerfile
+
 **********
 Dockerfile
 **********
 
+.. code-block:: bash
+
+   FROM debian:buster
+   LABEL AUTHOR="franklin@bitsmasher.net"
+   ENV DEBIAN_FRONTEND noninteractive
+
+   ADD . /book
+   WORKDIR /book
+
+   # env stuff
+   RUN apt update; \
+   apt -y install apt-utils
+
+*******************
 Directory Structure
-===================
+*******************
 
 So far our relevant files and folders are organized like so:
 
