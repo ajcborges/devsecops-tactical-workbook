@@ -18,32 +18,15 @@ sphinx-build -M latexpdf . _build
 
 PDF will be in `cloudlab/docs/_build/latex/cloudlab.pdf`
 
-[200~##################
-H1: document title
-##################
 
-Introduction text.
+## Epub & Kindle
 
 
-*********
-Sample H2
-*********
+https://www.amazon.com/gp/feature.html?docId=1000765211
 
-Sample content.
+```
+make epub
+kindlegen _build/epub/CloudLab.epub
+```
 
-
-**********
-Another H2
-**********
-
-Sample H3
-=========
-
-Sample H4
----------
-
-Sample H5
-^^^^^^^^^
-
-Sample H6
-"""""""""
+Results in a file called `CloudLab.mobi`

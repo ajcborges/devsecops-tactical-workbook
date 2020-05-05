@@ -4,10 +4,16 @@
 Makefiles
 =========
 
-Makesfiles are a good way to put shorts sets of oft repeated steps 
+.. image:: ../images/books-1163695_1920.jpg
+   :align: center
+
+Makefiles are a good way to put shorts sets of oft repeated steps 
 at the fingertips of the dev. Rather than typing three complicated and 
 possibly hard to recall strings to kick off your Docker container, you 
 can simply type `make docker` and have everything build as desired.
+
+.. index::
+   single: Makefile
 
 Basic Layout
 ------------

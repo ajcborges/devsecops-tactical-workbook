@@ -21,7 +21,42 @@ going to quickly create a new container in place of the old one.
 .. index::
    single: immutability
    single: Ephemerality
+   single: Docker
 
-Using Docker also gives us the benefit of being able to switch 
-quickly between base OS images with just a few lines of change
-to our project.
+Using Docker also gives us the benefit of being able to switch quickly 
+between base OS images with just a few lines of change to our project. See 
+the Docker website for instructions on how to install and configure
+Docker[#]_.
+
+.. [#] https://docs.docker.com/get-docker/
+
+******************
+docker-compose.yml
+******************
+
+**********
+Dockerfile
+**********
+
+Directory Structure
+===================
+
+So far our relevant files and folders are organized like so:
+
+.. graphviz::
+   :caption: Project Directory
+   :align: center
+
+   digraph folders {
+      "/home/franklin" [shape=folder];
+      "cloudlab" [shape=folder];
+      "python" [shape=folder];
+      "docker" [shape=folder];
+      "docker-compose.yml" [shape=rect];
+      "Dockerfile" [shape=rect];
+      "/home/franklin" -> "cloudlab";
+      "cloudlab" -> "python";
+      "cloudlab" -> "docker";
+      "docker" -> "Dockerfile";
+      "docker" -> "docker-compose.yml";
+   }
