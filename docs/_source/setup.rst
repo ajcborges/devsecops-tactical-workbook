@@ -23,7 +23,12 @@ your time in other pursuits.
 In this book, we will explore a combination of techniques that can refresh
 your skills and align your projects with current software development techniques. 
 We can use small bits and pieces from various technolgies to create a secure build 
-pipeline for our lab and development work, test, and even production environments.
+pipeline for our lab and development work, test, and even production environments. 
+The techniques here are meant to help the security-minded developer sharpen her or his
+skills, and introduce tips and tactics that benefit the teams they are a part of.
+There are many, many ways to reach similar goals these days with the preponderance
+of Open Source and commercial tools available. By focusing on a few we can blaze a
+trail to success in our projects.
 
 We have a goal in mind of selecting complementary tools and process to construct 
 and streamline our ways of working. We will attempt to leverage these ways to 
@@ -41,6 +46,7 @@ be exploring new ways of working for folks who are somewhat familiar with:
 
 - Linux (UI and command line)
 - Python 3
+- Familiarity with github.com and the concepts of pull requests and branching.
 
 *****
 Goals
@@ -51,8 +57,22 @@ Let's quickly look at the ojectives for this book.
 - Create an extensible lab environment for rapid prototyping and development.
 - Get out of our old comfort zone, into a new one.
 - Keep our lab costs down while meeting the rest of the objectives.
-  - Utilize free services and open source tools to the extent possible.
+   - Utilize free services and open source tools to the extent possible.
 - Always leave our project in a functional state.
+
+The ideas captured here are not means to any end. Rather, these are meant to 
+be starting points that give you the momentum with technologies and techniques
+that will streamline your projects. Your job is to keep experimenting and to 
+see what is useful enough to stick with you!
+
+Companies will make their services free in the hopes that you will see the value
+and usefulness of their products. The hope is that you will see enough utility 
+that you will recommend them to your enterprise clients and integrate their 
+stuff into your workflows. Not a bad trade-off!
+
+Finally, I've found it very helpful for my peace of mind to always leave my
+projects clean and green before walking away from my work station for the day.
+Hopefully you find similar benefit should you choose to adopt this practice.
 
 *****
 Setup
@@ -110,16 +130,33 @@ We will save a copy of the file `/home/secdevops/.ssh/id_rsa.pub` into a new fil
 called `/home/secdevops/.ssh/authorized_keys`. We will use this file later for logging
 in to hosts we build.
 
+.. code-block:: bash
+
+   ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+   Enter a file in which to save the key (/home/you/.ssh/id_rsa): [Press enter]
+   Enter passphrase (empty for no passphrase): [Type a passphrase]
+   Enter same passphrase again: [Type passphrase again]
+
+Now you can add your public key half to github.com [#]_ .
+
+.. [#] https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account
+
 GPG Key Setup
 =============
 
-Using a GPG key to sign your commits [#]_ will help other verify that work
-you check in to revision control did actually come from you. 
+Using a GPG key to sign your commits [#]_ will help others verify that work
+you check in to revision control did actually come from you. It's not strictly necessary
+but is considered good practice. Some repositories require that you sign your 
+pull requests with your GPG key.
 
 .. [#] https://help.github.com/en/github/authenticating-to-github/generating-a-new-gpg-key
 
 .. index::
    single: GPG key
+
+.. raw:: latex
+
+    \clearpage
 
 Staring Directory Structure
 ===========================
