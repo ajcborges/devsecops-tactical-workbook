@@ -1,3 +1,4 @@
 sphinx
 pygments
 rst2pdf
+restructuredtext-lint

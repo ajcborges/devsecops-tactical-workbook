@@ -1,7 +1,7 @@
 .. include:: global.rst
 
 ============
-Introduction
+Cloudlab
 ============
 
 .. image:: ../images/sky-690293_1920.jpg
@@ -11,7 +11,7 @@ At the time of this writing in 2020, about 40% of production workloads are
 running on containers and serverless deployments.  Bare metal and virtual machines currently host 
 a bit over 60% of production workloads. Containerized workload use is expected to 
 increase in the coming years. Conversely, bare metal and VM usage is expected 
-to decrease.[#]_. It's not a question of if, but how quickly commoditization of 
+to decrease [#]_ . It's not a question of if, but how quickly commoditization of 
 compute resources takes place, leaving only a few main providers of these resources.
 This is not unlike how power generation and distribution became centralized, now
 the domain of a few large utility companies. Nothing beyond considerations of 
@@ -32,6 +32,28 @@ should strive for simplicity and reduction of complexity whenever possible.
 Complexity in our processes beome the snags and side projects that are the enemy 
 of productivity. Refuse to shave more yaks than absolutely necessary!
 
+*************
+Prerequisites
+*************
+
+This book assumes the reader has some basic knowledge of certain concepts. We will
+be exploring new ways of working for folks who are somewhat familiar with:
+
+- Linux (UI and command line)
+- Python 3
+
+*****
+Goals
+*****
+
+Let's quickly look at the ojectives for this book.
+
+- Create an extensible lab environment for rapid prototyping and development.
+- Get out of our old comfort zone, into a new one.
+- Keep our lab costs down while meeting the rest of the objectives.
+  - Utilize free services and open source tools to the extent possible.
+- Always leave our project in a functional state.
+
 *****
 Setup
 *****
@@ -43,38 +65,40 @@ if they have the ability to run a BASH shell, install open source
 packages, etc. Support for environments other than Linux or Mac are
 beyond the scope of this book.
 
-Let's take a look at some of the foundational elements it will take to 
-make us scuccessful.
+It is not necessary to install Python 3 locally, since we will contain
+Python and it's dependencies to an instance of Docker.
+
+Let's take a look at some of the other foundational environmental elements
+we need in place to be scuccessful.
 
 The Workhorse (IDE)
 ===================
 
 I find it extremely helpful to have an Integrated Development Environment
 (IDE) that I don't have to spend a lot of time configuring. Lately that 
-is Visual Studio Code[#]_. for me. It works well on both Linux and Mac. The 
+is Visual Studio Code [#]_ for me. It works well on both Linux and Mac. The 
 environment is easily extensible to support most any language, linter, or
-syntax checker I might need. 
+syntax checker I might need. Folks also seem to be quite fond of Sublime [#]_ 
+for it's extensibility.
 
 .. [#] https://code.visualstudio.com/Download
+.. [#] https://www.sublimetext.com/
+
+.. index::
+   single: VSCode
+   single: Sublime
 
 There are times I catch myself switching between VSCode and a terminal
 window to do a quick edit in vi or interact with GitHub. Over time I am 
 changing the way I work in an attempt to reduce attempts to refocus 
 between windows on my desktop.
 
-Work Area
-=========
-
-Take a look at the area around your keyboard and make an honest attempt 
-to clear away as many distractions as possible. Decluttering your desk will 
-help you clear your mind and focus on your projects. 
-
 SSH Key Setup
 =============
 
 Take a few minutes to generate an SSH key pair if you don't already have one.
 We will be using it at various stages to log in to various sites and hosts. 
-The directions for generating an SSH keypair found on the github.com website[#]_ 
+The directions for generating an SSH keypair found on the github.com website [#]_ 
 are perfect for this task.
 
 .. [#] https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
@@ -82,14 +106,14 @@ are perfect for this task.
 .. index::
    single: SSH keys
 
-We will save a copy of the file `/home/franklin/.ssh/id_rsa.pub` into a new file
-called `/home/franklin/.ssh/authorized_keys`. We will use this file later for logging
+We will save a copy of the file `/home/secdevops/.ssh/id_rsa.pub` into a new file
+called `/home/secdevops/.ssh/authorized_keys`. We will use this file later for logging
 in to hosts we build.
 
 GPG Key Setup
 =============
 
-Using a GPG key to sign your commits[#]_. will help other verify that work
+Using a GPG key to sign your commits [#]_ will help other verify that work
 you check in to revision control did actually come from you. 
 
 .. [#] https://help.github.com/en/github/authenticating-to-github/generating-a-new-gpg-key
@@ -97,8 +121,8 @@ you check in to revision control did actually come from you.
 .. index::
    single: GPG key
 
-Directory Structure
-===================
+Staring Directory Structure
+===========================
 
 So far our relevant files and folders are organized like so:
 
@@ -107,9 +131,9 @@ So far our relevant files and folders are organized like so:
    :align: center
 
    digraph folders {
-      "/home/franklin" [shape=folder];
+      "/home/secdevops" [shape=folder];
       ".ssh" [shape=folder];
       ".gpg" [shape=folder];
-      "/home/franklin" -> ".ssh";
-      "/home/franklin" -> ".gpg";
+      "/home/secdevops" -> ".ssh";
+      "/home/secdevops" -> ".gpg";
    }

@@ -9,7 +9,8 @@
    _source/python
    _source/docker
    _source/makefiles
-   _source/tools
    _source/infrastructure
+   _source/tools
    _source/about-firewalls
    _source/pictures
+   _source/glossary
