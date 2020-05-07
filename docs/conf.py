@@ -15,7 +15,7 @@
 
 # General information about the project.
 project = u'CloudLab'
-copyright = u'Franklin Diaz, 2020'
+copyright = u'Copyright © 2020 by Franklin Diaz'
 author = u'Franklin Diaz'
 
 # The short X.Y version
@@ -37,6 +37,7 @@ version = ''
 extensions = [
     'sphinx.ext.autosectionlabel',
     'sphinx.ext.intersphinx',
+    'sphinx.ext.graphviz',
     'rst2pdf.pdfbuilder'
     ]
 
@@ -107,10 +108,11 @@ html_domain_indices = False
 #  ('index', '.tex', project,
 #   author, 'manual'),
 #]
-#latex_elements = { 'maketitle': copyright }
+#latex_elements = { 'maketitle': copyright,
+# 'extraclassoptions': 'openany,oneside' }
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
-latex_logo = 'images/owl-50267_1920.jpg'
+latex_logo = 'images/plouzane-1758197_1920.jpg'
 
 latex_additional_files = ['sphinxmanual.cls'] 
 
