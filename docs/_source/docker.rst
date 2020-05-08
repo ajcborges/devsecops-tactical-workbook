@@ -98,10 +98,12 @@ So far our relevant files and folders are organized like so:
       "cloudlab" [shape=folder];
       "python" [shape=folder];
       "docker" [shape=folder];
+      "ruby" [shape=folder];
       "docker-compose.yml" [shape=rect];
       "Dockerfile" [shape=rect];
       "/home/secdevops" -> "cloudlab";
       "cloudlab" -> "python";
+      "cloudlab" -> "ruby";
       "cloudlab" -> "docker";
       "docker" -> "Dockerfile";
       "docker" -> "docker-compose.yml";

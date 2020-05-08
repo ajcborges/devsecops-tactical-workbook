@@ -59,7 +59,7 @@ one logical line.
 .. raw:: latex
 
     \clearpage
-   
+    
 *********************************
 Directory Structure with Makefile
 *********************************
@@ -75,9 +75,11 @@ So far our relevant files and folders are organized like so:
       "cloudlab" [shape=folder];
       "python" [shape=folder];
       "docker" [shape=folder];
+      "ruby" [shape=folder];
       "Makefile" [shape=rect];
       "/home/secdevops" -> "cloudlab";
       "cloudlab" -> "python";
+      "cloudlab" -> "ruby";
       "cloudlab" -> "docker";
       "cloudlab" -> "Makefile";
    }
