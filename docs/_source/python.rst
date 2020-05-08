@@ -56,6 +56,10 @@ within like so:
 
 Check the results in the file `/var/log/cloudlab/cloudlab.log`.
 
+.. raw:: latex
+
+    \clearpage
+    
 **************************
 Python Directory Structure
 **************************

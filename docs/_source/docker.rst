@@ -79,6 +79,10 @@ Create a file called `docker-compose.yml` in our new `docker` directory.
          context: ..
          dockerfile: docker/Dockerfile
 
+.. raw:: latex
+
+    \clearpage
+
 **************************
 Docker Directory Structure
 **************************

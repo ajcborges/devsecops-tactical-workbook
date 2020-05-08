@@ -120,6 +120,10 @@ safely and efficiently [#]_ .
 .. index::
    single: Terraform
 
+.. raw:: latex
+
+    \clearpage
+
 ************************
 Tool Directory Structure
 ************************

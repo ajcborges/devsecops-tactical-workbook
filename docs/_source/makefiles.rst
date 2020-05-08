@@ -56,6 +56,10 @@ Be sure when you indent in a Makefile that you use tabs, not spaces.
 You can use the backslash character to combine two consecutive lines into 
 one logical line.
 
+.. raw:: latex
+
+    \clearpage
+   
 *********************************
 Directory Structure with Makefile
 *********************************
