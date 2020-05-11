@@ -19,6 +19,19 @@ An item of note, Python3 is the only choice at this point. Python
 Requirements File
 *****************
 
+We will make use of a requirements file under `python\requirements.txt` so we can 
+manage the required Python modules needed to build and run the Python portions of our
+project.
+
+*****************
+Test requirements
+*****************
+
+Some requirements are strictly intended to be part of the test harness, but are not 
+needed for the application proper. Using a separate file, such as `python/requirements-test.txt`
+makes this delineation clear to other develoeprs and folks who are not familiar with 
+the project.
+
 ********************
 The __init__.py File
 ********************
@@ -56,11 +69,15 @@ within like so:
 
 Check the results in the file `/var/log/cloudlab/cloudlab.log`.
 
+.. raw:: latex
+
+    \clearpage
+    
 **************************
 Python Directory Structure
 **************************
 
-So far our relevant files and folders are organized like so:
+Files and folders relevant to the Python portions of our project are shown in the diagram below.
 
 .. graphviz::
    :caption: Project Directory
@@ -70,10 +87,12 @@ So far our relevant files and folders are organized like so:
       "/home/secdevops" [shape=folder];
       "cloudlab" [shape=folder];
       "python" [shape=folder];
-      "requirements.txt" [shape=rect];
-      "__init__.py" [shape=rect];
+      "requirements.txt" [shape=rectangle];
+      "requirements-test.txt" [shape=rectangle];
+      "__init__.py" [shape=rectangle];
       "/home/secdevops" -> "cloudlab";
       "cloudlab" -> "python";
       "python" -> "__init__.py";
       "python" -> "requirements.txt";
+      "python" -> "requirements-test.txt";
    }

@@ -108,6 +108,24 @@ Steps
 - Do my pull requests and merges as desired.
 - Do a `git pull` to my master branch to keep my local clone up to date.
 
+Example Repository
+==================
+
+A GitHub Template Repository is available should you decide to follow 
+along with the code examples in this book.
+
+Steps
+*****
+
+- Navigate to `https://github.com/hotpeppersec/rapid_secdev_framework`_
+- Click the green button "Use this template"
+- Select a "Repository name", like "cloudlab" for example.
+- Now click "Create repository from template"
+
+.. _`https://github.com/hotpeppersec/rapid_secdev_framework`: https://github.com/hotpeppersec/rapid_secdev_framework
+
+Now we have a repository we can use for testing and examples.
+
 CODEOWNERS
 ==========
 
@@ -127,12 +145,33 @@ lists the file(s) and the owner(s) on a line together. It looks like this:
    * @hotpeppersec
 
 In this example, the @hotpeppersec user will be tagged as a reviewer in all pull 
-requests.
+requests. For our first exercise, let's try to make a clone of the repository we
+generated from template in the previous section. 
+
+Steps
+*****
+
+- Navigate to the main page for our new repository on github.com.
+- Clone the repository to your local host. 
+   - Be sure to clone with "SSH" and not "HTTPS".
+- Change to the clone directory with the "cd" command.
+- Create a new branch, for example `git checkout -b newbranch`
+- Create the `.github` directory, and then the `CODEOWNERS` file in that directory.
+- Add the file with git, `git add CODEOWNERS`
+- Commit the file with git, `git commit -S -m 'add CODEOWNERS file'`
+- Push this commit to github.com, `git push origin newbranch`
+- Use the github.com website to open and merge the pull request.
 
 Repository Settings
 ===================
 
-Which flags should you flip after clicking on the little gear icon?
+When setting up a new repository I always click the Settings tab (with the little 
+gear icon) and then choose the "Branches" section. The Default branch gets set to 
+"master". Clicking the "Add Rule" button, entering "master" for the "Branch name 
+pattern", and then the green "Create" button sets up master as a protected branch.
+
+After we start to work with CI/CD tools (status checks, like GitHub Actions for 
+example) there will be choices available here for managing those checks.
 
 .. raw:: latex
 

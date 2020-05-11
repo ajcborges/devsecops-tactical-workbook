@@ -120,6 +120,17 @@ safely and efficiently [#]_ .
 .. index::
    single: Terraform
 
+**********
+Validaters
+**********
+
+packer
+terraform
+
+.. raw:: latex
+
+    \clearpage
+
 ************************
 Tool Directory Structure
 ************************
@@ -131,15 +142,11 @@ So far our relevant files and folders are organized like so:
    :align: center
 
    digraph folders {
-      "/home/secdevops" [shape=folder];
       "cloudlab" [shape=folder];
-      "python" [shape=folder];
-      "docker" [shape=folder];
       "packer" [shape=folder];
-      "cloudlab.json" [shape=rect];
-      "/home/secdevops" -> "cloudlab";
-      "cloudlab" -> "python";
-      "cloudlab" -> "docker";
+      "aws-debian-host.json" [shape=rect];
+      "gcp-debian-host.json" [shape=rect];
       "cloudlab" -> "packer";
-      "packer" -> "cloudlab.json";
+      "packer" -> "aws-debian-host.json";
+      "packer" -> "gcp-debian-host.json";
    }

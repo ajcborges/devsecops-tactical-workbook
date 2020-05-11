@@ -4,6 +4,9 @@
 BLUE := "\\033[1\;36m"
 NC := "\\033[0m" # No color/default
 
+REQS := python/requirements.txt
+REQS_TEST := python/requirements-test.txt
+
 define PRINT_HELP_PYSCRIPT
 import re, sys
 
@@ -37,4 +40,11 @@ print-status:
 	@echo "$(BLUE)$(MSG)$(NC)"
 
 python: ## setup python3
-	if [ -f 'python/requirements.txt' ]; then pip3 install -rpython/requirements.txt; fi
+	#if [ ! -f /.dockerenv ] || [ ! -d "/home/runner" ]; then $(MAKE) print-status MSG="Run make python inside docker container" && exit 1; fi
+	$(MAKE) print-status MSG="Set up the Python environment"
+	if [ -f '$(REQS)' ]; then python3 -m pip install -r$(REQS); fi
+
+test: python ## test all the things
+	if [ ! -f /.dockerenv ]; then $(MAKE) print-status MSG="Run make test inside docker container" && exit 1; fi
+	$(MAKE) print-status MSG="Set up the test harness"
+	if [ -f '$(REQS_TEST)' ]; then pip3 install -r$(REQS_TEST); fi

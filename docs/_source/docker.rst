@@ -9,11 +9,12 @@ Docker
 
 With containerization of our projects, we can take advantge of 
 immutability [#]_, starting in our development environment, 
-to test and even production. Using immutable containers means we
-have hosts that are ephemeral. Ephemerality is the concept of 
-things being transitory, existing only briefly [#]_. Rather than spending a great 
-deal of time patching and upgrading VM's or bare metal, we're 
-going to quickly create a new container in place of the old one.
+the test environment and even our production environment. Using immutable 
+containers means we have hosts that are ephemeral. Ephemerality is the 
+concept of things being transitory, existing only briefly [#]_. Rather 
+than spending a great deal of time patching and upgrading VM's 
+or bare metal, we're going to quickly create a new container 
+in place of the old one.
 
 .. [#] https://www.hashicorp.com/resources/what-is-mutable-vs-immutable-infrastructure/
 .. [#] https://en.wikipedia.org/wiki/Ephemerality
@@ -24,8 +25,8 @@ going to quickly create a new container in place of the old one.
    single: Docker
 
 Using Docker also gives us the benefit of being able to switch quickly 
-between base OS images with just a few lines of change to our project. See 
-the Docker website for instructions on how to install and configure
+between base OS images with just a few lines of code change to our project. 
+See the Docker website for instructions on how to install and configure
 Docker [#]_ .
 
 .. [#] https://docs.docker.com/get-docker/
@@ -79,6 +80,10 @@ Create a file called `docker-compose.yml` in our new `docker` directory.
          context: ..
          dockerfile: docker/Dockerfile
 
+.. raw:: latex
+
+    \clearpage
+
 **************************
 Docker Directory Structure
 **************************
@@ -94,10 +99,12 @@ So far our relevant files and folders are organized like so:
       "cloudlab" [shape=folder];
       "python" [shape=folder];
       "docker" [shape=folder];
+      "ruby" [shape=folder];
       "docker-compose.yml" [shape=rect];
       "Dockerfile" [shape=rect];
       "/home/secdevops" -> "cloudlab";
       "cloudlab" -> "python";
+      "cloudlab" -> "ruby";
       "cloudlab" -> "docker";
       "docker" -> "Dockerfile";
       "docker" -> "docker-compose.yml";

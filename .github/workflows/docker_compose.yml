@@ -1,18 +1,12 @@
 name: Docker Image CI
-
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-  
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    env:
-      SHODAN_KEY: ${{ secrets.shodanKey }}
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.8
