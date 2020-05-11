@@ -4,7 +4,7 @@
 Infrastructure
 ==============
 
-.. image:: ../images/railway-4101305_1920.jpg
+.. image:: ../images/cologne-cathedral-1507854_1920.jpg
    :align: center
 
 ******************

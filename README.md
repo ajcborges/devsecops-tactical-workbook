@@ -16,16 +16,21 @@ cd docs
 sphinx-build -M latexpdf . _build
 ```
 
-PDF will be in `cloudlab/docs/_build/latex/cloudlab.pdf`
-
+- PDF will be in `cloudlab/docs/_build/latex/cloudlab.pdf`
+- Find the file in `file:///home/thedevilsvoice/workspace/cloudlab/docs/_build/latex/cloudlab.pdf`
+    - If you open in firefox you get a nice nav bar on the left side.
 
 ## Epub & Kindle
 
-
 https://www.amazon.com/gp/feature.html?docId=1000765211
 
+```bash
+cd docs && make epub
 ```
-make epub
+
+Now you can generate the kindle .mobi file
+
+```bash
 kindlegen _build/epub/CloudLab.epub
 ```
 

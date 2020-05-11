@@ -56,6 +56,56 @@ Be sure when you indent in a Makefile that you use tabs, not spaces.
 You can use the backslash character to combine two consecutive lines into 
 one logical line.
 
+*********************
+Full Example Makefile
+*********************
+
+Here is a full example of a working Makefile. 
+
+.. code-block:: shell
+
+   .PHONY: docker docs python
+
+   # Used for colorizing output of echo messages
+   BLUE := "\\033[1\;36m"
+   NC := "\\033[0m" # No color/default
+
+   define PRINT_HELP_PYSCRIPT
+   import re, sys
+
+   for line in sys.stdin:
+   match = re.match(r'^([a-zA-Z_-]+):.*?## (.*)$$', line)
+   if match:
+      target, help = match.groups()
+      print("%-20s %s" % (target, help))
+   endef
+
+   export PRINT_HELP_PYSCRIPT
+
+   help:
+      @python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
+
+   docker: python ## build docker container for testing
+      $(MAKE) print-status MSG="Building with docker-compose"
+      @if [ -f /.dockerenv ]; then $(MAKE) print-status MSG="***> Don't run make docker inside docker container <***" && exit 1; fi
+      docker-compose -f docker/docker-compose.yml build cloudlab
+      @docker-compose -f docker/docker-compose.yml run cloudlab /bin/bash
+
+   print-status:
+      @:$(call check_defined, MSG, Message to print)
+      @echo "$(BLUE)$(MSG)$(NC)"
+
+   python: ## setup python3
+      if [ ! -f /.dockerenv ]; then $(MAKE) print-status MSG="Run make python inside docker container" && exit 1; fi
+      $(MAKE) print-status MSG="Set up the Python environment"
+      if [ -f '$(REQS)' ]; then python3 -m pip install -r$(REQS); fi
+
+   test: python ## test all the things
+      if [ ! -f /.dockerenv ]; then $(MAKE) print-status MSG="Run make test inside docker container" && exit 1; fi
+      $(MAKE) print-status MSG="Set up the test harness"
+      if [ -f '$(REQS_TEST)' ]; then pip3 install -r$(REQS_TEST); fi
+      #tox
+   
 .. raw:: latex
 
     \clearpage
@@ -64,7 +114,8 @@ one logical line.
 Directory Structure with Makefile
 *********************************
 
-So far our relevant files and folders are organized like so:
+Relevant files and folders related to our Makefile are organized as
+seen below.
 
 .. graphviz::
    :caption: Project Directory
@@ -77,9 +128,19 @@ So far our relevant files and folders are organized like so:
       "docker" [shape=folder];
       "ruby" [shape=folder];
       "Makefile" [shape=rect];
+      "requirements.txt" [shape=rectangle];
+      "requirements-test.txt" [shape=rectangle];
+      "__init__.py" [shape=rectangle];
+      "docker-compose.yml" [shape=rect];
+      "Dockerfile" [shape=rect];
       "/home/secdevops" -> "cloudlab";
       "cloudlab" -> "python";
+      "python" -> "__init__.py";
+      "python" -> "requirements.txt";
+      "python" -> "requirements-test.txt";
       "cloudlab" -> "ruby";
       "cloudlab" -> "docker";
       "cloudlab" -> "Makefile";
+      "docker" -> "Dockerfile";
+      "docker" -> "docker-compose.yml";
    }

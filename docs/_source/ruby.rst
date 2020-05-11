@@ -7,9 +7,13 @@ Ruby
 .. image:: ../images/crab-298346_1920.jpg
    :align: center
 
-"Ruby is simple in appearance, but is very complex inside, just like our human body. [#]_ " Yukihiro “Matz” Matsumoto
+"Ruby is simple in appearance, but is very complex inside, just 
+like our human body. [#]_ " Yukihiro “Matz” Matsumoto
 
 .. [#] Matz, speaking on the Ruby-Talk mailing list, May 12th, 2000.
+
+Getting some Ruby basics under your belt is very helpful if you think
+you will be doing future work with puppet, including facter and rspec.
 
 .. index::
    single: Ruby

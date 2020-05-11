@@ -10,8 +10,9 @@
    _source/makefiles
    _source/about-ci-cd
    _source/scanners
-   _source/infrastructure
    _source/tools
-   _source/about-firewalls
+   _source/infrastructure
+   _source/ansible
+   _source/firewalls
    _source/pictures
    _source/glossary
