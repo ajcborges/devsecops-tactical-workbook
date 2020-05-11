@@ -40,7 +40,7 @@ print-status:
 	@echo "$(BLUE)$(MSG)$(NC)"
 
 python: ## setup python3
-	if [ ! -f /.dockerenv || ! -d "/home/runner/work/cloudlab/cloudlab" ]; then $(MAKE) print-status MSG="Run make python inside docker container" && exit 1; fi
+	if [ ! -f /.dockerenv ] || [ ! -d "/home/runner/work/cloudlab/cloudlab" ]; then $(MAKE) print-status MSG="Run make python inside docker container" && exit 1; fi
 	$(MAKE) print-status MSG="Set up the Python environment"
 	if [ -f '$(REQS)' ]; then python3 -m pip install -r$(REQS); fi
 
