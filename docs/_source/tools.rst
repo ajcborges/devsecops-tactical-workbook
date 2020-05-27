@@ -148,7 +148,19 @@ Building Images with Packer
 ===========================
 
 Finally, we are ready to build our new images. Try typing `packer build <filename>`
-to create the images in AWS or GCP.
+to create the image. You shoudl see output similar to the following, but with a unique 
+AMI ID.
+
+.. code-block:: bash
+
+   Build 'amazon-ebs' finished.
+
+   ==> Builds finished. The artifacts of successful builds are:
+   --> amazon-ebs: AMIs were created:
+   us-west-2: ami-0e9e6427509a9d0b5
+
+The AMI ID "ami-0e9e6427509a9d0b5" is now a usable image that we can include in our 
+terraform builds. 
 
 Removing Packer Images from Cloud Provider
 ==========================================
@@ -163,18 +175,43 @@ available to be installed via Python/pip as well as from the GitHub repository f
 
 .. [#] https://github.com/bonclay7/aws-amicleaner
 
+
+Another AWS specfic tool is "lambda-packerjanitor" [#]_ from Trusworks.
+
+.. [#] https://registry.terraform.io/modules/trussworks/lambda-packerjanitor/aws/1.0.0
+
 *********
 Terraform
 *********
 
-Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently 
-[#]_ . Install the latest version of Terraform from Hashicorp in preparation for the activities 
-that follow.
+Terraform, created by Hashicorp in 2014, is a tool for building, changing, and versioning 
+infrastructure safely and efficiently [#]_ . Install the latest version of Terraform in preparation 
+for the activities that follow.
 
 .. [#] https://www.terraform.io/intro/index.html
 
 .. index::
    single: Terraform
+
+Consider the relevant Terraform files that we will include in our projects.
+
+.. graphviz::
+   :caption: Key Terraform Files 
+   :align: center
+
+   digraph folders {
+      "aws" [shape=folder];
+      "main.tf" [shape=rect];
+      "output.tf" [shape=rect];
+      "terraform.tfvars" [shape=rect];
+      "variables.tf" [shape=rect];
+      "aws" -> "main.tf";
+      "aws" -> "output.tf";
+      "aws" -> "terraform.tfvars";
+      "aws" -> "variables.tf";
+   }
+
+
 
 terraform.tfvars
 ================
@@ -188,35 +225,179 @@ your credentials is very important!
 .. index::
    single: terraform.tfvars
 
+An example of a local terraform.tfvars file follows. Remember that this file will never be 
+checked into GitHub or any other revision control toolset.
+
 .. code:: shell
 
    aws_access_key = AKIAJCQ6WHUXVOKZ8RQQ
    aws_secret_key = q27qR8fwdHLUh7WOEH3JVd2VHjfRlQs1jlhhbZbQ
 
-variables.tf
-============
-
-The `variables.tf` file is another common file seen in projects in AWS, GCP and other cloud providers.
-It contains declarations of variables, and often values for variables as well. As an example there 
-might be region information or even the name of the image we created previously with Packer.
-
-.. index::
-   single: variables.tf
-
 main.tf
 =======
+
+This file will contain the bulk of our Terraform configurations. As with Python, we have the ability to
+reference modules, both internal and exteral. The main.tf file is the place the module references are made. 
+
+.. code:: terraform
+
+   # Example of how to reference an external module
+   module "security_group" {
+      source  = "terraform-aws-modules/security-group/aws"
+      version = "~> 3.0"
+
+      name        = "CloudLab"
+      description = "Security group for the cloud lab"
+      vpc_id      = data.aws_vpc.default.id
+
+      ingress_cidr_blocks = ["0.0.0.0/0"]
+      ingress_rules       = ["http-80-tcp", "all-icmp", "ssh-tcp"]
+      egress_rules        = ["all-all"]
+   }
+
+
+We can also designate our data sources in the main.tf file. Consider the following Terraform data sources.
+These AWS data sources reference our Virtual Private Cloud (VPC) and provider-assigned IPv4 Subnets.
+
+.. code:: shell
+
+   data "aws_vpc" "default" {
+   default = true
+   }
+
+   data "aws_subnet_ids" "all" {
+   vpc_id = data.aws_vpc.default.id
+   }
+
 
 .. index::
    single: main.tf
 
+outputs.tf
+==========
+
+We can display or export the resources we've created in `main.tf` using a file known as
+`outputs.tf`. We may have a need to display the IP address of host instances we've just 
+created, which is helpful to a user who needs to log in. We may also wish to make values 
+available to other Terraform modules.
+
+Consider the following output declarations from our example code.
+
+.. code:: shell
+
+   output "web_public_ip" {
+      description = "Public IPs assigned to the web instance"
+      value       = aws_instance.web.public_ip
+   }
+
+   output "kali_public_ip" {
+      description = "Public IPs assigned to the kali instance"
+      value       = aws_instance.kali.public_ip
+   }
+
+.. index::
+   single: outputs.tf
+
+variables.tf
+============
+
+The `variables.tf` file is another common file seen in projects in AWS, GCP and other cloud providers.
+It contains declarations of variables, and often values for variables as well, that will be used in 
+the `main.tf` file. As an example there might be region information or even the name of the image we 
+created previously with Packer.
+
+.. index::
+   single: variables.tf
+
+Consider the following example. Here we declare a "region" variable in the file variables.tf.
+
+.. code:: shell
+
+   variable "region" {
+      description = "AWS region to launch servers."
+      default     = "us-west-2"
+   }
+
 Verification
 ============
 
-Terraform has some commands (validate & plan) that we can use to verify our configuration before 
-sending it off to the cloud provider to act upon.
+Terraform has some commands, `validate` and `fmt` (short for "format") that we can use to syntactically
+verify our configuration before sending it off to the cloud provider to act upon. Validating 
+your Terraform files is as easy as  typing `terraform validate` in the directory the files exist in.
+
+.. code:: shell
+
+   thedevilsvoice@grimoire::~/workspace/rapid_secdev_framework/aws$ terraform validate
+   Success! The configuration is valid.
+
+To get your Terrform files into a clean standard format, the `terraform fmt` command works well. There
+is also the option to do this formatting from inside the VSCode window on a per-file basis.
+
+Plan
+====
+
+First we will will create a "plan" in preparation for application.
+
+.. code:: shell
+
+   thedevilsvoice@grimoire::~/workspace/rapid_secdev_framework/aws$ terraform plan -out franklin.out
+   Refreshing Terraform state in-memory prior to plan...
+   The refreshed state will be used to calculate this plan, but will not be
+   persisted to local or remote state storage.
+
+   data.aws_vpc.default: Refreshing state...
+   data.aws_subnet_ids.all: Refreshing state...
+
+   ------------------------------------------------------------------------
+
+   An execution plan has been generated and is shown below.
+   Resource actions are indicated with the following symbols:
+   + create
+
+
+   Plan: 8 to add, 0 to change, 0 to destroy.
+
+   ------------------------------------------------------------------------
+
+   This plan was saved to: franklin.out
+
+   To perform exactly these actions, run the following command to apply:
+      terraform apply "franklin.out"
 
 Apply
 =====
+
+The `apply` action is where the rubber meets the proverbial road. This action will transmit our
+configurations to the cloud provider and allocate the necessary resources to stand up our environment.
+
+With our plan in place, we can now "apply" that plan to the cloud provider. This can take a counsiderable
+amount of time, depending on the complexity of the desired configuration. Note that Terraform will 
+prompt you to enter "yes" before it will proceed. 
+
+.. code:: shell
+
+   thedevilsvoice@grimoire::~/workspace/rapid_secdev_framework/aws$ terraform apply
+   data.aws_vpc.default: Refreshing state...
+   data.aws_subnet_ids.all: Refreshing state...
+
+   An execution plan has been generated and is shown below.
+   Resource actions are indicated with the following symbols:
+      + create
+
+   Plan: 8 to add, 0 to change, 0 to destroy.
+
+   Do you want to perform these actions?
+      Terraform will perform the actions described above.
+      Only 'yes' will be accepted to approve.
+
+      Enter a value: yes
+
+   Apply complete! Resources: 8 added, 0 changed, 0 destroyed.
+
+   Outputs:
+
+   kali_public_ip = 34.221.121.11
+   web_public_ip = 54.186.129.232
 
 *******
 Ansible
@@ -251,8 +432,13 @@ Ansible playbooks break down target hosts into groupings known as roles.
 Testing Ansible Playbooks
 =========================
 
-There is a test framework known as "molecule" that can be used to 
-test ansible playbooks in the CI/CD pipeline.
+There is a test framework known as "molecule" that can be used to test ansible playbooks.
+
+.. code:: shell
+
+   $ molecule init role -r logfwd
+   --> Initializing new role logfwd...
+   Initialized role in /ansible/roles/logfwd successfully.
 
 *************
 Ansible Vault
@@ -323,18 +509,23 @@ below.
 
    digraph folders {
       "cloudlab" [shape=folder];
+      "ansible" [shape=folder];
+      "aws" [shape=folder];
       "packer" [shape=folder];
-      "terraform" [shape=folder];
       "aws-debian-host.json" [shape=rect];
       "gcp-debian-host.json" [shape=rect];
       "main.tf" [shape=rect];
+      "outputs.tf" [shape=rect];
       "terraform.tfvars" [shape=rect];
       "variables.tf" [shape=rect];
+      "cloudlab" -> "ansible";
+      "cloudlab" -> "aws";
       "cloudlab" -> "packer";
-      "cloudlab" -> "terraform";
+      "aws" -> "main.tf";
+      "aws" -> "outputs.tf";
+      "aws" -> "terraform.tfvars";
+      "aws" -> "variables.tf";
       "packer" -> "aws-debian-host.json";
       "packer" -> "gcp-debian-host.json";
-      "terraform" -> "main.tf";
-      "terraform" -> "terraform.tfvars";
-      "terraform" -> "variables.tf";
+
    }
