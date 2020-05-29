@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # General information about the project.
-project = u'The DevOps Pipeline'
+project = u'Book Proposal - DevOps Pipeline'
 copyright = u'Copyright © 2020 by Franklin Diaz'
 author = u'© 2020 by Franklin Diaz'
 
@@ -11,10 +11,10 @@ version = '0.0.2'
 # -- General configuration ---------------------------------------------------
 
 extensions = [
-    'sphinx.ext.autosectionlabel',
-    'sphinx.ext.intersphinx',
+    'sphinx_markdown_tables',
     'sphinx.ext.graphviz',
-    'rst2pdf.pdfbuilder']
+    'recommonmark'
+    ]
 
 # Turns on numbered figures for HTML output
 numfig = True
@@ -27,8 +27,15 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path .
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
+source_parsers = {
+    '.md': 'recommonmark.parser.CommonMarkParser',
+}
+
 # The suffix of source filenames.
-source_suffix = '.rst'
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
 
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
@@ -45,7 +52,6 @@ language = None
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'colorful'
-
 
 # -- Options for HTML output -------------------------------------------------
 # The Read the Docs theme is available from
@@ -101,6 +107,7 @@ latex_paper_size = 'letter'
 # The font size ('10pt', '11pt' or '12pt').
 latex_font_size = '10pt'
 
+latex_logo = 'images/plouzane-1758197_1920.jpg'
 latex_show_pagerefs = True
 latex_show_urls = 'footnote'
 latex_additional_files = ['sphinxmanual.cls'] 
@@ -109,4 +116,5 @@ latex_elements = {
     'inputenc': '',
     'utf8extra': '',
     'papersize':'letterpaper',
+    'extraclassoptions': 'openany,oneside',
 }
