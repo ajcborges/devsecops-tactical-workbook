@@ -69,6 +69,8 @@ language = None
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'colorful'
 
+show_authors = True
+
 
 # -- Options for HTML output -------------------------------------------------
 # The Read the Docs theme is available from
@@ -144,19 +146,30 @@ latex_font_size = '10pt'
 latex_logo = 'images/plouzane-1758197_1920.jpg'
 latex_show_pagerefs = True
 latex_show_urls = 'footnote'
-latex_additional_files = ['sphinxmanual.cls'] 
-
+#latex_additional_files = ['sphinxmanual.cls']
+#latex_additional_files = ['copyrights.cls']
 latex_elements = {
     'inputenc': '',
     'utf8extra': '',
     'papersize':'letterpaper',
     #'fontenc':r'\usepackage[T2A,T1]{fontenc}',
-    'preamble': r'''
-\usepackage{draftwatermark}
-\SetWatermarkText{DRAFT}
-\SetWatermarkScale{1.2}
-\SetWatermarkLightness{0.9}
-''',
+    'preamble': r'\input{../../_static/mypreamble.tex}',
+    'maketitle': r'\input{../../_static/maketitle.tex}',
+    'footer': r'''
+      \small \textit{Follow along code project available from }{\href{https://github.com/hotpeppersec/rapid_secdev_framework}{RapidSecDevFramework}}
+    ''',
+    # Latex figure (float) alignment
+    #
+    # 'figure_align': 'htbp',
+    'sphinxsetup': \
+        'hmargin={0.7in,0.7in}, vmargin={1in,1in}, \
+        verbatimwithframe=true, \
+        TitleColor={rgb}{0,0,0}, \
+        HeaderFamily=\\rmfamily\\bfseries, \
+        InnerLinkColor={rgb}{0,0,1}, \
+        OuterLinkColor={rgb}{0,0,1}',
+
+        'tableofcontents':' ',
 }
 
 # -- Options for PDF output --------------------------------------------------
