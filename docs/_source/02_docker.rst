@@ -9,21 +9,20 @@ Containers
 
 |
 
-Creating a fully functioning software ecosystem for our serice or 
-project is known as containerization. The most popular and common
-tool for acheiving containerization is Docker. Using Docker, we can
-programatically build up an environment for our project, and pass the
-entirety of this encapsulated environmentfrom our local development
-machine, into the Continuous Integration pipeline for testing, and even 
-all the way to our production environment.
+Containerization is the process of generating a fully functioning software ecosystem that includes
+code and dependencies for part or all of a project. The most popular and common
+tool for implementing containerization is Docker. Using Docker, we can
+programatically build an environment for our project, and pass the
+entirety of this encapsulated environment from our local development
+machine, into the Continuous Integration pipeline for testing, and eventually
+into our production environment.
 
-With containerization of our projects, we can take advantge of 
-immutability [#]_, starting in our development environment, 
+With containerization, we can more easily acheive immutability [#]_, starting in our development environment, 
 the test environment and eventually our production environment. Using immutable 
 containers means we have hosts that are ephemeral. Ephemerality is the 
 concept of things being transitory, existing only briefly [#]_. Rather 
-than spending a great deal of time patching and upgrading containers, virtual machines, 
-or bare metal, we're going to quickly create a new container 
+than spending a great deal of time patching and upgrading one or more hosts as in a traditional project
+stack that uses virtual machines or bare metal, we're going to quickly create a new container 
 in place of the old one.
 
 .. [#] https://www.hashicorp.com/resources/what-is-mutable-vs-immutable-infrastructure/
