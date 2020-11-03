@@ -1,8 +1,8 @@
 .. include:: global.rst
 
-========
-Cloudlab
-========
+=====================
+DevSecOps Quick Start
+=====================
 
 .. image:: ../images/sky-690293_1920.jpg
    :align: center
@@ -12,7 +12,7 @@ Cloudlab
 At the time of this writing in 2020, about 40% of production workloads are 
 running on containers and serverless deployments.  Bare metal and virtual machines currently host 
 a bit over 60% of production workloads. Containerized workload use is expected to 
-increase in the coming years. Conversely, bare metal and VM usage is expected 
+increase greatly in the coming years. Conversely, bare metal and VM usage is expected 
 to decrease [#]_ . It's not a question of if, but how quickly commoditization of 
 compute resources takes place, leaving only a few main providers of these resources.
 This is not unlike how power generation and distribution became centralized, now
@@ -162,3 +162,13 @@ term "CI/CD Pipeline" comes from.
 While the CI/CD Pipeline is often the primary focus of the DevSecOps engineer, other pipelines exist as 
 well. For example, Data Engineers build and maintain Data Science pipelines for to get information into a data lake, 
 or for Data Scientists to be able to create machine learning models from.
+
+*************
+Lab Exercises
+*************
+
+This book features a final chapter to guide the reader through applying the information
+introduced between this one and that. You are encouraged to jump ahead, go back and re-read, 
+do the parts you think you can use right away and skip that parts you don;t think you will
+ever use. Learning can be a non-linear experience and you are encouraged to "color outside
+the lines" to the extent you feel comfortable doing so. 

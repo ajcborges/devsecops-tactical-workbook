@@ -83,6 +83,7 @@ Take a few minutes to set up a GPG key and add it to your profile on GitHub.
 .. code-block:: bash
    :caption: Set up GPG key and add to GitHub.
    :name: Set up GPG key and add to GitHub.
+   :linenos:
 
    root@cloudlab:~# gpg --default-new-key-algo rsa4096 --gen-key
    public and secret key created and signed.
@@ -105,16 +106,21 @@ and other people on github.com.
 Forking and Cloning Repositories
 ================================
 
-Forking and then cloning your fork is useful when someone else has a project on
-github.com that you would like to make changes to. Forking a repository means
-you are making a copy of that repository to your personal account on the web site.
-Next you want to "clone" a copy of your fork to your local machine so that you 
-can make the desired changes. Adding a "remote" is a way to easily push changes
-from your clone back to the original source repository.
+When someone else has a project on github.com that you would like to make changes to,
+you can make a "fork" of that project. Forking a repository means
+you are making a copy of that repository to your personal account on the GitHub web site.
 
 .. index::
    single: Forking
+
+Creating a "clone" of your fork to your local machine is done so that you 
+can make changes without altering the original project before testing and reivew of the
+changes takes place.
+
+.. index::
    single: Cloning
+
+Adding a "remote" is a git convention to easily push changes from your clone back to the original source repository.
 
 .. graphviz::
    :caption: Forking and Cloning
@@ -138,8 +144,11 @@ the full power of Git and GitHub.
 Steps:
 ******
 
-- From their project page on github.com, click the "fork" button.
+- From the original project page on github.com, click the "fork" button.
+  - This creates a copy of the original repository on your personal GitHub page.
 - Now from your page, make a clone of that fork from github.com to your machine.
+  - This will allow you to add, update and test code and documentation without 
+   altering the original project.
 - On your local machine, create a "remote" connection back to the original repo.
 
 To create a "remote" called `upstream` from your clone to the original repo, 
@@ -151,9 +160,27 @@ use this example command:
 
    git remote add upstream git@github.com:hotpeppersec/cloudlab.git
 
-
 After completing these steps you can easily submit pull requests (PRs)
 back to the original project.
+
+Keeping a Clone in Sync
+=======================
+
+The process of performing a pull request (PR) and merging changes is covered
+fairly extensively on the Web. Let's take a quick look at how to keep your local
+clone of a repository, as well as your clone on github.com, up to date.
+
+Steps
+*****
+
+These are the steps to take once your pull request is merged to the main branch
+in the main project repository. From the command line on the machine where your
+clone resides:
+
+- git checkout master
+- git fetch upstream
+- git rebase upstream/master
+- git push origin master
 
 Creating Repositories
 =====================
