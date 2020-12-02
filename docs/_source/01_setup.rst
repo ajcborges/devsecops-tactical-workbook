@@ -25,7 +25,7 @@ at the leading edge in today's computing industry are not just building software
 are curating it through a cyclical process of continuous development, testing, use, and
 improvement. With increasing frequency, applications and workloads are moving to 
 computing environments that are abstracted away, managed by invisible armies of engineers
-at comapnies other than their own. Of course we are referring to those multitenant cloud
+at companies other than their own. Of course we are referring to those multitenant cloud
 type computing landscapes. Passing one or more fully encapsulated applications to a cloud 
 provider for the purposes of having them host it as a production environment has become
 commonplace. Further, cloud service providers are adding new features and capabilities at
