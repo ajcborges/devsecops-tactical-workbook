@@ -95,7 +95,7 @@ Some IDE's will key off this file and allow for additional syntax highlighting.
    :linenos:
 
    FROM python:3.9-buster
-   LABEL maintainer "Franklin Diaz <franklin@bitsmasher.net>"
+   LABEL maintainer "Kevin Flynn <user@example.com>"
 
    ENV DEBIAN_FRONTEND noninteractive
    
@@ -238,35 +238,39 @@ As Kubernetes and other orchestrators
    single: Kubernetes
    single: Orchestration
 
-******************
-A Bit About Podman
-******************
+*****************************
+A Bit About Podman (Optional)
+*****************************
 
-Podman is an Open Source alternative container engine from the Open Containers Initiative (OCI).
-The Podman service is purportedly capable of being a drop-in replacement for Docker, although
-it only runs on Linux hosts at the time of this writing.
-
-The advantage to running Podman is, it is a more secure alternative [#]_ to Docker for creating 
-containers. You can install Podman by following the instructions [#]_ at their web site.
+The reason we mention Podman is because it is a more secure alternative [#]_ to 
+Docker for creating containers. You will not need to have Podman working to work
+through the exercies in this book.
 
 .. [#] https://opensource.com/article/18/10/podman-more-secure-way-run-containers
+
+Podman is an Open Source alternative container engine from the Open Containers Initiative (OCI).
+The podman service is purportedly capable of being a drop-in replacement for Docker, although
+it only runs on Linux hosts at the time of this writing. 
+
+.. index::
+   single: Podman
+   single: Open Containers Initiative (OCI)
+
+You can install Podman by following the instructions [#]_ at their web site.
+
 .. [#] https://podman.io/getting-started/installation.html
 
 Here is the change for the `unprivileged_userns_clone` error:
 
 .. code-block:: bash
 
-   thedevilsvoice@grimoire::~$ podman
+   user@devsecops::~$ podman
    cannot clone: Operation not permitted
    user namespaces are not enabled in /proc/sys/kernel/unprivileged_userns_clone
    Error: could not get runtime: cannot re-exec process
-   thedevilsvoice@grimoire::~$ sudo sysctl kernel.unprivileged_userns_clone=1
-   thedevilsvoice@grimoire::~$ podman-v
+   user@devsecops::~$ sudo sysctl kernel.unprivileged_userns_clone=1
+   user@devsecops::~$ podman-v
    podman version 1.9.1
 
 Once podman is installed properly you should be able to `alias docker=podman`
 and use it as a drop in replacement for docker.
-
-.. index::
-   single: Podman
-   single: Open Containers Initiative (OCI)
