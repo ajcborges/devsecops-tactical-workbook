@@ -100,9 +100,9 @@ AWS. Save the contents of this file into `packer/aws-debian-host.json`:
             "mkdir -p /home/secdevops/.ssh",
             "chmod 700 /home/secdevops/.ssh",
             "cd /home/secdevops && git clone https://github.com/wwce/ctf_scoreboard.git",
-            "cp /home/secdevops/devsecops/packer/authorized_keys /home/secdevops/.ssh",
+            "cp /home/secdevops/rapid_secdev_framework/packer/authorized_keys /home/secdevops/.ssh",
             "chown -R ubuntu /home/ubuntu",
-            "cp /home/ubuntu/ctf_scoreboard/packer/ctfd.service /etc/systemd/system"
+            "cp /home/ubuntu/rapid_secdev_framework/packer/ctfd.service /etc/systemd/system"
       ]}
    ]
    }
@@ -122,7 +122,7 @@ Google Compute. Save the contents of this file into `packer/gcp-debian-host.json
       "builders": [
          {
             "type": "googlecompute",
-            "account_file": "/home/franklin/.config/gcloud/my-gcloud-creds-file.json",
+            "account_file": "/home/secdevops/.config/gcloud/my-gcloud-creds-file.json",
             "project_id": "sec-dev-ops-000378",
             "source_image_family": "debian-10",
             "zone": "us-central1-a",
@@ -137,8 +137,8 @@ Google Compute. Save the contents of this file into `packer/gcp-debian-host.json
             "type": "shell",
             "inline": [
             "sleep 10",
-            "mkdir -p /home/franklin/.ssh",
-            "chmod 700 /home/franklin/.ssh"
+            "mkdir -p /home/secdevops/.ssh",
+            "chmod 700 /home/secdevops/.ssh"
             ]
          }
       ]
@@ -410,7 +410,7 @@ prompt you to enter "yes" before it will proceed.
    :name: Applying a Terraform plan from file
    :linenos:
 
-   thedevilsvoice@grimoire::~/workspace/rapid_secdev_framework/aws$ terraform apply
+   user@devsecops::~/workspace/rapid_secdev_framework/aws$ terraform apply
    data.aws_vpc.default: Refreshing state...
    data.aws_subnet_ids.all: Refreshing state...
 

@@ -15,20 +15,20 @@ tool for realizing containerization is Docker. Using Docker, we can programatica
 an environment for our project, and pass the entirety of this encapsulated environment
 from our local development machine, into the Continuous Integration pipeline for testing,
 and eventually into our production environment. Containerization helps us by offering a
-consistent operating experience across environments.
+consistent operating experience across disparate environments.
 
 .. index::
    single: Containerization
    single: Docker
 
-Software Infrastructure and Platforms are the foundations upon which our scripts, code, and
-projects are founded. It is more desirable to create projects that are built
+It is more desirable to create projects that are built
 and replaced frequently, than it is to attempt to upgrade and repair the infrastructure, platforms,
-and project code. Attempts to upgrade and repair in place, such as with bare metal platforms
-for example, quickly reveal great difficulty in maintaining consistency with the project source,
-as well as issues keeping operating system packages current yet still compatible with the project.
-Imagine a situation where an upgrade to a package is necessary to meet security requirements,
-but this very same upgrade means the project stop working resulting in angry users and customers.
+and project code. Attempts to patch and upgrade project hosts "in place", such as with
+bare metal platforms for example, quickly reveal great difficulty in maintaining consistency
+with the project source. This also introduces issues keeping operating system packages current,
+yet still compatible with the project. Imagine a situation where an upgrade to a package is necessary
+to meet security requirements, but this very same upgrade means the project stop working since 
+the package features have also changed. The result is most likely angry end users and customers.
 Certainly not a situation we ever like to find ourselves in.
 
 There is obvious advantage of being able to quickly stand up new clones of our project to
@@ -57,10 +57,20 @@ running our project in containers that are immutable and ephemeral to the degree
 .. index::
    single: Ephemerality
 
-Using Docker gives us the benefit of being able to switch quickly between base operating system
-images with just a few lines of code change to our project. See the Docker website for
-instructions on how to install and configure Docker [#]_ . A properly functioning Docker
-setup on your local machine is a requirement for the exercises we will do later.
+Docker images are "canned" (as in, prefabricated) or custom directives for provisioning
+the operating system of a Docker container. One or more images can be used as building blocks
+when configuring our containers. For example, a base Linux image and base Python image
+might be combined with our customizations that describe and point to our application code,
+all of which make up a single containerized "server".  
+We get the added benefit of being able to switch quickly between base operating system
+images with just a few lines of code change to our project. For example, we could easily 
+modify our container image to be predicated on Debian rather than Red Hat distribution of 
+Linux kernel and operating system should the need arise.
+
+See the Docker website for instructions on how to install and configure Docker [#]_ . 
+A properly functioning Docker setup on your local machine is a requirement for the
+exercises we will do later. Note that Podman is an acceptable substitute for Docker, as
+detailed later in this chapter.
 
 .. [#] https://docs.docker.com/get-docker/
 
@@ -120,10 +130,13 @@ directory as the root of the project "inside" the container. Finally, we are dir
 docker-compose.yml
 ******************
 
-A file called docker-compose.yml will exist alongside our `Dockerfile`
-in our Docker directory. The docker-compose.yml file allows us to manage multiple Docker containers 
-for one or more applications. We will add this file to our project to illustrate it's
-composition and give ourselves the ability to extend our work later, as needed.
+The docker-compose tool and its associated docker-compose.yml file allows us to manage 
+multiple Docker containers for one or more applications. We will add this file to our 
+project to illustrate it's composition and give ourselves the ability to extend our work 
+later, as needed.
+
+A file called docker-compose.yml will exist alongside our `Dockerfile` in our docker 
+directory. 
 
 .. index::
    single: docker-compose.yml
@@ -144,8 +157,6 @@ composition and give ourselves the ability to extend our work later, as needed.
          context: ..
          dockerfile: docker/Dockerfile
 
-Recall that we set our **WORKDIR** to `/project` in the Dockerfile. Following that
-example, we now have `Dockerfile` and `docker-compose.yml` in the directory `/project/docker`.
 The `docker-compose.yml` file begins with a version specification. It's important to 
 note that the commands and structure of `docker-compose.yml` can vary widely based on 
 this version. While versions cannot be mixed, all version are valid with respect to 
@@ -154,20 +165,20 @@ container name. Under "volumes" we are mounting the base of the project director
 host filesystem as "/project" in the container filesystem. The build "directive" tells 
 docker-compose how to locate the Dockerfile we wish to use for the containers.
 
-**************
-Testing it Out
-**************
+****************************
+Exercise: Testing Out Docker
+****************************
 
-With Docker properly installed and our two configuration files in place, we can now
-try out our configuration. Please see (:numref:`myFig1`) for an illustration of how to 
-lay out the project files in your local filesystem.
+With Docker properly installed and an understanding of the necessary configuration files, 
+we can now try out our configuration. See (:numref:`myFig1`) for an illustration of 
+how to lay out the project files in your local filesystem.
 
 .. raw:: latex
 
     \clearpage
 
 .. graphviz::
-   :caption: Project Directory
+   :caption: Project Directory and Docker related files.
    :align: center
    :name: myFig1
 
@@ -181,31 +192,48 @@ lay out the project files in your local filesystem.
       "docker" -> "docker-compose.yml";
    }
 
-Steps
-*****
+Here is a step by step description of how to prepare the creation of our first 
+container:
 
 - Create the "rapid_secdev_framework" folder.
-- From that folder, create another folder called "docker"
-- Cut and paste the Dockerfile into the docker folder.
-- Cut and paste the docker-compose.yml file into the docker folder.
+  - When creating folders, note that capitalization matters.
+- In that folder, create another folder called "docker".
+- Now in the docker folder, create a text file with the name "Dockerfile".
+  - Copy and paste the example Dockerfile from earlier in this chapter into your text file.
+- Also in the docker folder, create a text file with the name "docker-compose.yml"
+  - Copy and paste the example docker-compose.yml file from earlier in this chapter into your second text file.
 
-Here is an example of the shell commands to accomplish these steps. You can
-substitue vi for your favorite text editor. Note that typing the "docker-compose" 
-command on line 6 will reference the devsecops "service" we specified on line 3
-of the docker-compose.yml file.
+Here is an example of the BASH shell commands you can use to accomplish the steps
+of the exercise. You can substitue vi for your favorite text editor as needed. Note 
+that typing the "docker-compose" command on line 6 will reference the devsecops 
+"service" we specified on line 3 of the docker-compose.yml file.
 
 .. code-block:: bash
    :caption: Steps to test Docker configuration.
    :name: Steps to test Docker configuration.
    :linenos:
-   :emphasize-lines: 6
 
    mkdir rapid_secdev_framework
    cd rapid_secdev_framework
    mkdir docker
    vi docker/Dockerfile
    vi docker/docker-compose.yml
+
+With our files created and populated, we are ready to generate our container 
+based on our specified configuration. 
+
+.. code-block:: bash
+   :caption: Build the Docker container.
+   :name: Build the Docker container.
+   :linenos:
+
    docker-compose -f docker/docker-compose.yml build devsecops
+
+If all went well, you should now have a shell prompt from "inside" the new container.
+Recall that we set our **WORKDIR** variable to `/project` in the Dockerfile. 
+Following that example, we now have `Dockerfile` and `docker-compose.yml` 
+in the directory `/project/docker`, having mounted the project directory from the 
+host machine "inside" the container. 
 
 Testing from GitHub
 *******************
@@ -217,44 +245,14 @@ explore how to "clone" the project repository and do our work directory from the
 
 .. _`https://github.com/hotpeppersec/rapid_secdev_framework`: https://github.com/hotpeppersec/rapid_secdev_framework
 
-***********************
-Container Orchestration
-***********************
-
-Kubernetes is an example, perhaps the penultimate example, of a Container Orchestrator. Folks
-throughout the software and security communities are using Kubernetes these
-days, and with good reason.  It's adoption as a means to manage and replicate
-containers, and scale the applications they contain, has been nothing short of revolutionary.
-Admins and developers can do more, better work, albeit at the expense of introduction yet
-another paradigm to learn, and some amount of complexity.
-
-An orchestrator helps us achieve immutability, and scale to meet user demand quickly and easily
-by abstracting away concerns that come with operating workloads in a bare metal or VM 
-environment.
-
-As Kubernetes and other orchestrators 
-
-.. index::
-   single: Kubernetes
-   single: Orchestration
-
-*****************************
-A Bit About Podman (Optional)
-*****************************
-
-The reason we mention Podman is because it is a more secure alternative [#]_ to 
-Docker for creating containers. You will not need to have Podman working to work
-through the exercies in this book.
-
-.. [#] https://opensource.com/article/18/10/podman-more-secure-way-run-containers
+******************************
+Substituting Podman for Docker
+******************************
 
 Podman is an Open Source alternative container engine from the Open Containers Initiative (OCI).
-The podman service is purportedly capable of being a drop-in replacement for Docker, although
-it only runs on Linux hosts at the time of this writing. 
-
-.. index::
-   single: Podman
-   single: Open Containers Initiative (OCI)
+The Podman service is purportedly capable of being a drop-in replacement for Docker, although
+it only runs on Linux hosts at the time of this writing. Podman gives the user the ability to 
+use traditional Docker commands, without the need to run a daemon to do so.
 
 You can install Podman by following the instructions [#]_ at their web site.
 
@@ -274,3 +272,40 @@ Here is the change for the `unprivileged_userns_clone` error:
 
 Once podman is installed properly you should be able to `alias docker=podman`
 and use it as a drop in replacement for docker.
+
+.. index::
+   single: Podman
+   single: Open Containers Initiative (OCI)
+
+***********************
+Container Orchestration
+***********************
+
+An orchestrator for containers can be thought of as an engine which allows for their
+provisioning, deployment, scaling, monitoring, load balancing, and more. The Container 
+Orchestrator is meant to manage the lifecycle and visibility of a container at all 
+stages. 
+
+Kubernetes is an example, perhaps the penultimate example, of a Container Orchestrator. 
+Folks throughout the software and security communities are using Kubernetes these
+days, and with good reason.  It's adoption as a means to manage and replicate
+containers, and scale the applications they contain, has been nothing short of revolutionary.
+Admins and developers can do more, better work, albeit at the expense of introduction yet
+another paradigm to learn, and some amount of complexity.
+
+.. index::
+   single: Kubernetes
+   single: Orchestration
+
+An orchestrator helps us achieve immutability, and scale to meet user demand quickly and easily
+by abstracting away concerns that come with operating workloads in a bare metal or VM 
+environment.
+
+Kubernetes and other orchestrators are rapidly evolving. To ignore this game-changing
+ecosystem is to be left behind in terms of technological prowess. That said, it's just beyond
+the scope of this book. Learning about containers, pipelines, infrastructure, and so on
+are the foundational elements you will want to become familiar with in preparation for 
+expanding your mindset into the greater dimensionality that orchestration realizes. 
+
+For this stage of our journey to DevSecOps enlightenment, it is enough to know that 
+orchestration exists and have a bit of familiarity with its purpose. 
