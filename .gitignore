@@ -8,13 +8,16 @@ _build
 *.aux
 *.bbl
 *.blg
+*.idx
 *.lof
 *.log
 *.lot
 *.out
 *.pdf
+*.pyg
 *.synctex.gz
 *.toc
+devsecops_quickstart.txt
 __*_temp.tex
 pygments-css
 kindlegen
