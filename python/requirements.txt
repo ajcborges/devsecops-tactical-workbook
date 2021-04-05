@@ -1,7 +1,6 @@
-sphinx
-pygments
+pillow==8.2.0
+pygments==2.7.4
 rst2pdf
 restructuredtext-lint
 recommonmark
-sphinx-markdown-tables
 dot2tex
