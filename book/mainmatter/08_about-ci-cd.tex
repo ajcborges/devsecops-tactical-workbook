@@ -20,19 +20,18 @@ make sure folks are not committing dirty code to your repositories.
 Here are some of the linters I have found useful for languages I encounter
 frequently.
 
-\begin{table}[h]
-	\begin{center}
-		\begin{tabular}{| p{2.5cm}| p{2.5cm} | p{2.5cm} |}
-			\hline
-			\textbf{Language} & \textbf{Name} & \textbf{Source}                                                        \\
-			Ansible           & ansible-lint  & python (pip install ansible-lint)                                      \\
-			Markdown          & mdl           & ruby (gem install mdl)                                                 \\
-			Puppet            & puppet-lint   & ruby (gem install puppet-lint)\footnote{\url{http://puppet-lint.com/}} \\
-			Python            & pylint/flake8 & python (pip install pylint/flake8)                                     \\
-			Terraform         & tflint        & \url{https://github.com/terraform-linters/tflint}
-		\end{tabular}
-	\end{center}
-\end{table}
+%\begin{table}[h]
+%	\begin{center}
+%		\begin{tabular}{| p{2.5cm}| p{2.5cm} | p{2.5cm} |}
+%			\hline
+%			\textbf{Language} & \textbf{Name} & \textbf{Source}\hfill                                                        \\
+%			Ansible           & ansible-lint  & python (pip install ansible-lint)                                      \\
+%			Markdown          & mdl           & ruby (gem install mdl)                                                 \\
+%			Puppet            & puppet-lint   & ruby (gem install puppet-lint)\url{http://puppet-lint.com/}} \\
+%			Python            & pylint/flake8 & python (pip install pylint/flake8)                                     \\
+%		\end{tabular}
+%	\end{center}
+%\end{table}
 
 \subsection{Linting with Tox}
 
@@ -42,7 +41,7 @@ called "pylint" and then declare it in a new stanza in tox.ini. Notice
 how we let "deps" do the work of installing the "pylint" dependency for
 us.
 
-\begin{mybox}{\thetcbcounter: A Makefile Target}
+\begin{mybox}{\thetcbcounter: An Example tox.ini file}
 	\lstinputlisting{code/toxfile-pylint}
 \end{mybox}
 
@@ -69,18 +68,17 @@ execute our make docker target from our custom Makefile.
 Save this YAML file under codelab/.github/workflows/python.yml to have
 GitHub Actions execute our make python target from our custom Makefile.
 
-\begin{mybox}{\thetcbcounter: A Makefile Target}
+\begin{mybox}{\thetcbcounter: Python GitHub action}
 	\lstinputlisting{code/makefile-target}
 \end{mybox}
 
 \subsection{Packer}
 
-Save this YAML file under devsecops/.github/workflows/packer.yml to have
+Save this YAML file under devsecops\_tactical/.github/workflows/packer.yml to have
 GitHub Actions validate and build our AMI image with Packer.
 
-
-\begin{mybox}{\thetcbcounter: A Makefile Target}
-	\lstinputlisting{code/makefile-target}
+\begin{mybox}{\thetcbcounter: AWS Debian host with packer}
+	\lstinputlisting{code/aws-debian-host.json}
 \end{mybox}
 
 \subsection{Markdown}
@@ -88,7 +86,7 @@ GitHub Actions validate and build our AMI image with Packer.
 The following example YAML file illustrates how to validate GitHub
 flavored Markdown text files using a GitHub Action.
 
-\begin{mybox}{\thetcbcounter: A Makefile Target}
+\begin{mybox}{\thetcbcounter: A GitHub Action for linting markdown files}
 	\lstinputlisting{code/makefile-target}
 \end{mybox}
 
@@ -98,7 +96,7 @@ the top level of our repository. This JSON file is used to skip certain
 checks by the markdownlint tool.
 
 \justify
-\begin{mybox}{\thetcbcounter: A Makefile Target}
+\begin{mybox}{\thetcbcounter: The .markdownlint.json config file}
 	\lstinputlisting{code/makefile-target}
 \end{mybox}
 
@@ -110,8 +108,8 @@ projects.
 single: Circle CI
 
 \justify
-\begin{mybox}{\thetcbcounter: A Makefile Target}
-	\lstinputlisting{code/makefile-target}
+\begin{mybox}{\thetcbcounter: A Circle CI configuration file}
+	\lstinputlisting{code/makefile-target} 
 \end{mybox}
 
 \section{TravisCI}
@@ -119,12 +117,11 @@ single: Circle CI
 \justify
 Travis CI is a hosted continuous integration service used to build and
 test software projects hosted at GitHub and Bitbucket. They have a great
-tutorial available\footnote{\url{https://docs.travis-ci.com/user/tutorial/}}
+tutorial available
 if you care to dig a bit deeper.
 
 \justify
-By enabling Travis CI integration through the GitHub
-Marketplace\footnote{\url{https://github.com/marketplace/travis-ci}} you
+By enabling Travis CI integration through the GitHub Marketplace you
 can integrate their scanners with your repository.
 
 \subsubsection{Docker}
@@ -137,7 +134,7 @@ flag in the repo settings that prevent the PR from being merged until
 Travis CI flags the build as passing.
 
 \justify
-\begin{mybox}{\thetcbcounter: A Makefile Target}
+\begin{mybox}{\thetcbcounter: A Docker container test}
 	\lstinputlisting{code/makefile-target}
 \end{mybox}
 
@@ -150,7 +147,7 @@ available in the companion repo.
 Save these lines to a file named .travis.yml to scan all the markdown files in your repository.
 
 \justify
-\begin{mybox}{\thetcbcounter: A Makefile Target}
+\begin{mybox}{\thetcbcounter: A Travis config file}
 	\lstinputlisting{code/makefile-target}
 \end{mybox}
 
@@ -158,7 +155,7 @@ Save these lines to a file named .travis.yml to scan all the markdown files in y
 You can also create an .mdlrc file to give mdl direction on what to scan for.
 
 \justify
-\begin{mybox}{\thetcbcounter: A Makefile Target}
+\begin{mybox}{\thetcbcounter: A Markdown lint config file}
 	\lstinputlisting{code/makefile-target}
 \end{mybox}
 

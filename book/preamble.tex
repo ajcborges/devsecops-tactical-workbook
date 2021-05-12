@@ -38,8 +38,6 @@
 \usepackage{transparent}
 \usepackage{eso-pic}
 \usepackage{lipsum}
-\usepackage{hyperref}
-\usepackage{footnotebackref} %%link at the footnote to go to the place of footnote in the text
 
 %% spacing between line
 \usepackage{setspace}
@@ -47,8 +45,17 @@
 %%%%\doublespacing
 \singlespacing
 
+%\usepackage{footnotebackref} %%link at the footnote to go to the place of footnote in the text
+
+
 %%%%%%%%%%% datetime
 \usepackage{datetime}
+
+% Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+% Make it at least 14.49998pt.
+% We now make it that large for the rest of the document.
+% This may cause the page layout to be inconsistent, however.
+\usepackage[headheight=110pt]{geometry}
 
 \newdateformat{MonthYearFormat}{%
 	\monthname[\THEMONTH], \THEYEAR}
@@ -57,6 +64,7 @@
 %% Change oneside to twoside in document class
 \usepackage{fancyhdr}\pagestyle{fancy}
 \fancyhf{}
+
 %%% Alternating Header for oneside
 \fancyhead[L]{\ifthenelse{\isodd{\value{page}}}{ \small \nouppercase{\leftmark} }{}}
 \fancyhead[R]{\ifthenelse{\isodd{\value{page}}}{}{ \small \nouppercase{\rightmark} }}
@@ -66,16 +74,16 @@
 %\fancyhead[LE]{\small \nouppercase{\leftmark}}
 
 %% for oneside: change footer at right side. If you want to use Left and right then use same as header defined above.
-\fancyfoot[R]{\ifthenelse{\isodd{\value{page}}}{{\tiny Franklin Diaz} }{\href{https://github.com/thedevilsvoice/devsecops_quickstart}{\tiny DevSecOps Quickstart}}}
+\fancyfoot[R]{\ifthenelse{\isodd{\value{page}}}{{\tiny Franklin Diaz} }{\href{https://github.com/thedevilsvoice/devsecops_tactical_book}{\tiny DevSecOps Tactical}}}
 
 %%% Alternating Footer for two side
-%\fancyfoot[RO, RE]{\scriptsize Meher Krishna Patel (mekrip@gmail.com)}
+%\fancyfoot[RO, RE]{\scriptsize Franklin Diaz (franklin@bitsmasher.net)}
 
 %%% page number
 \fancyfoot[CO, CE]{\thepage}
 
-\renewcommand{\headrulewidth}{0.5pt}
-\renewcommand{\footrulewidth}{0.5pt}
+%\renewcommand{\headrulewidth}{0.5pt}
+%\renewcommand{\footrulewidth}{0.5pt}
 
 %\RequirePackage{tocbibind} %%% comment this to remove page number for following
 %\addto\captionsenglish{\renewcommand{\contentsname}{Table of contents}}
@@ -88,8 +96,11 @@
 \setlist{nosep}
 
 %%%%%%%%%%% Quote Styles at the top of chapter
-\usepackage{epigraph}
-\setlength{\epigraphwidth}{0.8\columnwidth}
-\newcommand{\chapterquote}[2]{\epigraphhead[60]{\epigraph{\textit{#1}}{\textbf {\textit{--#2}}}}}
+%\usepackage{epigraph}
+%\setlength{\epigraphwidth}{0.8\columnwidth}
+%\newcommand{\chapterquote}[2]{\epigraphhead[60]{\epigraph{\textit{#1}}{\textbf {\textit{--#2}}}}}
 %%%%%%%%%%% Quote for all places except Chapter
-\newcommand{\sectionquote}[2]{{\quote{\textit{``#1''}}{\textbf {\textit{--#2}}}}}
+%\newcommand{\sectionquote}[2]{{\quote{\textit{``#1''}}{\textbf {\textit{--#2}}}}}
+
+\usepackage{makeidx}\makeindex
+\usepackage[nottoc]{tocbibind} % add index and bib to ToC
