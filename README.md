@@ -4,14 +4,15 @@
 
 ![Cloudy](https://github.com/thedevilsvoice/devsecops_tactical_book/blob/main/images/sky-690293_1920.jpg)
 
+## LeanPub
+
+This book [is available on leanpub.com](https://leanpub.com/devops_tacktical_book/).
 
 ## :hammer_and_wrench: Contributing :hammer_and_wrench:
 
-There is a page that explains [how to contribute](CONTRIBUTING.md)
+There is a page that explains [how to contribute](CONTRIBUTING.md).
 
 ## :blue_book: Generate the Book :orange_book:
 
 - Set up the dev environment [as explained in the docs](docs/nix.md)
 - change to the book directory and type `make book`
-
-![](./franklin.svg)
