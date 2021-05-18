@@ -2,16 +2,14 @@
 
 \includegraphics[scale=0.85]{../images/boombox-5693150_1920.jpg}
 
+\justify{}
 Let's talk about some things.
-
+\justify{}
 Markdown Linter and Spell Check
-
+\justify{}
 Please run the linter and spell check on MD files before merging into this
 repository.
 
-\begin{mybox}{\thetcbcounter: terraform.tfvars}
-curl -L https://nixos.org/nix/install | sh
-nix-shell -p "ruby.withPackages (ps: with ps; [ mdl hunspell ])"
-mdl .
-hunspell fiename.md
+\begin{mybox}{\thetcbcounter: nixlint}
+    \lstinputlisting{code/nix/nix-lint.txt}
 \end{mybox}

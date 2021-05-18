@@ -1,18 +1,14 @@
 \chapter{Containers}
 \includegraphics[scale=0.85]{../images/container-4203677_1920.jpg}
-\justify
-Containerization is the process of encapsulating the
-code and dependencies for part or all of a project. 
-The most popular and common tool for realizing
-containerization is Docker\index{Docker}. Using Docker,
-we can programatically build an environment for our project,
-and pass the entirety of this encapsulated environment
-from our local development machine, into the
-Continuous Integration (CI)\index{Continuous Integraion}
-pipeline for testing, and eventually into our production
-environment. Containerization\index{containerization}
-helps us by offering a consistent operating experience
-across disparate environments.
+\justify{}
+Containerization is the process of encapsulating the code and dependencies for part
+or all of a project. The most popular and common tool for realizing containerization is
+Docker\index{Docker}. Using Docker, we can programatically build an environment for our
+project, and pass the entirety of this encapsulated environment from our local
+development machine, into the Continuous Integration (CI)\index{Continuous Integration}
+pipeline for testing, and eventually into our production environment. 
+Containerization\index{containerization} helps us by offering a consistent operating
+experience across disparate environments.
 \justify
 Recall our earlier discussion on the topics of immutability\index{immutability}
 and ephemerality\index{ephemerality}. 
@@ -21,21 +17,21 @@ and replaced frequently, than it is to attempt to upgrade
 and repair the infrastructure, platforms, and project code
 on an on-going basis. The reason this is more desirable 
 is that attempts to patch and upgrade project
-hosts "in place", quickly reveal great difficulty in maintaining consistency
+hosts ``in place'', quickly reveal great difficulty in maintaining consistency
 with the project source. This is our only option when it comes 
-to "bare metal" hosts, and some confgurations of hosts using
+to ``bare metal'' hosts, and some configurations of hosts using
 certain virtualization technologies. A lesser degree of immutability
-and ephemerality also introduces issues keeping
+and ephemerality\index{ephemerality} also introduces issues keeping
 operating system packages current, yet still compatible with
 the project. Imagine a situation where an upgrade to a package
-is necessary to meet security requirements, but this very same
-upgrade means the project will stop working since the package
-features that your application depends on have also changed.
-The result is most likely angry end users and customers. 
-Certainly not a situation we ever like to find ourselves in.
+is necessary to meet security requirements. What happens when this very same
+upgrade means the project stops working since the package
+features that your application depends on have also changed?
+The result is most likely angry end users and customers. Certainly not a situation
+we ever like to find ourselves in.
 
-\justify
-Docker images are "canned" (as in, prefabricated) or custom directives
+\justify{}
+Docker images are ``canned'' (as in, prefabricated) or custom directives
 for provisioning the operating system of a Docker container. One or more
 images can be used as building blocks when configuring our containers.
 For example, a base Linux image and base Python image might be combined
@@ -48,21 +44,21 @@ we could easily modify our container image to be predicated on Debian
 rather than Red Hat distribution of Linux kernel and operating system
 should the need arise.
 
-\justify
+\justify{}
 See the Docker website for instructions on how to install and configure
-Docker. A properly
-functioning Docker setup on your local machine is a requirement for the
-exercises we will do later. Note that Podman is an acceptable substitute
+Docker. A properly functioning Docker setup on your local machine is a requirement
+for the exercises we will do later. Note that Podman\index{Podman} is an
+acceptable substitute
 for Docker, as detailed later in this chapter.
 
-\justify
+\justify{}
 Once you have Docker installed and running on your workstation, take a
-look at the two example files below. For now it's OK to see them and get
+look at the two example files below. It's OK for now to see them and get
 a general familiarity with their contents. Later we will use these files
 to create containers for our projects.
 
-\section{Dockerfile}
-\justify
+\section{What is a Dockerfile?}
+\justify{}
 The Dockerfile is our basic unit of containerization. That is to say,
 our containers, and the applications they contain, are defined by the
 Dockerfile. This Dockerfile will dictate how we provision resources and
@@ -70,19 +66,19 @@ include operating system essentials and packages inside our container.
 Each Dockerfile is predicated on a base image, such as Python/Debian 10
 as shown in the example below.
 
-\justify
+\justify{}
 Consider a directory named
 \href{https://github.com/hotpeppersec/rapid_secdev_framework/tree/master/docker}{Docker}
 and a file called
 \href{https://github.com/hotpeppersec/rapid_secdev_framework/blob/master/docker/Dockerfile}{Dockerfile}\index{Dockerfile}
 within this directory. Note the capitalization of the first letter in the file name. Some IDE's will key off this file and allow for additional syntax highlighting.
 
-\justify
+\justify{}
 \begin{mybox}{\thetcbcounter: Dockerfile}
-  \lstinputlisting{code/04_docker/Dockerfile}
+  \lstinputlisting{code/04_containers/Dockerfile}
 \end{mybox}
 
-\justify
+\justify{}
 A valid Dockerfile begins with the \textbf{FROM} instruction. This
 instruction specifies the base image that we will use to build our
 project on. These base images come from the
@@ -91,124 +87,118 @@ project on. These base images come from the
 \textbf{DEBIAN\_FRONEND} to the value of noninteractive, which will
 cause the apt command to skip or ignore any interactive menus that are
 encountered during execution of the apt command, since these would cause
-our builds to "hang up" at an inaccessible interactive prompt. The
+our builds to ``hang up'' at an inaccessible interactive prompt. The
 \textbf{ADD} and \textbf{WORKDIR} directives are meant to cause Docker
-to use the /workdir directory as the root of the project "inside" the
+to use the /workdir directory as the root of the project ``inside'' the
 container. Finally, we are directing Docker to \textbf{RUN} and apt
 update and install the apt-utils package.
 
+\subsection{Volumes}
+
 \subsection{docker-compose.yml}
-\justify
+\justify{}
 The docker-compose tool and its associated docker-compose.yml file
 allows us to manage multiple Docker containers for one or more
 applications. We will add this file to our project to illustrate it's
 composition and give ourselves the ability to extend our work later, as
 needed.
 
-\justify
-A file called docker-compose.yml\index{docker-compose.yml} will exist alongside our Dockerfile in our docker directory.
+\justify{}
+A file called docker-compose.yml\index{docker-compose.yml} will exist
+alongside our Dockerfile in our docker directory.
 
 \begin{mybox}{\thetcbcounter: Example docker-compose.yml}
-  version: '3'\\
-  services:\\
-  \hspace*{7mm}devsecops:\\
-  \hspace*{15mm}hostname: devsecops\\
-  \hspace*{15mm}container\_name: devsecops\\
-  \hspace*{7mm}volumes:\\
-  \hspace*{15mm}- ..:/project\\
-  \hspace*{7mm}build:\\
-  \hspace*{15mm}context: ..\\
-  \hspace*{15mm}dockerfile: docker/Dockerfile
+  \lstinputlisting{code/04_containers/docker-compose.yml}
 \end{mybox}
 
 \justify
 The docker-compose.yml file begins with a version specification. It's
 important to note that the commands and structure of docker-compose.yml
 can vary widely based on this version. While versions cannot be mixed,
-all version are valid with respect to docker-compose itself. Wew specify
-a service named "devsecops", and assign a host and container name. Under
-"volumes" we are mounting the base of the project directory in the host
-filesystem as "/project" in the container filesystem. The build
-"directive" tells docker-compose how to locate the Dockerfile we wish to
+all version are valid with respect to docker-compose itself. We specify
+a service named ``devsecops'', and assign a host and container name. Under
+``volumes'' we are mounting the base of the project directory in the host
+filesystem as ``/project'' in the container filesystem. The build
+``directive'' tells docker-compose how to locate the Dockerfile we wish to
 use for the containers.
 
 \subsection{Exercise: Testing Out Docker}
-\justify
+\justify{}
 With Docker properly installed and an understanding of the necessary
-configuration files, we can now try out our configuration. See
-({myFig1}) for an illustration of how to lay out the project files in your local filesystem.
-
+configuration files, we can now try out our configuration. See the 
+figure\ref{githubdirectory} for an illustration of how to lay out the
+project files in your local filesystem.
 
 \begin{figure}[!htb]
   \centering
   \input{dot/githubdirectory.tex}
   \caption{Project Directory and Docker related files.}
+\label{githubdirectory}
 \end{figure}
 
 \clearpage
-\justify
-Here is a step by step description of how to prepare the creation of our first container:
+\justify{}
+Here is a step by step description of how to prepare the creation of
+our first container:
 
 \begin{itemize}
-  \item Create the "rapid\_secdev\_framework" folder.
+  \item Create the ``devsecops'' folder.
         \begin{itemize}
           \item When creating folders, note that capitalization matters.
         \end{itemize}
-  \item In that folder, create another folder called "docker".
-  \item Now in the docker folder, create a text file with the name "Dockerfile".
+  \item In that folder, create another folder called ``docker''.
+  \item Now in the docker folder, create a text file with the name ``Dockerfile''.
         \begin{itemize}
           \item
                 Copy and paste the example Dockerfile from earlier in this chapter
                 into your text file.
         \end{itemize}
-  \item Also in the docker folder, create a text file with the name "docker-compose.yml"
+  \item Also in the docker folder, create a text file with the name ``docker-compose.yml''
         \begin{itemize}
-          \item Copy and paste the example docker-compose.yml file from earlier in this chapter into your second text file.
+          \item Copy and paste the example docker-compose.yml file from earlier
+          in this chapter into your second text file.
         \end{itemize}
 \end{itemize}
 
-\justify
+\justify{}
 Here is an example of the BASH shell commands you can use to accomplish
 the steps of the exercise. You can substitue vi for your favorite text
-editor as needed. Note that typing the "docker-compose" command on line
-6 will reference the devsecops "service" we specified on line 3 of the
+editor as needed. Note that typing the ``docker-compose'' command on line
+6 will reference the devsecops ``service'' we specified on line 3 of the
 docker-compose.yml file.
 
-\justify
+\justify{}
 \begin{mybox}{\thetcbcounter: Create files for Docker,height=3.5cm}
-  mkdir rapid\_secdev\_framework\\
-  cd rapid\_secdev\_framework\\
-  mkdir docker\\
-  vi docker/Dockerfile\\
-  vi docker/docker-compose.yml
+  \lstinputlisting{code/04_containers/create-files.txt}
 \end{mybox}
 
-\justify
+\justify{}
 With our files created and populated, we are ready to generate our
 container based on our specified configuration.
 
-\begin{mybox}{\thetcbcounter: Build from docker-compose.yml }
+\begin{mybox}{\thetcbcounter: Build from docker-compose.yml}
   docker-compose -f docker/docker-compose.yml build devsecops
 \end{mybox}
 
-\justify
-If all went well, you should now have a shell prompt from "inside" the
-new container. Recall that we set our \textbf{WORKDIR} variable to /project in the Dockerfile. Following that example, we now have Dockerfile and docker-compose.yml in the directory /project/docker, having mounted the project directory from the host machine "inside" the container.
+\justify{}
+If all went well, you should now have a shell prompt from ``inside'' the
+new container. Recall that we set our \textbf{WORKDIR} variable to 
+/project in the Dockerfile. Following that example, we now have Dockerfile
+and docker-compose.yml in the directory /project/docker, having mounted the
+project directory from the host machine ``inside'' the container.
 
 \subsubsection{Testing from GitHub}
-\justify
-In the next chapter
-we will explore how to "clone" a project repository from 
-\href{github.com} and
-do our work directory from there.
+\justify{}
+In the next chapter we will explore how to ``clone'' a project repository from 
+\href{github.com} and do our work directory from there.
 
 \section{Security Scanning Our Containers}
-The \href{trivy container scanner}{https://github.com/aquasecurity/trivy} bills itself as "A Simple and
-Comprehensive Vulnerability Scanner for Containers and other
-Artifacts, Suitable for CI".
+The \href{trivy container scanner}{https://github.com/aquasecurity/trivy} bills itself
+as ``A Simple and Comprehensive Vulnerability Scanner for Containers and other
+Artifacts, Suitable for CI''.
 
 \section{Substituting Podman for Docker}
-\justify
+\justify{}
 Podman is an Open Source tool from the Open
 Containers Initiative (OCI)\index{Open Containers Initiative
 (OCI)}. The Podman\index{Podman} service is said to be capable
@@ -218,21 +208,21 @@ the user the ability to use traditional Docker commands,
 without the need to run a daemon to do so\cite{podman}, as is
 the case with Docker.
 
-\justify
+\justify{}
 You can install Podman by 
 \href{https://podman.io/getting-started/installation.html}{following the instructions}
-at their web site. Once Podman is installed properly you
+at their website. Once Podman is installed properly you
 should be able to alias docker=podman and use it as a
 drop-in replacement for Docker and it's associated daemon.
 
 \section{Container Orchestration}
-\justify
+\justify{}
 An orchestrator for containers can be thought of as an engine which
 allows for their provisioning, deployment, scaling, monitoring, load
 balancing, and more. The Container Orchestrator manages the
 lifecycle and visibility of a container at all stages.
 
-\justify
+\justify{}
 Kubernetes\index{Kubernetes} is an example, perhaps even the
 penultimate example, of a Container Orchestrator\index{orchestration}.
 Folks throughout the DevSecOps, Software and
@@ -244,13 +234,13 @@ and developers can do more, better work. Granted, this comes at
 the expense of introduction yet another framework to learn, and
 no small amount of complexity.
 
-\justify
+\justify{}
 An orchestrator helps us achieve immutability, and scale
 to meet user demand quickly and easily by abstracting away
 concerns that come with operating workloads in a bare metal
 or VM environment.
 
-\justify
+\justify{}
 Kubernetes and other orchestrators are rapidly evolving. To ignore this
 game-changing ecosystem is to be left behind in terms of technological
 prowess. Learning about containers, pipelines, infrastructure, and
@@ -258,10 +248,14 @@ so on are the foundational elements you will want to become familiar
 with in preparation for expanding your mindset into the greater
 dimensionality that orchestration realizes.
 
-\justify
+\justify{}
 Later we will look more closely at the sprawling and vibrant 
 topic of Kubernetes. For this stage of our journey to DevSecOps
 enlightenment, it is enough to know that orchestration exists
 and have a bit of familiarity with its purpose.
+
+\section{Container Security} 
+
+% https://www.paloaltonetworks.com/cyberpedia/what-is-container-security
 
 \section{Further Reading}
