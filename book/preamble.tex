@@ -44,9 +44,9 @@
 \linespread{1.25}
 \usepackage{enumitem}\setlist{nosep} % reduce spacing for itemize
 
-%%% INDEX %%%
+%%% INDEX AND BIBLIOGRAPHY %%%
 \usepackage{makeidx}\makeindex
-\usepackage[nottoc]{tocbibind} % add index and bib to ToC
+%\usepackage[nottoc]{tocbibind} % add index and bib to ToC
 
 %%% GRAPHICS  AND CODE BLOCKS %%%
 \usepackage[listings, minted]{tcolorbox}
@@ -101,3 +101,8 @@
 %\newcommand{\chapterquote}[2]{\epigraphhead[60]{\epigraph{\textit{#1}}{\textbf {\textit{--#2}}}}}
 %%%%%%%%%%% Quote for all places except Chapter
 %\newcommand{\sectionquote}[2]{{\quote{\textit{``#1''}}{\textbf {\textit{--#2}}}}}
+
+% include markdown files inline, labs for example
+\usepackage[hashEnumerators,smartEllipses]{markdown}
+
+\usepackage{calc}

@@ -43,7 +43,7 @@ are somewhat familiar with:
 
 \justify{}
 The examples in this book have been tested on Linux running the latest version of Docker. For more
-intformation about installing Docker, see \href{the Get Docker section}{https://docs.docker.com/get-docker/}
+intformation about installing Docker, see \href{https://docs.docker.com/get-docker/}{the Get Docker section}
 of their website. There are directions there for installing Docker on Linux, Mac, and other operating systems.
 
 Let's take a look at some of the other foundational environmental elements we need in place to be successful.
@@ -73,6 +73,7 @@ may also encounter Alpine Linux (typically chosen for it's smaller image size), 
 \centering
 \includegraphics[scale=0.45]{images/setup-vscode.png}
 \caption{The VScode IDE.}
+\label{vscode-ide}
 \end{figure}
 
 \justify{}
@@ -164,19 +165,15 @@ layout across all project/repository directories increases the degree to which o
 interoperate. Attention will be called to the folder and file naming conventions that are defined by this layout
 as we encounter them.
 
-\section{Lab 3.1}
+\section{Installing Docker}
 
 \justify{}
-I have created a ``lab container'' to define the lab environment. You can use this container to try out some of the
-commands shown in this chapter. Directions for building and running the container are available in 
-\href{https://github.com/devsecfranklin/devsecops-tactical-workbook/tree/main/code/chapter-three}{the included README.md file}.
-For now we don't have to be concerned about the syntax and composition of the Dockerfile. We will look more closely
-at Docker and Dockerfiles in an upcoming chapter.
+Recall that a properly functioning Docker setup on your local machine is a requirement for the upcoming
+lab exercises. See the Docker website for 
+\href{https://docs.docker.com/get-docker/}{instructions on how to install and configure Docker}. 
 
-\justify{}
-Once you have created the lab container image, you can attempt the lab according to the directions.
-\href{https://github.com/devsecfranklin/devsecops-tactical-workbook/tree/main/code/lab-3.1.md}{Click here for the lab directions.}
+% include markdown file to populate a chapter with a lab from markdown files
+\markdownInput{../code/chapter-three/lab-3a.md}
 
-\justify{}
-An advantage with executing lab commands in a container is we can try things without altering the configuration of
-our host operating system. The packages we install and configurations under test are, well, ephemeral!
+\markdownInput{../code/chapter-three/lab-3b.md}
+

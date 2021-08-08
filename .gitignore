@@ -2,23 +2,28 @@
 .vscode
 *.code-workspace
 .DS_Store
+_markdown_devsecops_tactical
+*.nfs*
 
 # Book build artifacts
 _build
 *.aux
 *.bbl
 *.blg
+*.err
 *.idx
 *.ilg
 *.ind
 *.lof
 *.log
 *.lot
+*.lua
 *.out
 *.pdf
 *.pyg
 *.synctex.gz
 *.toc
+*.verbatim
 core
 devsecops_quickstart.txt
 __*_temp.tex
