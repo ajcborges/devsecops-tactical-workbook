@@ -23,7 +23,7 @@ is necessary to meet security requirements. What happens when this very same
 upgrade means the project stops working since the package features that your application depends on have also changed?
 The result is most likely angry end users and customers. Certainly not a situation we ever like to find ourselves in.
 
-\section{Docker Conatiners}
+\section{Docker Containers}
 
 \justify{}
 Docker images are ``canned'' (as in, prefabricated) or custom directives for provisioning a Docker container. One or more
@@ -33,6 +33,8 @@ that provides the functions of a fully provisioned server. We get the added
 benefit of being able to switch quickly between base operating system images with just a few lines of code change to our
 project. For example, we could easily modify our container image to be predicated on Debian
 rather than Red Hat distribution of Linux kernel and operating system should the need arise.
+
+\subsection{The .dockerignore File}
 
 \section{Docker Hub}
 
@@ -58,7 +60,7 @@ building and passing a container image along to others.
 
 \justify{}
 \begin{mybox}{\thetcbcounter: Dockerfile}
-  \lstinputlisting{code/04-docker/Dockerfile}
+  \lstinputlisting{code/21-docker/Dockerfile}
 \end{mybox}
 
 \justify{}
@@ -84,7 +86,7 @@ A file called docker-compose.yml\index{docker-compose.yml} will exist
 alongside our Dockerfile in our docker directory.
 
 \begin{mybox}{\thetcbcounter: Example docker-compose.yml}
-  \lstinputlisting{code/04-docker/docker-compose.yml}
+  \lstinputlisting{code/21-docker/docker-compose.yml}
 \end{mybox}
 
 \justify{}
@@ -101,7 +103,7 @@ See the figure\ref{dockerdirectory} for an illustration of how to lay out the pr
 
 \begin{figure}[!htb]
   \centering
-  \input{dot/04-docker.tex}
+  \input{dot/21-docker.tex}
   \caption{Project Directory and Docker related files.}
 \label{dockerdirectory}
 \end{figure}
@@ -137,17 +139,14 @@ the case with Docker.
 \justify{}
 You can install Podman by 
 \href{https://podman.io/getting-started/installation.html}{following the instructions}
-at their website. Once Podman is installed properly you
-should be able to alias docker=podman and use it as a
+at their website. Once Podman is installed properly you should be able to alias docker=podman and use it as a
 drop-in replacement for Docker and it's associated daemon.
 
 \section{Container Orchestration}
 
 \justify{}
-An orchestrator for containers can be thought of as an engine which
-allows for their provisioning, deployment, scaling, monitoring, load
-balancing, and more. The Container Orchestrator manages the
-lifecycle and visibility of a container at all stages.
+An orchestrator for containers can be thought of as an engine which allows for their provisioning, deployment, scaling, monitoring, load
+balancing, and more. The Container Orchestrator manages the lifecycle and visibility of a container at all stages.
 
 \justify{}
 Kubernetes\index{Kubernetes} is an example, perhaps even the penultimate example, of a Container Orchestrator\index{orchestration}.
@@ -161,11 +160,8 @@ An orchestrator helps us achieve immutability, and scale to meet user demand qui
 concerns that come with operating workloads in a bare metal or VM environment.
 
 \justify{}
-Kubernetes and other orchestrators are rapidly evolving. To ignore this
-game-changing ecosystem is to be left behind in terms of technological
-prowess. Learning about containers, pipelines, infrastructure, and
-so on are the foundational elements you will want to become familiar
-with in preparation for expanding your mindset into the greater
+Kubernetes and other orchestrators are rapidly evolving. To ignore this game-changing ecosystem is to be left behind in terms of technological prowess. Learning about containers, pipelines, infrastructure, and
+so on are the foundational elements you will want to become familiar with in preparation for expanding your mindset into the greater
 dimensionality that orchestration realizes.
 
 \justify{}
