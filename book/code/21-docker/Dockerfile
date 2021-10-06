@@ -1,4 +1,4 @@
-FROM python:3.9-buster
+FROM python:3.10-buster
 LABEL maintainer="Kevin Flynn <Creator4983@encom.com>"
 
 ENV DEBIAN_FRONTEND noninteractive
