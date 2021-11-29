@@ -1,3 +1,4 @@
+*.listing
 # system artifacts
 .vscode
 *.code-workspace
