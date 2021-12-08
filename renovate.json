@@ -1,9 +1,4 @@
 {
-  "assignees": [
-	  "@devsecfranklin"
-  ],
-  "assignAutomerge": false,
-  "automerge": true,
   "extends": [
     "config:base"
   ]
