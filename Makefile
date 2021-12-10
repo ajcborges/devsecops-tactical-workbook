@@ -43,5 +43,5 @@ python:  ## Build in python virtualenv
 	python3 -m venv _build
 	. ./_build/bin/activate
 	python3 -m pip install -rrequirements.txt
-	cd book && make
+	#cd book && make
 

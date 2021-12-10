@@ -4,7 +4,7 @@
 
 \begin{displayquote}
 	\emph{Make originated with a visit from Steve Johnson (author of yacc, etc.), storming into my office, cursing the Fates that had caused him to waste a morning debugging a correct program (bug had been fixed, file hadn't been compiled, cc *.o was therefore unaffected). As I had spent a part of the previous evening coping with the same disaster on a project I was working on, the idea of a tool to solve it came up. It began with an elaborate idea of a dependency analyzer, boiled down to something much simpler, and turned into Make that weekend. Use of tools that were still wet was part of the culture. Makefiles were text files, not magically encoded binaries, because that was the Unix ethos: printable, debuggable, understandable stuff.}
-	
+
 	Stuart Feldman\cite{raymond2004programming}
 \end{displayquote}
 
@@ -14,15 +14,15 @@ The GNU make tool is still around decades later for a reason. It has been battle
 you invoke the make command from. Using a Makefile lets us avoid typing complicated and hard to recall strings on the command
 line. You can simply type ``make docker'' and have everything build as desired from a list of commands in part of your Makefile. This is beneficial when
 you have lots of arguments and environment variables that you and your team members need for sets of commands
-to work properly. When your team member invokes a specific rule from a Makefile, it works without you having to 
+to work properly. When your team member invokes a specific rule from a Makefile, it works without you having to
 help them configure things or make them aware of all the parameters. We're going to be using \href{https://www.gnu.org/software/make/}{GNU Make} for our projects.
 
 \justify{}
-With Python projects, I like to use make to kick off builds and unit tests in a virtual environment, perhaps with differing sets of requirements files. When we build a python application we might call on ``requirements.txt'' for the dependencies we need. When we test, we might have another file called ``requirements-test.txt'' that gets installed with or in place of the usual requirements. Similarly with Ruby, there may be a need for different Gemfiles depending on your activity. Using make with Docker and docker-compose can be beneficial for building and running images locally. 
+With Python projects, I like to use make to kick off builds and unit tests in a virtual environment, perhaps with differing sets of requirements files. When we build a python application we might call on ``requirements.txt'' for the dependencies we need. The list of requirements are then installed using pip. When we test, we might have another file called ``requirements-test.txt'' that gets installed with or in place of the usual requirements. Similarly with Ruby, there may be a need for different Gemfiles depending on your activity. Using make with Docker and docker-compose can be beneficial for building and running images locally.
 
 \justify{}
 A Makefile can be as simple as a few lines or grow to become an extremely intricate and vital piece of your
-build environment. You might like to have a look at 
+build environment. You might like to have a look at
 \href{https://www.gnu.org/software/make/manual/make.html#Introduction}{the GNU make manual} at least once just to get a feel for how they work.
 
 \justify{}
@@ -31,8 +31,8 @@ When a Makefile is executed, you can use the ampersand character to suppress the
 \section{Rules}
 
 \justify{}
-Makefiles are comprised of various stanzas, know as rules. This is where the work gets done. Let's add a rule
-for Docker and a target for Python to make our lives easier in the future. Let's examine a simple Makefile with a single rules.
+Makefiles are comprised of various stanzas, know as rules. This is where the work gets done. Let's consider a rule
+for Docker and a target for Python to make our lives easier in the future. Here is how a Makefile with the rule added..
 
 \justify{}
 \begin{mybox}{\thetcbcounter: Our First Makefile}
@@ -41,7 +41,7 @@ for Docker and a target for Python to make our lives easier in the future. Let's
 
 \justify{}
 It's important to note that indentation of Makefiles is done using tabs rather than spaces. If your Makefile is failing, check for spots where lines were improperly
-indented with eight spaces rather than a tab cahracter. The proper way to indent in a Makefile is to use tab characters.
+indented with eight spaces rather than a tab cahracter. The proper way to indent in a Makefile is to use one or more tab characters.
 
 \section{The PHONY Directive}
 
@@ -77,7 +77,7 @@ type ``make'' or ``make code'' and get the same result.
 \subsubsection{Test Again with PHONY}
 
 \justify{}
-Now edit the Makefile to include the PHONY directive. Be mindful of the 
+Now edit the Makefile to include the PHONY directive. Be mindful of the
 leading dot character.
 
 \begin{mybox}{\thetcbcounter: Add PHONY}
@@ -94,14 +94,14 @@ Try running make again.
 \justify{}
 Note that the output occurs twice. To suppress the extra output, you can prepend the command with an ampersand character like so:
 
-\begin{mybox}{\thetcbcounter: Supress extra Output}
+\begin{mybox}{\thetcbcounter: Suppress extra Output}
 	\lstinputlisting{code/23-makefiles/6a-test4}
 \end{mybox}
 
 \justify{}
 Now try running one final time.
 
-\begin{mybox}{\thetcbcounter: Supress extra Output}
+\begin{mybox}{\thetcbcounter: Suppress extra Output}
 	\lstinputlisting{code/23-makefiles/6a-test5}
 \end{mybox}
 
@@ -116,8 +116,8 @@ Conditional operators and variables can be specified in a Makefile. Note that va
 
 \justify{}
 Let's look at a simple Makefile example for checking if two programs are installed. Here we have a Makefile
-with a single target, ``clean''. The first two lines of this Makefile run shell commands to determine 
-whether ``kubectl'' and ``tkn'' are installed in the current environment. 
+with a single target, ``clean''. The first two lines of this Makefile run shell commands to determine
+whether ``kubectl'' and ``tkn'' are installed in the current environment.
 
 \begin{mybox}{\thetcbcounter: Conditionals and Variable Example}
 	\lstinputlisting{{listing options={style=tcblatex,numbers=left,numberstyle=\tiny\color{red!75!black}}}code/23-makefiles/6b-Makefile}

@@ -1,37 +1,14 @@
 ## Testing Out Docker (Lab 4a)
 
-Here is a step by step description of how to prepare the creation of
-our first container:
+_NOTE_ [Install Docker](https://docs.docker.com/get-docker/) if you haven't already done so.  
 
-* Create the ``devsecops'' folder.
-  * When creating folders, note that capitalization matters.
-* In that folder, create another folder called ``docker''.
-  * Now in the docker folder, create a text file with the name ``Dockerfile''.
-  * Copy and paste the example Dockerfile from earlier in this chapter into your text file.
-* Also in the docker folder, create a text file with the name ``docker-compose.yml''
-  * Copy and paste the example docker-compose.yml file from earlier in this chapter into your second text file.
+For our first container lab, let's get some files in place that will allow us to make sure our setup is all 
+working properly. Also we can use these files for subsequent labs.   
 
-\justify{}
-Here is an example of the BASH shell commands you can use to accomplish
-the steps of the exercise. You can substitue vi for your favorite text
-editor as needed. Note that typing the ``docker-compose'' command on line
-6 will reference the devsecops ``service'' we specified on line 3 of the
-docker-compose.yml file.
 
-\justify{}
-\begin{mybox}{\thetcbcounter: Create files for Docker,height=3.5cm}
-  \lstinputlisting{code/05-containers/create-files.txt}
-\end{mybox}
+1. Create a ``devsecops'' folder on your local machine.  When creating folders, note that capitalization matters.
+1. In that folder, create a text file with the name ``Dockerfile''.
+1. Copy and paste [the example Dockerfile from earlier in this chapter](https://github.com/devsecfranklin/devsecops-tactical-workbook/blob/main/book/code/21-docker/Dockerfile) into your text file.
+1. Create another text file with the name ``docker-compose.yml''
+1. Copy and paste [the example docker-compose.yml file from earlier in this chapter](https://github.com/devsecfranklin/devsecops-tactical-workbook/blob/main/book/code/21-docker/docker-compose.yml) into your second text file.
 
-\justify{}
-With our files created and populated, we are ready to generate our container based on our specified configuration.
-
-\begin{mybox}{\thetcbcounter: Build from docker-compose.yml}
-  docker-compose -f docker/docker-compose.yml build devsecops
-\end{mybox}
-
-\justify{}
-If all went well, you should now have a shell prompt from ``inside'' the new container. Recall that we set our 
-\textbf{WORKDIR} variable to /project in the Dockerfile. Following that example, we now have Dockerfile
-and docker-compose.yml in the directory /project/docker, having mounted the project directory from the host machine 
-``inside'' the container.

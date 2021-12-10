@@ -12,9 +12,9 @@ experience across disparate environments.
 
 \justify{}
 Recall our earlier discussion on the topics of immutability\index{immutability} and ephemerality\index{ephemerality}. It is more desirable
-to create projects that are built and replaced frequently, than it is to attempt to upgrade and repair the infrastructure, 
+to create projects that are built and replaced frequently, than it is to attempt to upgrade and repair the infrastructure,
 platforms, and project code on an on-going basis. Attempts to patch and upgrade project hosts ``in place'', quickly reveal
-great difficulty in maintaining consistency with the project source, even when that source is stored in a revision control system. 
+great difficulty in maintaining consistency with the project source, even when that source is stored in a revision control system.
 These "in-place" upgrades and repairs may be the only option when it comes to certain software on ``bare metal'' hosts, and
 hosts using certain virtualization technologies. A lesser degree of immutability
 and ephemerality\index{ephemerality} also introduces issues keeping
@@ -47,20 +47,17 @@ projects.
 
 \justify{}
 The specification that outlines how a docker image is to be built is saved in the ``Dockerfile''.
-The Dockerfile is our basic unit of containerization. That is to say,
-our containers, and the applications they contain, are defined by the
-Dockerfile. This Dockerfile will dictate how we provision resources and
-include operating system essentials and packages inside our container.
-Each Dockerfile is predicated on a base image, such as ``python:slim-buster''
-for example.
+The Dockerfile is our basic unit of containerization. That is to say, our containers, and the applications they contain, are defined by the
+Dockerfile. This Dockerfile will dictate how we provision resources and include operating system essentials and packages inside our container. Each Dockerfile is predicated on a base image, such as ``python:slim-bullseye'' for example.
 
 \justify{}
-One common technique to speed up our build pipelines is to simply pass along the Dockfile, rather than
+One common technique to speed up our build pipelines is to simply pass along the Dockerfile, rather than
 building and passing a container image along to others.
 
 \justify{}
 \begin{mybox}{\thetcbcounter: Dockerfile}
   \lstinputlisting{code/21-docker/Dockerfile}
+  \label{mydockerfile}
 \end{mybox}
 
 \justify{}
@@ -116,33 +113,27 @@ In later chapter we will explore how to ``clone'' a project repository from \hre
 from there. It is a good practice to keep a Dockerfile at the top level of your GitHUb repository that can be used to
 build and test your application.
 
-\section{Linting with Hadolint}
+\markdownInput{../labs/ch4/lab-4b.md}
 
-\section{Security Scanning Our Containers}
-The \href{https://github.com/aquasecurity/trivy}{trivy container scanner} bills itself
-as ``A Simple and Comprehensive Vulnerability Scanner for Containers and other
-Artifacts, Suitable for CI''.
+\markdownInput{../labs/ch4/lab-4c.md}
+
 
 % https://www.paloaltonetworks.com/cyberpedia/what-is-container-security
 
-\section{Podman and Buildah}
+%\section{Podman and Buildah}
 
-\justify{}
-Note that Podman\index{Podman} is an acceptable substitute for Docker.
-Podman is an Open Source tool from the Open
-Containers Initiative (OCI)\index{Open Containers Initiative
-(OCI)}. The Podman\index{Podman} service is said to be capable
-of being a drop-in replacement for Docker, although it only
-runs on Linux hosts at the time of this writing. Podman gives
-the user the ability to use traditional Docker commands,
-without the need to run a daemon to do so\cite{podman}, as is
-the case with Docker.
+%\justify{}
+%Note that Podman\index{Podman} is an acceptable substitute for Docker.
+%Podman is an Open Source tool from the Open Containers Initiative (OCI)\index{Open Containers Initiative
+%(OCI)}. The Podman\index{Podman} service is said to be capable of being a drop-in replacement for Docker, although it only runs on Linux hosts at the time of this writing. Podman gives
+%the user the ability to use traditional Docker commands,
+%without the need to run a daemon to do so\cite{podman}, as is the case with Docker.
 
-\justify{}
-You can install Podman by 
-\href{https://podman.io/getting-started/installation.html}{following the instructions}
-at their website. Once Podman is installed properly you should be able to alias docker=podman and use it as a
-drop-in replacement for Docker and it's associated daemon.
+%\justify{}
+%You can install Podman by
+%\href{https://podman.io/getting-started/installation.html}{following the instructions}
+%at their website. Once Podman is installed properly you should be able to alias docker=podman and use it as a
+%drop-in replacement for Docker and it's associated daemon.
 
 \section{Container Orchestration}
 
@@ -171,3 +162,4 @@ Later we will look more closely at the sprawling and vibrant topic of Kubernetes
 enlightenment, it is enough to know that orchestration exists and have a bit of familiarity with its purpose.
 
 \section{Further Reading}
+

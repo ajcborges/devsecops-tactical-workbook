@@ -8,7 +8,7 @@ There are some key precepts that will serve the aspiring DevSecOps engineer well
 chapter we will explore some of these in an attempt to level-set our understanding of the
 domain. We will also continue to introduce the reader to the vernacular of the modern day
 DevSecOps engineer in a world gone cloudy. You certainly don't need to memorize all of these terms, but the rationale
-is they are prevalent enough that you should have a passing familiarity with them, at the very least. 
+is they are prevalent enough that you should have a passing familiarity with them, at the very least.
 
 \section{What are DevOps and DevSecOps?}
 
@@ -22,10 +22,10 @@ the term ``DevOps'', insisting the security piece is still there and just as imp
 there is no need for it to be called out separately.
 
 \justify{}
-Consider the table\ref{DevOps vs. DevSecOps} below. The big takeaway here is to notice the 
+Consider the table \ref{DevSecOps} below. The big takeaway here is to notice the
 DevSecOps path goes a bit futher
 in highlighting security and making it a priority. The goal is to think hard about integrating
-security and making it a conscuious team effort. Adding a security engineer to DevOps design 
+security and making it a conscuious team effort. Adding a security engineer to DevOps design
 and review meetings may not be enough to fuse security into our workflows. We want to ensure
 our work products are as secure as possible.
 
@@ -39,7 +39,7 @@ our work products are as secure as possible.
 
     \end{tabular}
 \caption{DevOps vs. DevSecOps}
-\label{DevOps vs. DevSecOps}
+\label{DevSecOps}
 \end{table}
 
 \section{Revision Control}
@@ -47,8 +47,8 @@ our work products are as secure as possible.
 \justify{}
 Code, documents, test cases, and other software work products begin their lives on the workstations of creators
 and developers. In this book we will refer to the environments where this takes place as the ``local'' environment.
-These work products are typically created, reviewed and checked into Revision Control Systems 
-(RCS)\index{Revsion Control System (RCS)}, GitHub\index{GitHub} for example, by the DevSecOps practitioner. 
+These work products are typically created, reviewed and checked into Revision Control Systems
+(RCS)\index{Revsion Control System (RCS)}, GitHub\index{GitHub} for example, by the DevSecOps practitioner.
 Other popular revision control systems include GitLab\index{GitLab} and BitBucket\index{BitBucket}.
 
 \justify{}
@@ -74,7 +74,7 @@ and often run against our work products at the time they are checked in to the r
 This is meant to ensure stability, security, and compatibility with the existing code base in revision
 control. The automation required to execute tests every time work is checked in to
 revision control is typically the responsibility of the DevSecOps engineers. We will delve into various
-types and aspects of testing throughout this book. 
+types and aspects of testing throughout this book.
 
 \subsection{White Box vs. Black Box Testing}
 
@@ -114,7 +114,7 @@ SAST and DAST testing.
 \end{figure}
 
 \justify{}
-As seen in figure\ref{pipeline}, work typically flows from the local environments, into a test
+As seen in figure \ref{pipeline}, work typically flows from the local environments, into a test
 environment, and finally to production where it is available for use by the entire user base.
 
 \justify{}
@@ -147,7 +147,7 @@ as possible, is highly desirable.
 \justify{}
 Imagine our software life cycle occurring along a temporal axis, t. Intentionally moving security to the
 left on this axis (lower values of t) is known as ``Shifting Left''\index{Shift Left} as seen
-in figure\ref{shift}.
+in figure \ref{shift}.
 
 \begin{figure}
 \centering
@@ -159,7 +159,7 @@ in figure\ref{shift}.
 \section{Zero Trust}
 
 \justify{}
-Starting from the assumption that all the computers and networks are inherently unsafe and/or already compromised, the 
+Starting from the assumption that all the computers and networks are inherently unsafe and/or already compromised, the
 Zero Trust model gives organizations a way of thinking when establishing a security posture.\cite{zerotrust} This premise,
 while rather simple from the conceptual standpoint, can be anything but when it comes to application. The difficulties in
 scaling this mindset up for larger organizations can quickly become anything but simple.
@@ -197,7 +197,7 @@ better work in less time with a smaller staff.
 
 \justify{}
 There is obvious advantage of being able to quickly stand up new clones of our project to replace existing instances that
-may be outdated, insecure, etc. The idea of immutability, in reference to software projects, is the degree to which something, 
+may be outdated, insecure, etc. The idea of immutability, in reference to software projects, is the degree to which something,
 our running project for example, can be changed. Immutability\index{immutability} is desirable, in that we wish to be able to
 simply replace outdated instances of our project in their entirety. Upgrading and patching are inherently
 problematic activities, high cost in terms of time, effort and money, that we have the technology to dissociate from. With
@@ -223,20 +223,20 @@ stored in a Git based revision control system can keep a Kubernetes cluster up t
 \section{Organizational Maturity}
 
 \justify{}
-When I first encounter a new team or group, I try to frame their capabilities in terms of organizational maturity. 
-Many things can have an effect on the posture of an orgaznization. A few examples: 
+When I first encounter a new team or group, I try to frame their capabilities in terms of organizational maturity.
+Many things can have an effect on the posture of an orgaznization. A few examples:
 
-\begin{itemize}[leftmargin=*,nosep]
+\begin{itemize}
 	\item How many team members there are.
 	\item How and how often they interact.
 	\item  What productivity tools do they use?
 	\item How often and Why do they meet?
-	\item How their work is captured, completed, and reviewed? 
+	\item How their work is captured, completed, and reviewed?
 \end{itemize}
 
 The structure of a team and the tendency to follow best practices, as well as their own policies, tend to provide some
 valuable insight. The measure of these insights is the maturity of the team. Even a cursory and informal aanalysis can give
-a sense of challenges that might arise during creation of work products in terms of time, potential quality, and of course, 
+a sense of challenges that might arise during creation of work products in terms of time, potential quality, and of course,
 the security of any output. The importance of the maturiy of an organization stems from it's high degree to which it shapes
 the effectiveness of that organization.
 
