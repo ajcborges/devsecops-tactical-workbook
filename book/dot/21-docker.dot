@@ -4,11 +4,9 @@ digraph docker {
   edge [fontname="Symbol" fontsize=10];
 
   framework [shape=folder fontname="Symbol" label="/home/devsecops/workspace/myproject"];
-  docker [shape=folder fontname="Symbol" label="docker"];
   dockercom [fontname="Symbol" label="docker-compose.yml"];
   Dockerfile [fontname="Symbol" label="Dockerfile"];
 
-  framework -> docker;
-  docker -> dockercom;
-  docker -> Dockerfile;
+  framework -> dockercom;
+  framework -> Dockerfile;
 }

@@ -3,25 +3,16 @@
   \pgfsetlinewidth{1bp}
 %%
 \pgfsetcolor{black}
-  % Edge: framework -> docker
-  \draw [->] (142.5bp,143.7bp) .. controls (142.5bp,135.98bp) and (142.5bp,126.71bp)  .. (142.5bp,108.1bp);
-  % Edge: docker -> dockercom
+  % Edge: framework -> dockercom
   \draw [->] (125.69bp,71.697bp) .. controls (117.37bp,63.135bp) and (107.19bp,52.656bp)  .. (91.116bp,36.104bp);
-  % Edge: docker -> Dockerfile
+  % Edge: framework -> Dockerfile
   \draw [->] (159.31bp,71.697bp) .. controls (167.63bp,63.135bp) and (177.81bp,52.656bp)  .. (193.88bp,36.104bp);
   % Node: framework
 \begin{scope}
   \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
   \pgfsetstrokecolor{strokecol}
-  \draw (276.5bp,180.0bp) -- (273.5bp,184.0bp) -- (252.5bp,184.0bp) -- (249.5bp,180.0bp) -- (8.5bp,180.0bp) -- (8.5bp,144.0bp) -- (276.5bp,144.0bp) -- cycle;
-  \draw (142.5bp,162.0bp) node {/home/devsecops/workspace/myproject};
-\end{scope}
-  % Node: docker
-\begin{scope}
-  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
-  \pgfsetstrokecolor{strokecol}
-  \draw (172.0bp,108.0bp) -- (169.0bp,112.0bp) -- (148.0bp,112.0bp) -- (145.0bp,108.0bp) -- (113.0bp,108.0bp) -- (113.0bp,72.0bp) -- (172.0bp,72.0bp) -- cycle;
-  \draw (142.5bp,90.0bp) node {docker};
+  \draw (276.5bp,108.0bp) -- (273.5bp,112.0bp) -- (252.5bp,112.0bp) -- (249.5bp,108.0bp) -- (8.5bp,108.0bp) -- (8.5bp,72.0bp) -- (276.5bp,72.0bp) -- cycle;
+  \draw (142.5bp,90.0bp) node {/home/devsecops/workspace/myproject};
 \end{scope}
   % Node: dockercom
 \begin{scope}

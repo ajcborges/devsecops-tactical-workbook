@@ -11,4 +11,16 @@ working properly. Also we can use these files for subsequent labs.
 1. Copy and paste [the example Dockerfile from earlier in this chapter](https://github.com/devsecfranklin/devsecops-tactical-workbook/blob/main/book/code/21-docker/Dockerfile) into your text file.
 1. Create another text file with the name ``docker-compose.yml''
 1. Copy and paste [the example docker-compose.yml file from earlier in this chapter](https://github.com/devsecfranklin/devsecops-tactical-workbook/blob/main/book/code/21-docker/docker-compose.yml) into your second text file.
+1. Now test like so in Mac/Linux:
 
+```
+docker build -t frank378:lab4a - < Dockerfile
+```
+
+Test like so in Windows/Powershell:
+
+    Get-Content Dockerfile | docker build -
+
+View the container on your machine:
+
+    docker image ls

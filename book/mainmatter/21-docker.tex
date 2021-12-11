@@ -70,8 +70,6 @@ our builds to ``hang up'' at an inaccessible interactive prompt. The \textbf{ADD
 are meant to cause Docker to use the /workdir directory as the root of the project ``inside'' the
 container. Finally, we are directing Docker to \textbf{RUN} and apt update and install the apt-utils package.
 
-\section{Volumes}
-
 \section{docker-compose.yml}
 \justify{}
 The docker-compose tool and its associated docker-compose.yml file allows us to manage multiple Docker containers for
@@ -107,16 +105,20 @@ See the figure\ref{dockerdirectory} for an illustration of how to lay out the pr
 
 \markdownInput{../labs/ch4/lab-4a.md}
 
-\subsection{Testing from GitHub}
 \justify{}
-In later chapter we will explore how to ``clone'' a project repository from \href{github.com} and do our work directory
-from there. It is a good practice to keep a Dockerfile at the top level of your GitHUb repository that can be used to
+In later chapters we will explore how to ``clone'' a project repository from \href{github.com} and do our work directory
+from there. It is a good practice to keep a Dockerfile at the top level of your GitHub repository that can be used to
 build and test your application.
 
 \markdownInput{../labs/ch4/lab-4b.md}
 
-\markdownInput{../labs/ch4/lab-4c.md}
+\justify{}
+\begin{mybox}{\thetcbcounter: Dockerfile.fixed}
+    \lstinputlisting{code/21-docker/Dockerfile.fixed}
+    \label{fixeddockerfile}
+\end{mybox}
 
+\markdownInput{../labs/ch4/lab-4c.md}
 
 % https://www.paloaltonetworks.com/cyberpedia/what-is-container-security
 
@@ -134,6 +136,12 @@ build and test your application.
 %\href{https://podman.io/getting-started/installation.html}{following the instructions}
 %at their website. Once Podman is installed properly you should be able to alias docker=podman and use it as a
 %drop-in replacement for Docker and it's associated daemon.
+
+\section{Volumes}
+
+It is often desirable to write files between the host system and a running Docker container. We can accomplish this by taking advantage of the Docker concept of ``Volumes''. This is \href{https://docs.docker.com/storage/volumes/#use-a-volume-with-docker-compose}{easy to achieve thanks to docker-compose}.
+
+
 
 \section{Container Orchestration}
 
@@ -160,6 +168,3 @@ dimensionality that orchestration realizes.
 \justify{}
 Later we will look more closely at the sprawling and vibrant topic of Kubernetes. For this stage of our journey to DevSecOps
 enlightenment, it is enough to know that orchestration exists and have a bit of familiarity with its purpose.
-
-\section{Further Reading}
-

@@ -1,0 +1,23 @@
+digraph setup{
+    size="8,4";
+    node [fontname="Helvetica" fontsize=14 shape=box];
+    edge [fontname="Symbol" fontsize=10];
+
+    framework [shape=folder fontname="Symbol" label="/home/devsecops"];
+    pass [shape=folder fontname="Symbol" label=".password-store"];
+    gnupg [shape=folder fontname="Symbol" label=".gnupg"];
+    docker [shape=folder fontname="Symbol" label=".docker"];
+    workspace [shape=folder fontname="Symbol" label="workspace"];
+    myproject [shape=folder fontname="Symbol" label="myproject"];
+    dockercom [fontname="Symbol" label="docker-compose.yml"];
+    Dockerfile [fontname="Symbol" label="Dockerfile"];
+
+    framework -> docker;
+    framework -> pass;
+    framework -> workspace;
+    framework -> gnupg;
+    workspace -> myproject;
+    myproject -> dockercom;
+    myproject -> Dockerfile;
+
+}

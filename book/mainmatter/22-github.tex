@@ -2,7 +2,7 @@
 \includegraphics[scale=0.20]{images/owl-50267_1920.jpg}
 
 \justify{}
-Using a revision control\index{revision control} methodology allows us to organize and store project artifacts. Typically these 
+Using a revision control\index{revision control} methodology allows us to organize and store project artifacts. Typically these
 artifacts are source code files but may include documentation, files to assist us with Kubernetes cluster management and application
 deployment, and more. Websites like \href{https://github.com}{github.com} for example, are the modern
 backbone of revision control, and foundational to our workflow. They are a key piece of our software delivery pipeline,
@@ -28,13 +28,13 @@ See \href{https://docs.github.com/en/github/authenticating-to-github/securing-yo
 for more information. If you already have an account at GitHub, now is a good time to make sure you have this feature enabled. Two-factor authentication provides
 an additional layer of security on your Github account, and is all-around good practice. Using two- or multi-factor authentication with a
 password manager will do wonders
-to improve your security hygeine. You may also use your password manager to store your account recovery codes. Creating a text file 
+to improve your security hygeine. You may also use your password manager to store your account recovery codes. Creating a text file
 that contains your recovery codes and keeping an encrypted copy in your home directory is another option.
 
 \section{Creating a Repository}
 
 Repository creation is well documented, for example
-\href{https://docs.github.com/en/get-started/quickstart/create-a-repo}{these steps in the GitHub quickstart pages}. Let look a bit 
+\href{https://docs.github.com/en/get-started/quickstart/create-a-repo}{these steps in the GitHub quickstart pages}. Let look a bit
 more closely ar what is involved in this process.
 
 \justify{}
@@ -43,9 +43,19 @@ Later I will move the repository into an organization where the responsibility f
 shared with other folks.
 
 \justify{}
-Directions for the labs in this chapter are located in GitHub, of course! 
+Directions for the labs in this chapter are located in GitHub, of course!
 \href{https://github.com/devsecfranklin/devsecops-tactical-workbook/tree/main/code/ch5}{Follow this link to view the lab files},
 or simply proceed with the steps below.
+
+\justify{}
+So far we have created the files seen in figure \ref{projfiles} to our project. There is much to be gained from bringing our project under revision control so let's make that our next task. Take note, the ``top level'' for our GitHub repository will be the ``myproject'' folder even though we have some files in our ``/home/devsecops'' hoe directory that impact our project. We want to keep a separation beteen the source code and documentation in the ``myproject'' folder and any machine specific configuration that is present on an individual developers workstation.
+
+\begin{figure}[!htb]
+\centering
+\input{dot/22-gh-prelab.tex}
+\caption{Project files.}
+\label{projfiles}
+\end{figure}
 
 \markdownInput{../labs/ch5/lab-5a.md}
 
@@ -75,6 +85,10 @@ available in this part of your repository for managing those checks.
 \end{figure}
 
 \section{Branching and Merging}
+
+When we say we are going to create a branch with git, it simply means we are going to take a snapshot of the code base at a point in time, and make our changes on that snapshot. The goal is to be able to make fixes and improvements without impacting the original code base.
+Once our changes are completed, the typical process is to request a review from other team members and do some testing to make sure the changes will perform as expected. Once this is done, we are ready to merge our updated branch back into the main code base.
+
 \subsection{Working with Branches}
 
 \justify{}
@@ -184,7 +198,7 @@ tedious work to the bots, allowing us to focus on our DevSecOps journey to the c
 \justify{}
 \begin{tabular}{| p{2.3cm}| p{4.5cm} | p{8.5cm} |}
       \hline
-      \cellcolor{blue!25}\textbf{Tool}& \cellcolor{blue!25}\textbf{Purpose}& \textbf{Source} \\
+     \textbf{Tool}& \textbf{Purpose}& \textbf{Source} \\
       \hline
       Renovate & dependency scanner & web site \\
       \hline
@@ -195,10 +209,6 @@ tedious work to the bots, allowing us to focus on our DevSecOps journey to the c
       bridgecrew & PR security scanner & web site \\
       \hline
 \end{tabular}
-
-\section{Further Reading}
-
-\clearpage
 
 \section{Directory Structure}
 

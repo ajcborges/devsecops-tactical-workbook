@@ -1,14 +1,14 @@
 # syntax=docker/dockerfile:1
 
-FROM 3.10-slim-bullseye 
+FROM python:3.10-slim-bullseye 
 
-LABEL maintainer="Kevin Flynn <Creator4983@encom.com>" \ 
-      org.opencontainers.image.source="https://github.com/devsecfranklin/devsecops-tactical-workbook" 
+LABEL maintainer="Kevin Flynn <Creator4983@encom.com>" 
 
 ENV DEBIAN_FRONTEND noninteractive
 
-COPY . /project
-WORKDIR /project
+WORKDIR /workspace
+ENV MY_DIR /workspace
+ADD . ${MY_DIR}
 
 RUN apt-get update && \
     apt-get -y install apt-utils

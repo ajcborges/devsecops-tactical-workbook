@@ -1,0 +1,78 @@
+
+\begin{tikzpicture}[>=latex,line join=bevel,]
+  \pgfsetlinewidth{1bp}
+%%
+\pgfsetcolor{black}
+  % Edge: framework -> pass
+  \draw [->] (176.55bp,215.88bp) .. controls (156.36bp,206.39bp) and (131.08bp,194.51bp)  .. (100.33bp,180.07bp);
+  % Edge: framework -> gnupg
+  \draw [->] (203.36bp,215.7bp) .. controls (198.87bp,207.64bp) and (193.44bp,197.89bp)  .. (183.53bp,180.1bp);
+  % Edge: framework -> docker
+  \draw [->] (222.64bp,215.7bp) .. controls (227.13bp,207.64bp) and (232.56bp,197.89bp)  .. (242.47bp,180.1bp);
+  % Edge: framework -> workspace
+  \draw [->] (245.29bp,215.88bp) .. controls (262.87bp,206.55bp) and (284.81bp,194.92bp)  .. (312.59bp,180.19bp);
+  % Edge: workspace -> myproject
+  \draw [->] (345.0bp,143.7bp) .. controls (345.0bp,135.98bp) and (345.0bp,126.71bp)  .. (345.0bp,108.1bp);
+  % Edge: myproject -> dockercom
+  \draw [->] (328.19bp,71.697bp) .. controls (319.87bp,63.135bp) and (309.69bp,52.656bp)  .. (293.62bp,36.104bp);
+  % Edge: myproject -> Dockerfile
+  \draw [->] (361.81bp,71.697bp) .. controls (370.13bp,63.135bp) and (380.31bp,52.656bp)  .. (396.38bp,36.104bp);
+  % Node: framework
+\begin{scope}
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (274.0bp,252.0bp) -- (271.0bp,256.0bp) -- (250.0bp,256.0bp) -- (247.0bp,252.0bp) -- (152.0bp,252.0bp) -- (152.0bp,216.0bp) -- (274.0bp,216.0bp) -- cycle;
+  \draw (213.0bp,234.0bp) node {/home/devsecops};
+\end{scope}
+  % Node: pass
+\begin{scope}
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (128.0bp,180.0bp) -- (125.0bp,184.0bp) -- (104.0bp,184.0bp) -- (101.0bp,180.0bp) -- (0.0bp,180.0bp) -- (0.0bp,144.0bp) -- (128.0bp,144.0bp) -- cycle;
+  \draw (64.0bp,162.0bp) node {.password-store};
+\end{scope}
+  % Node: gnupg
+\begin{scope}
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (202.0bp,180.0bp) -- (199.0bp,184.0bp) -- (178.0bp,184.0bp) -- (175.0bp,180.0bp) -- (146.0bp,180.0bp) -- (146.0bp,144.0bp) -- (202.0bp,144.0bp) -- cycle;
+  \draw (174.0bp,162.0bp) node {.gnupg};
+\end{scope}
+  % Node: docker
+\begin{scope}
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (283.5bp,180.0bp) -- (280.5bp,184.0bp) -- (259.5bp,184.0bp) -- (256.5bp,180.0bp) -- (220.5bp,180.0bp) -- (220.5bp,144.0bp) -- (283.5bp,144.0bp) -- cycle;
+  \draw (252.0bp,162.0bp) node {.docker};
+\end{scope}
+  % Node: workspace
+\begin{scope}
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (388.5bp,180.0bp) -- (385.5bp,184.0bp) -- (364.5bp,184.0bp) -- (361.5bp,180.0bp) -- (301.5bp,180.0bp) -- (301.5bp,144.0bp) -- (388.5bp,144.0bp) -- cycle;
+  \draw (345.0bp,162.0bp) node {workspace};
+\end{scope}
+  % Node: myproject
+\begin{scope}
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (387.5bp,108.0bp) -- (384.5bp,112.0bp) -- (363.5bp,112.0bp) -- (360.5bp,108.0bp) -- (302.5bp,108.0bp) -- (302.5bp,72.0bp) -- (387.5bp,72.0bp) -- cycle;
+  \draw (345.0bp,90.0bp) node {myproject};
+\end{scope}
+  % Node: dockercom
+\begin{scope}
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (351.5bp,36.0bp) -- (202.5bp,36.0bp) -- (202.5bp,0.0bp) -- (351.5bp,0.0bp) -- cycle;
+  \draw (277.0bp,18.0bp) node {docker-compose.yml};
+\end{scope}
+  % Node: Dockerfile
+\begin{scope}
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (456.0bp,36.0bp) -- (370.0bp,36.0bp) -- (370.0bp,0.0bp) -- (456.0bp,0.0bp) -- cycle;
+  \draw (413.0bp,18.0bp) node {Dockerfile};
+\end{scope}
+%
+\end{tikzpicture}
+
