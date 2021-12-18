@@ -2,24 +2,24 @@
 
 \includegraphics[scale=0.85]{images/snake-1634293_1920.jpg}
 
-\justify{}
+\justifying
 Getting started in writing programs is easy with Python. It is a highly extensible language with many add on modules available. 
 There is a collection known as Pypi where many of these Open Source\index{OpenSource} modules are hosted.
 Python is fairly easy to learn, especially when compared to other languages. Python runs ``everywhere'', for all intents and
 purposes. With it's gentle learning vurve, it has become the go to language for Data Scientists, System Administrators, and yes, even
 DevSecOps folks like ourselves. For all these reasons, Python makes a great addition to our toolbox.
 
-\justify{}
+\justifying
 An item of note, Python3 is our only choice at this point. Python 2.x End of Life was January 1st, 2020.
 
 \section{Local Development Environment}
 
-\markdownInput{../code/ch7/lab-7a.md}
+\markdownInput{../labs/ch7/lab-7a.md}
 
 \section{Project Layout}
 
 \subsection{Python Directory Structure}
-\justify{}
+\justifying
 Files and folders relevant to the Python portions of our project are shown in the diagram below.
 
 \begin{figure}[!htb]
@@ -31,7 +31,7 @@ Files and folders relevant to the Python portions of our project are shown in th
 
 \subsection{The \_\_init\_\_.py File}
 
-\justify{}
+\justifying
 We add this file to let the Python interpreter know that the directories
 it is found in are a contiguous part of our Python project. Since module
 imports and function definitions in this file are available to all the
@@ -39,24 +39,24 @@ python code files in the directory, we can use it to our advantage. For
 example, try adding this quick and dirty logging function to
 python/devsecops/lib/\_\_init\_\_.py
 
-\justify{}
+\justifying
 \begin{mybox}{\thetcbcounter: \_\_init\_\_.py}
   \lstinputlisting{code/07-python/init.py}
 \end{mybox}
 
-\justify{}
+\justifying
 Now we can create a Python file log\_test.py and call the logger from within like so:
 
 \begin{mybox}{\thetcbcounter: logtest.py}
   \lstinputlisting{code/07-python/logtest.py}
 \end{mybox}
 
-\justify{}
+\justifying
 Check the results in the file /var/log/devsecops/devsecops.log.
 
 \subsection{Requirements File}
 
-\justify{}
+\justifying
 A requirements file under python/requirements.txt\index{requirements.txt} lists
 the required Python modules needed to build and run any Python portions of our  project.
 We also add a check in the Makefile to verify the existence of the requirements.txt file.
@@ -67,22 +67,22 @@ not break anything if no requirements are present yet.
 
 \section{Python Testing}
 
-\justify{}
+\justifying
 Security and reliability in our lab and rapid prototyping work is just as important as it is in our work for the Production environment. 
 In fact, you might say it's even more important since today's rapid mock ups
 can easily wind up making it into the build pipeline when folks are under a time crunch to deliver.
 
-\justify{}
+\justifying
 There are many test frameworks out there, lots of great ideas put forth by the community. For our current
 efforts, we've settled on Tox\index{Tox} as the framework of choice. It dovetails nicely with the rest of
 our patterns. Tox allows us to manage requirements for virtual environments when testing, acts as a front
 end to pytest and coverage modules, and much more. It is highly configurable and extensible. For example
 we can test that an application is compatible with multiple versions of Python.
 
-\justify{}
+\justifying
 Use the make test command inside the docker container to run the test suite for the project.
 
-\justify{}
+\justifying
 An example tox.ini\index{tox.ini} file follows. Take notice of the ``deps'' section,
 where Python module requirements can be specified. In our current configuration,
 these are in lieu of test harness requirements specified in our
@@ -92,26 +92,26 @@ python/requirements-test.txt file.
 	\lstinputlisting{code/07-python/tox.ini}
 \end{mybox}
 
-\justify{}
+\justifying
 Note that we can also include test requirements outside of our tox.ini file, as detailed
 in the next section.
 
 \subsection{Python Test Requirements}
 
-\justify{}
+\justifying
 Some requirements are strictly intended to be part of the test harness, but are not
 needed for the application proper. Using a separate file, such as
 python/requirements-test.txt, makes this delineation clear to folks who are not familiar with the project.
 
 \subsection{Unit Test Cases}
 
-\justify{}
+\justifying
 Unit and functional testing is foundational in developing robust, secure
 code. We want to be sure that when we create new code, we are also adding
 test cases to our test suite that fully cover the new classes, functions, and so on.
 
 
-\justify{}
+\justifying
 Consider the following example unit test case. The purpose is to test
 that the function check\_docker() in the file python/devsecops/lib/helper\_functions.py 
 returns True when called from inside a Docker container.
@@ -122,7 +122,7 @@ returns True when called from inside a Docker container.
 
 \subsection{Test Coverage}
 
-\justify{}
+\justifying
 As mentioned previously, we can avail ourselves of the coverage module by adding it to test-requirements.txt or the deps section of our tox.ini file.
 The purpose is to automatically generate a report on how much of our code is ``covered'' by test cases in python/test.
 

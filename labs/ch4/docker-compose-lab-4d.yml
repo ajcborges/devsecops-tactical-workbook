@@ -9,5 +9,5 @@ services:
       dockerfile: ./Dockerfile.lab4d
     volumes:
       # if you change the name of users home dir, update in Dockerfile as well
-      - .:/home/franklin
+      - .:/home/devsecops
 

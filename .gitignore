@@ -6,6 +6,7 @@
 _markdown_devsecops_tactical
 *.nfs*
 *.swp
+*.tex.recover.bak~
 
 # Book build artifacts
 _build

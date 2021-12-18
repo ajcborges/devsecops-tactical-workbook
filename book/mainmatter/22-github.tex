@@ -1,7 +1,7 @@
 \chapter{Revision Control}
 \includegraphics[scale=0.20]{images/owl-50267_1920.jpg}
 
-\justify{}
+\justifying
 Using a revision control\index{revision control} methodology allows us to organize and store project artifacts. Typically these
 artifacts are source code files but may include documentation, files to assist us with Kubernetes cluster management and application
 deployment, and more. Websites like \href{https://github.com}{github.com} for example, are the modern
@@ -11,44 +11,47 @@ single code base stored in a repository, the structure which encompasses a typic
 storage are considered, we can still realize a great benefit from being able to create releases, which can be tagged and ``rolled''
 forward to and back from.
 
-\justify{}
+\justifying
 There are other similar services we can choose from. These tend to be free for personal projects, non-commercial, and even some commercial
 uses. For example \href{https://bitbucket.org/product}{Bitbucket} and \href{https://about.gitlab.com/}{GitLab}. For the purposes of this
 book we will focus GitHub\index{GitHub}, since many people are familiar with it.
 
-\justify{}
+\justifying
 Git is the tool that allows for revision control of your work. GitHub is a repository for storing that work, creating
 teams to work on projects, tracking issues, defining release packages, and more. Simply put, \href{github.com}{github.com}
 is a website that gives you a place to store the work you are using git to manage. Git was created in 2005 by
-Linus Torvalds\index{Linus Torvalds}, who, as you may know, also created the Linux kenrnel.
+Linus Torvalds\index{Linus Torvalds}, who, as you may know, also created the Linux kernel.
 
-\justify{}
+\justifying
 After creating your account on GitHub, one of the very first things you should do is to configure two-factor authentication (2FA)\index{2FA} for your GitHub account.
 See \href{https://docs.github.com/en/github/authenticating-to-github/securing-your-account-with-two-factor-authentication-2fa}{securing your account with two factor authentication}
 for more information. If you already have an account at GitHub, now is a good time to make sure you have this feature enabled. Two-factor authentication provides
 an additional layer of security on your Github account, and is all-around good practice. Using two- or multi-factor authentication with a
 password manager will do wonders
-to improve your security hygeine. You may also use your password manager to store your account recovery codes. Creating a text file
+to improve your security hygiene. You may also use your password manager to store your account recovery codes. Creating a text file
 that contains your recovery codes and keeping an encrypted copy in your home directory is another option.
 
 \section{Creating a Repository}
 
 Repository creation is well documented, for example
-\href{https://docs.github.com/en/get-started/quickstart/create-a-repo}{these steps in the GitHub quickstart pages}. Let look a bit
+\href{https://docs.github.com/en/get-started/quickstart/create-a-repo}{these steps in the GitHub quick start pages}. Let look a bit
 more closely ar what is involved in this process.
 
-\justify{}
+\justifying
 Often I will start a new repository on my personal account while I use the steps in this book to get the project off the ground.
 Later I will move the repository into an organization where the responsibility for ownership and administration can be
 shared with other folks.
 
-\justify{}
+\justifying
 Directions for the labs in this chapter are located in GitHub, of course!
 \href{https://github.com/devsecfranklin/devsecops-tactical-workbook/tree/main/code/ch5}{Follow this link to view the lab files},
 or simply proceed with the steps below.
 
-\justify{}
-So far we have created the files seen in figure \ref{projfiles} to our project. There is much to be gained from bringing our project under revision control so let's make that our next task. Take note, the ``top level'' for our GitHub repository will be the ``myproject'' folder even though we have some files in our ``/home/devsecops'' hoe directory that impact our project. We want to keep a separation beteen the source code and documentation in the ``myproject'' folder and any machine specific configuration that is present on an individual developers workstation.
+\justifying
+So far we have created the files seen in figure \ref{projfiles} to our project. There is much to be gained from bringing our project under revision control so let's
+make that our next task. Take note, the ``top level'' for our GitHub repository will be the ``myproject'' folder even though we have some files in our ``/home/devsecops''
+home directory that impact our project. We want to keep a separation between the source code and documentation in the ``myproject'' folder and any machine specific
+configuration that is present on an individual developers workstation.
 
 \begin{figure}[!htb]
 \centering
@@ -61,7 +64,7 @@ So far we have created the files seen in figure \ref{projfiles} to our project. 
 
 \subsection{Repository Settings}
 
-\justify{}
+\justifying
 When setting up a new repository in my GitHub account, I always click the Settings tab (with the little gear icon) and then choose the
 ``Branches'' section. The Default branch gets set to ``main''. Clicking the ``Add Rule'' button, entering ``main'' for the ``Branch name pattern'',
 and then the green ``Create'' button sets up master as a protected branch. Consider the following example \ref{branchprotect}.
@@ -73,7 +76,7 @@ and then the green ``Create'' button sets up master as a protected branch. Consi
 \label{branchprotect}
 \end{figure}
 
-\justify{}
+\justifying
 After we start to work with CI/CD tools (status checks, like GitHub Actions for example) new choices, as seen in figure \ref{statuscheck}, become
 available in this part of your repository for managing those checks.
 
@@ -91,17 +94,17 @@ Once our changes are completed, the typical process is to request a review from 
 
 \subsection{Working with Branches}
 
-\justify{}
+\justifying
 Naming your branches something useful is helpful (self documenting). Let's look at how to create a branch.
 
 \subsection{Pull Requests}
 
-\justify{}
+\justifying
 When you make changes on a local branch, say on your personal laptop, you will eventually want those changes
 to flow back into the main project. Opening a pull request\index{Pull Request} is a means of letting other
 people know you've got a set of changes ready for review and potential changes.
 
-\justify{}
+\justifying
 Keeping pull requests smaller and more frequent makes it easier for your
 peers to review your changes. It also means you will be less likely to lose work.
 
@@ -111,14 +114,14 @@ peers to review your changes. It also means you will be less likely to lose work
 
 \section{Forking and Cloning Existing Repositories}
 
-\justify{}
+\justifying
 When someone else has a project on github.com that you would like to make changes to, you can make a ``fork'' of that project.
 Forking\index{forking} a repository means you are making a copy of that repository to your personal account on the GitHub web
 site. The reason for creating a fork is so we can make and test changes without any impact on the original repository.
 
-\justify{}
-Once you have created a fork, you create a locay copy of your fork on one or more of your personal workstations. This is
-known as creating a ``clone''\index{cloning a repo} of your fork. Now we have a workspace to make and test changes without
+\justifying
+Once you have created a fork, you create a local copy of your fork on one or more of your personal workstations. This is
+known as creating a ``clone'' \index{cloning a repo} of your fork. Now we have a workspace to make and test changes without
 any impact to the parent repository. These changes or completed by creating one or more ``branches''. These branches and the
 changes they encompass can be tested further, and are eventually merged into the parent repository.
 
@@ -129,16 +132,16 @@ changes they encompass can be tested further, and are eventually merged into the
 \label{forkandclone}
 \end{figure}
 
-\justify{}
+\justifying
 This can be a tricky pattern to master, but it is fundamental if you
 want to join the ranks of Open Source contributors and developers that
 enjoy the full power of Git and GitHub.
 
-\justify{}
+\justifying
 Adding a ``remote'' to your repository clone is a git convention to easily manage branches between your clone and
 the original source repository.
 
-\justify{}
+\justifying
 If you are starting out on a new project, simply creating a repo is probably enough. The whole fork/clone/merge to original
 paradigm is better suited to medium to large size projects that accept contributions from multiple developers.
 
@@ -146,7 +149,7 @@ paradigm is better suited to medium to large size projects that accept contribut
 
 \section{Template Repositories}
 
-\justify{}
+\justifying
 A GitHub Template Repository is available should you decide to follow along with the code examples in this book. The next sets of steps are
 predicated on having Docker installed and running as described in the previous chapter.
 
@@ -156,31 +159,30 @@ predicated on having Docker installed and running as described in the previous c
 
 \subsection{CODEOWNERS}
 
-\justify{}
-Creating a CODEOWNERS\index{CODEOWNERS} file is a good way to automatically tag folks in PRs to make them aware of
+\justifying
+Creating a CODEOWNERS\index{CODEOWNERS} file is a good way to automatically tag folks in pull requests to make them aware of
 changes to certain files or folders in your projects.
 
-\justify{}
-In it's most basic form, the CODEOWNERS file in the .github directory
-simply lists the file(s) and the owner(s) on a line together.
+\justifying
+In it's most basic form, the CODEOWNERS file in the .github directory simply lists the file(s) and the owner(s) on a line together.
 
-\justify{}
-Consider this example where we add the @hotpeppersec to the CODEOWNERS file.
+\justifying
+Consider this example where we add the ``@kevinflynn'' user to the CODEOWNERS file.
 
 \begin{mybox}{\thetcbcounter: Adding a user to CODEOWNERS file}
       \lstinputlisting{code/22-github/create-codeowners.txt}
 \end{mybox}
 
-\justify{}
-In this example, the @githubusername user will be tagged as a reviewer in all pull requests.
+\justifying
+In this example, the ``@kevinflynn'' user will be tagged as a reviewer in all pull requests.
 
 \subsection{The .gitignore file}
 
-\justify{}
+\justifying
 Use this file\index{.gitignore} to designate items that should be excluded from revision
 control. This is useful for helping keep credentials and other secrets out of the GitHub repository.
 
-\justify{}
+\justifying
 Consider the following example .gitignore file. This will prevent you from checking in the .DS-Store that
 Macintosh creates in many folders.
 
@@ -190,12 +192,12 @@ Macintosh creates in many folders.
 
 \section{Automated Repository Scanning}
 
-\justify{}
+\justifying
 There are many GitHub plugins that are free for single-user/non-commercial scenarios. a cursory search of the web of the
 GitHub Marketplace will turn up many of these. Let's leave some of the
 tedious work to the bots, allowing us to focus on our DevSecOps journey to the cloud!
 
-\justify{}
+\justifying
 \begin{tabular}{| p{2.3cm}| p{4.5cm} | p{8.5cm} |}
       \hline
      \textbf{Tool}& \textbf{Purpose}& \textbf{Source} \\
@@ -212,9 +214,8 @@ tedious work to the bots, allowing us to focus on our DevSecOps journey to the c
 
 \section{Directory Structure}
 
-\justify{}
-Relevant files and folders mentioned in this chapter are organized as
-seen below.
+\justifying
+Relevant files and folders mentioned in this chapter are organized as seen below.
 
 \begin{figure}[!htb]
       \centering

@@ -24,7 +24,7 @@ You can verify the image built properly like so:
 Note your prompt will change and you will be ``inside'' the containerized development environment. 
 
     ~ $ pwd
-    /home/franklin
+    /home/kflynn
     ~ $ 
 
 1. Use the ls command to show that your filesystem has been mounted on your container.
@@ -51,7 +51,7 @@ Note your prompt will change and you will be ``inside'' the containerized develo
     ~ $ exit
     ls -la *.txt 
     -rw-r--r-- 1 root     root 0 Dec 18 09:22 bigwheel.txt
-    -rw-r--r-- 1 franklin engr 0 Dec 18 09:22 regularjoe.txt
+    -rw-r--r-- 1 kflynn engr 0 Dec 18 09:22 regularjoe.txt
 
 1. Clean up.
 

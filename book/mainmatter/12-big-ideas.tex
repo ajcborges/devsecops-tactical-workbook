@@ -3,7 +3,7 @@
 \centering
 \includegraphics{images/book-5104342_1920.jpg}
 
-\justify{}
+\justifying
 There are some key precepts that will serve the aspiring DevSecOps engineer well. In this
 chapter we will explore some of these in an attempt to level-set our understanding of the
 domain. We will also continue to introduce the reader to the vernacular of the modern day
@@ -12,7 +12,7 @@ is they are prevalent enough that you should have a passing familiarity with the
 
 \section{What are DevOps and DevSecOps?}
 
-\justify{}
+\justifying
 Fundamentally, DevOps and DevSecOps are models for how a team or set of teams can be arranged
 to optimize the creation of applications and Infrastructure as Code. They both benefit from
 employing similar, if not identical, Agile methodologies. Calling out the ``Security''
@@ -21,7 +21,7 @@ of security focused process and activities by the teams involved. Some folks wil
 the term ``DevOps'', insisting the security piece is still there and just as important, so
 there is no need for it to be called out separately.
 
-\justify{}
+\justifying
 Consider the table \ref{DevSecOps} below. The big takeaway here is to notice the
 DevSecOps path goes a bit further
 in highlighting security and making it a priority. The goal is to think hard about integrating
@@ -44,14 +44,14 @@ our work products are as secure as possible.
 
 \section{Revision Control}
 
-\justify{}
+\justifying
 Code, documents, test cases, and other software work products begin their lives on the workstations of creators
 and developers. In this book we will refer to the environments where this takes place as the ``local'' environment.
 These work products are typically created, reviewed and checked into Revision Control Systems
 (RCS)\index{Revsion Control System (RCS)}, GitHub\index{GitHub} for example, by the DevSecOps practitioner.
 Other popular revision control systems include GitLab\index{GitLab} and BitBucket\index{BitBucket}.
 
-\justify{}
+\justifying
 Although it may seem like there are a lot of choices when it comes to revision control, there
 is one tool that
 underlies them all. That tool is known as git. Git is the brainchild of Linus Torvalds, who also
@@ -62,12 +62,12 @@ and large. For this and may other reasons, it is at the heart of many of these R
 in addition to these websites, there are many desktop tools meant to aid developers with revision control on their local
 machine. While these can be quite handy, there is no substitute for learning the intricacies of git from the command
 line. It will come in quite handy indeed.
-\justify{}
+\justifying
 We will look more closely at git and revision control in a later chapter.
 
 \section{Testing}
 
-\justify{}
+\justifying
 A test case as a discrete check, or grouping of similar types of checks,
 that we use to ensure our work products meet certain minimum standards. Test cases are created with
 and often run against our work products at the time they are checked in to the revision control system.
@@ -78,7 +78,7 @@ types and aspects of testing throughout this book.
 
 \subsection{White Box vs. Black Box Testing}
 
-\justify{}
+\justifying
 This is a distinction based on whether you have access to the code, documentation, or hardware under test.
 For example, testing the code from a project where you can see the source code would be considered "white box"
 testing. You might also look at this as the difference between red\index{Red Team} and blue
@@ -87,21 +87,21 @@ access to documentation about a system that they are testing.
 
 \subsection{SAST Security Testing}
 
-\justify{}
+\justifying
 A form of white box testing, Static Application Security Testing (SAST)\index{SAST} helps identify
 shortcomings by scanning and evaluating your source code.
 
 \subsection{DAST Security Testing}
 
-\justify{}
+\justifying
 This is testing against an application that we do not have the source code to. In fact, we may not know much
 about the target at all at the beginning of testing. During Dynamic Application Security Testing (DAST)\index{DAST}
 the tester poses as an attacker to help identify gaps and vulnerabilities in the application.
 
 \subsection{IAST Security Testing}
 
-\justify{}
-A combination of the previous two methodoliges, Interactive Application Security Testing (IAST)\index{IAST} combines
+\justifying
+A combination of the previous two methodologies, Interactive Application Security Testing (IAST)\index{IAST} combines
 SAST and DAST testing.
 
 \section{Pipelines}
@@ -113,11 +113,11 @@ SAST and DAST testing.
 \label{pipeline}
 \end{figure}
 
-\justify{}
+\justifying
 As seen in figure \ref{pipeline}, work typically flows from the local environments, into a test
 environment, and finally to production where it is available for use by the entire user base.
 
-\justify{}
+\justifying
 We will refer to the entirety of this three-stage flow as one example of what is known as a build pipeline\index{pipeline}.
 Code from one or more local environments is checked in to the revision control system throughout a
 typical DevSecOps workday, and continuously tested and integrated with the main code base. That is to say, work undergoes
@@ -126,7 +126,7 @@ and often Continuous Delivery (CD)\index{Continuous Delivery (CD)} between local
 where the term ``CI/CD Pipeline'' comes from. A business unit may choose to designate more than just the three dev, test,
 and prod environments mentioned here, depending on their particular use cases and ways of working.
 
-\justify{}
+\justifying
 While the CI/CD Pipeline is often a primary focus of the DevSecOps engineer, other pipelines exist as well. For example,
 let's assume our organization maintains a vast pool of raw data, also known as a data lake\index{Data Lake}. The staff Data
 Engineers build and maintain Data Science\index{Data Science} pipelines to facilitate the smooth flow
@@ -138,13 +138,13 @@ between differing functions might be said to comprise two different pipelines.
 
 \section{Shifting Left}
 
-\justify{}
+\justifying
 We now have a mental picture of how software will flow through our three environments, from
 Development, to Test, and finally into Production where it is accessible to the widest
 base of consumers. Integration of best security practices into this flow, as early and as often
 as possible, is highly desirable.
 
-\justify{}
+\justifying
 Imagine our software life cycle occurring along a temporal axis, t. Intentionally moving security to the
 left on this axis (lower values of t) is known as ``Shifting Left''\index{Shift Left} as seen
 in figure \ref{shift}.
@@ -158,7 +158,7 @@ in figure \ref{shift}.
 
 \section{Zero Trust}
 
-\justify{}
+\justifying
 Starting from the assumption that all the computers and networks are inherently unsafe and/or already compromised, the
 Zero Trust model gives organizations a way of thinking when establishing a security posture.\cite{zerotrust} This premise,
 while rather simple from the conceptual standpoint, can be anything but when it comes to application. The difficulties in
@@ -166,14 +166,14 @@ scaling this mindset up for larger organizations can quickly become anything but
 
 \section{Automation}
 
-\justify{}
+\justifying
 Consider what may happen when we want to apply the lessons from this book across a large environment made up of many hosts,
 containers, pieces of application software, etc. It becomes a huge challenge for an operator to log in to each host or container
 individually. Typing, or even cutting and pasting commands to keep things up and running properly, look at logs,
 and so on becomes problematic. Creating shell scripts can be quite helpful, but is an outdated modality when we consider
 the daunting size and complexity of the modern administrative domain.
 
-\justify{}
+\justifying
 This is a great use-case for automation. Automation\index{automation} is a way to provision and maintain some or many hosts
 in a programmatic manner. Another desirable goal, and hopefully result of automation is to reduce the amount of
 per-host interaction that comes with the work of administering systems. Automation is the force multiplier we use to achieve
@@ -183,19 +183,19 @@ build and processes we engender should work just as well for three machines as t
 
 \section{Scalability}
 
-\justify{}
+\justifying
 Bringing together many of the ideas in this section as a foundation, we're able to serve our pipelines and applications from a few users, to many.
 Consider the differences between the sort of traffic we can handle with an application on a single server, compared to the
 amount of traffic we can handle when we introduce five more servers running the same application code, and a load balancer
 to distribute the traffic evenly among these servers.
 
-\justify{}
+\justifying
 Couple the principle of scalability with the explosive automation tooling ecosystem and you are on the path to doing more,
 better work in less time with a smaller staff.
 
 \section{Immutability}
 
-\justify{}
+\justifying
 There is obvious advantage of being able to quickly stand up new clones of our project to replace existing instances that
 may be outdated, insecure, etc. The idea of immutability, in reference to software projects, is the degree to which something,
 our running project for example, can be changed. Immutability\index{immutability} is desirable, in that we wish to be able to
@@ -205,7 +205,7 @@ containerization, we can more easily achieve immutability across the software li
 
 \section{Ephemerality}
 
-\justify{}
+\justifying
 Ephemerality\index{ephemerality} is the concept of something being inherently transitory in nature. For something to be
 considered ephemeral, it can exist only briefly. Using immutable containers makes it easier to realize
 infrastructure and hosts that are ephemeral. Rather than spending a great deal of time patching and upgrading systems as
@@ -215,14 +215,14 @@ are immutable and ephemeral to the degree possible.
 
 \section{GitOps}
 
-\justify{}
+\justifying
 Just to be sure we have a complete picture of the landscape, we will define the term ``GitOps''\index{GitOps} as a
 cloud native analog of Infrastructure as Code being developed with the DevOps/DevSecOps paradigm. Cloud infrastructure
 stored in a Git based revision control system can keep a Kubernetes cluster up to date, often with Continuous Deployment.
 
 \section{Organizational Maturity}
 
-\justify{}
+\justifying
 When I first encounter a new team or group, I try to frame their capabilities in terms of organizational maturity.
 Many things can have an effect on the posture of an orgaznization. A few examples:
 
@@ -240,7 +240,7 @@ a sense of challenges that might arise during creation of work products in terms
 the security of any output. The importance of the maturiy of an organization stems from it's high degree to which it shapes
 the effectiveness of that organization.
 
-\justify{}
+\justifying
 Let's consider Conway's Law:
 
 \begin{displayquote}
@@ -250,7 +250,7 @@ organization's communication structure.}
 Melvin E. Conway
 \end{displayquote}
 
-\justify{}
+\justifying
 As with so many things in life, communication is a fundamental key to team success. Keep in mind that each DevSecOps
 team is somewhere on the spectrum in terms of their capability and organizational maturity, whether they realize it or not!
 There is a direct correlation between the maturity of the team and the results you will get from them. Of course there are
