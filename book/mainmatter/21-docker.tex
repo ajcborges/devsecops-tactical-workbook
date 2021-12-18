@@ -141,13 +141,25 @@ build and test your application.
 
 It is often desirable to write files between the host system and a running Docker container. We can accomplish this by taking advantage of the Docker concept of ``Volumes''. This is \href{https://docs.docker.com/storage/volumes/#use-a-volume-with-docker-compose}{easy to achieve thanks to docker-compose}.
 
+\markdownInput{../labs/ch4/lab-4d.md}
 
+\justifying
+With this lab we are able to illustrate the concept of mounting a volume to be shared between our host system and a 
+container image. The ability to write files between the two environments means we can quickly spin up a small container and have an
+encapsulated ``scratch workspace'' with minimal effort. Often I will use this pattern to try our different dependencies, say
+different versions of a Python module to see how it will interact (or if I can get things to build at all!). The host machine is
+not cluttered with packages, dependencies, and failed attempts at building and configuring things at the end of the working
+session.
+
+\justifying
+Another interesting result is that we can create files and directories on the host without the usual (albiet minor) annoyance
+that they will all be owned by the superuser. 
 
 \section{Container Orchestration}
 
 \justify{}
 An orchestrator for containers can be thought of as an engine which allows for their provisioning, deployment, scaling, monitoring, load
-balancing, and more. The Container Orchestrator manages the lifecycle and visibility of a container at all stages.
+balancing, and more. The Container Orchestrator manages the life cycle and visibility of a container at all stages.
 
 \justify{}
 Kubernetes\index{Kubernetes} is an example, perhaps even the penultimate example, of a Container Orchestrator\index{orchestration}.

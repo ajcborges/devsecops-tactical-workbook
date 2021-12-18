@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  volumelab:
+    hostname: volumelab
+    image: volumelab
+    build:
+      context: .
+      dockerfile: ./Dockerfile.lab4d
+    volumes:
+      # if you change the name of users home dir, update in Dockerfile as well
+      - .:/home/franklin
+

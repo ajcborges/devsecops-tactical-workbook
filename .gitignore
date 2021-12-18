@@ -5,6 +5,7 @@
 .DS_Store
 _markdown_devsecops_tactical
 *.nfs*
+*.swp
 
 # Book build artifacts
 _build

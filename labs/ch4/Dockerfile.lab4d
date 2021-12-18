@@ -1,0 +1,60 @@
+# syntax=docker/dockerfile:1
+
+# This variant is highly experimental, and not officially supported by the Go project (see golang/go#19938 for details).
+FROM golang:1.17.5-alpine3.15
+
+LABEL maintainer="Franklin D. <frank378@gmal.com>"
+
+# This is used for adding to the label of the docker image.
+ARG BUILD_DATE
+ARG USER="franklin"
+
+###############
+# Environment #
+###############
+WORKDIR /home/${USER}
+ENV MY_DIR ${WORKDIR}
+ADD . ${MY_DIR}
+
+# The GOPATH environment variable lists places to look for Go code.
+# From Go version 1.8, Unix systems specify the $HOME/go directory 
+# as the default GOPATH.
+ENV GOPATH /home/${USER}/go
+
+# The Go binary distributions assume they will be installed in /usr/local/go
+ENV GOROOT /usr/local/go
+
+#####################
+# Add some packages #
+#####################
+RUN apk add --no-cache \
+	bash \
+	tar \
+	git \
+	make \
+	openssh \
+	curl \
+	gcc \
+	doas \
+	libc-dev
+
+##################
+# Set up my dude #
+##################
+RUN if [ -f "/home/${USER}/.bash_history" ]; then chmod 666 /home/${USER}/.bash_history; fi
+RUN addgroup --gid 9001 engr && \
+	adduser \
+    	--disabled-password \
+    	--gecos "" \
+    	--home "/home/${USER}" \
+    	--ingroup "engr" \
+    	--uid "1000" \
+    	"${USER}"; \
+	chown -R ${USER}:engr /home/${USER}; \
+	chown -R ${USER}:engr ${GOROOT}
+
+RUN echo "permit :wheel\n" >> /etc/doas.conf \
+	&& echo "permit nopass ${USER}"  >> /etc/doas.conf \
+	&& /usr/sbin/addgroup ${USER} wheel
+
+USER ${USER}
