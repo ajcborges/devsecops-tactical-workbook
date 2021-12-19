@@ -1,0 +1,15 @@
+# Used for colorizing output of echo messages
+LBLUE := "\\033[1\;34m"
+NC := "\\033[0m" # No color/default
+
+docker: ## build docker container for local dev
+	@if [ -f /.dockerenv ]; then $(MAKE) print-status \
+	MSG="***> Don't run make docker inside docker container <***" \
+	&& exit 1; fi
+	$(MAKE) print-status MSG="Building with docker-compose"
+	docker-compose -f docker/docker-compose.yml build my-automation
+	docker-compose -f docker/docker-compose.yml run my-automation /bin/bash
+
+print-status:
+	@:$(call check_defined, MSG, Message to print)
+	@echo -e "$(LBLUE)$(MSG)$(NC)"

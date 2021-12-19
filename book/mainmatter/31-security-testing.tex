@@ -2,14 +2,41 @@
 
 \includegraphics[scale=0.85]{images/art-supplies-1324034.jpg}
 
-Let's talk about some things. 
+This section is about things we can do to ensure we are driving out bugs and finding security issues as soon as possible in our
+product lifecycle. 
 
-\section{SAST}
+\section{SAST Security Testing}
 
 \justifying
-Talk about SAST.
+A form of white box testing, Static Application Security Testing (SAST)\index{SAST} helps identify
+shortcomings by scanning and evaluating your source code.
+
+\section{DAST Security Testing}
+
+\justifying
+This is testing against an application that we do not have the source code to. In fact, we may not know much
+about the target at all at the beginning of testing. During Dynamic Application Security Testing (DAST)\index{DAST}
+the tester poses as an attacker to help identify gaps and vulnerabilities in the application.
+
+\section{IAST Security Testing}
+
+\justifying
+A combination of the previous two methodologies, Interactive Application Security Testing (IAST)\index{IAST} combines
+SAST and DAST testing.
 
 \section{Policy as Code}
 
 \justifying
 Talk about PaC.
+
+\section{Validating Container Images}
+
+\justifying
+Lab with Hadolint.
+
+\section{Linting and Scanning Code}
+
+\subsection{Python}
+
+\justifying
+Lab with Bandit.

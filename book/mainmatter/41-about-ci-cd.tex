@@ -32,8 +32,8 @@ frequently.
 			\textbf{Language} & \textbf{Name} & \textbf{Source}\hfill                                                        \\
 			Ansible           & ansible-lint  & python (pip install ansible-lint)                                      \\
 			Markdown          & mdl           & ruby (gem install mdl)                                                 \\
-			Puppet            & puppet-lint   & ruby (gem install puppet-lint)\url{http://puppet-lint.com/}} \\
-			Python            & pylint/flake8 & python (pip install pylint/flake8)                                     \\
+			Puppet            & puppet-lint   & ruby (gem install puppet-lint)\url{http://puppet-lint.com/} \\
+			Python            & pylint and flake8 & python \\
 		\end{tabular}
 	\end{center}
 \end{table}
@@ -47,7 +47,7 @@ how we let ``deps'' do the work of installing the ``pylint'' dependency for
 us.
 
 \begin{mybox}{\thetcbcounter: An Example tox.ini file}
-	\lstinputlisting{code/08-cicd/toxfile-pylint}
+	\lstinputlisting{code/41-cicd/toxfile-pylint}
 \end{mybox}
 
 \section{GitHub Actions}

@@ -58,7 +58,7 @@ it under the PHONY directive. This will allow the Makefile to find and run the d
 	\lstinputlisting{code/23-makefiles/phony-makefile}
 \end{mybox}
 
-% lab 6a
+\markdownInput{../labs/ch6/lab-6a.md}
 
 \section{Variables and Conditionals in a Makefile}
 
@@ -71,10 +71,33 @@ with a single target, ``clean''. The first two lines of this Makefile run shell 
 whether ``kubectl'' and ``tkn'' are installed in the current environment.
 
 \begin{mybox}{\thetcbcounter: Conditionals and Variable Example}
-	\lstinputlisting{{listing options={style=tcblatex,numbers=left,numberstyle=\tiny\color{red!75!black}}}code/23-makefiles/6b-Makefile}
+	\lstinputlisting{code/23-makefiles/6b-Makefile}
 \end{mybox}
 
-\section{Large Example Makefile}
+\section{Keeping Your Project Clean}
+
+\justifying
+It can be handy to have the option to type ``make clean'' and have all the temporary files and build related artifacts cleaned up from your project directory.
+
+\markdownInput{../labs/ch6/lab-6b.md}
+
+\section{Colorizing Makefile Output}
+
+\justifying
+Not always the greatest idea in automated pipelines but can be used to enhance readability.
+
+\markdownInput{../labs/ch6/lab-6c.md}
+
+\section{Using Makefile with Docker}
+
+\justifying
+Often I will add lines to the Makefile so that certain rules can only be invoked from the host or the container, but not both.
+
+\begin{mybox}{\thetcbcounter: Conditionals and Variable Example}
+	\lstinputlisting{code/23-makefiles/6d-dockerenv}
+\end{mybox}
+
+\section{Full Example Makefile}
 \justifying
 Let's consider a larger Makefile so we can get familiar with more of the elements.
 

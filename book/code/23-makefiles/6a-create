@@ -1,4 +1,0 @@
-    franklin:~$ cat Makefile
-    code:
-            echo "this is a test"
-
