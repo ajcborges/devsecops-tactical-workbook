@@ -1,13 +1,13 @@
 \chapter{Getting Ready to Get Tactical}
 
 \centering
-\includegraphics[scale=0.20]{images/ingredients-498199_1920.jpg}
+\includegraphics[scale=0.25]{13-setup.jpg}
 
 
 \justifying
 Think of this chapter as the \emph{mise en place} of our DevSecOps souffle. We will increase our chances of success
 by preparing our work environment for the project at hand. Let's start our preparations by outlining our
-overall objectives. 
+overall objectives.
 
 \justifying
 \begin{itemize}
@@ -53,15 +53,15 @@ neither required nor desired.
 
 \subsection{Linux}
 
-My prefered environment is a Debian based Linux distribution. Ubuntu, Cinnamon, and PopOS are all examples of 
-Linux distrubutions in this family. While some code examples and lab containers use Debian-based distros, you
-may also encounter Alpine Linux (typically chosen for it's smaller image size), among others.
+My prefered environment is a Debian based Linux distribution. Ubuntu, Cinnamon, and PopOS are all examples of
+Linux distrubutions in this family. While some code examples and lab containers use Debian-based distros, some labs will
+use Alpine Linux (typically chosen for it's smaller image size), among others.
 
 \section{The Workhorse (IDE)}
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[scale=0.45]{images/setup-vscode.png}
+\includegraphics[scale=0.45]{13-setup-vscode.png}
 \caption{The VScode IDE.}
 \label{vscode-ide}
 \end{figure}
@@ -82,7 +82,7 @@ window\index{Terminal Window} so the developer can execute shell commands withou
 \section{SSH Key Setup}
 
 \justifying
-Take note of the fact that setting up SSH keys means generating a pair of keys, not a single key. This is an important 
+Take note of the fact that setting up SSH keys means generating a pair of keys, not a single key. This is an important
 distinction. You will want to add your public key to sites like \href{github.com}{github.com}. The public key half will
 also be added to machine instances that you create with public cloud providers. This will allow you to log in without
 having to provision a user/password combination. You should take care to protect the private key at all times. Under no circumstances
@@ -91,12 +91,12 @@ should you share your private SSH key. \cite{ssh}
 \justifying
 Take a few minutes to generate an SSH key\index{SSH keys} pair if you don't already have one. We will add the public half of
 our SSH key pair to hosts we provision. The directions for generating an SSH keypair found on the
-\href{github.com}{github.com} website are perfect for our setup task. Follow the directions in the article 
+\href{github.com}{github.com} website are perfect for our setup task. Follow the directions in the article
 \href{https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent}{Generating a new SSH key and adding it to the ssh-agent}
 
 \subsection{Generating a Key from the Command Line}
 
-If you are using a Linux or Mac system, you have the option to create your SSH key pair from the command line. Consider 
+If you are using a Linux or Mac system, you have the option to create your SSH key pair from the command line. Consider
 the following example code listing.
 
 \begin{mybox}{\thetcbcounter: SSH Key Generation}
@@ -138,7 +138,7 @@ Copy your GPG key, beginning with the string ``BEGIN PGP PUBLIC KEY BLOCK'' and 
 
 \justifying
 The pass program allows you to encrypt your keys, files, and other secrets in an encrypted database that is
-stored in your home directory. Know that eventually, secrets leak. They can be exposed in a variety of ways, 
+stored in your home directory. Know that eventually, secrets leak. They can be exposed in a variety of ways,
 often they are committed to revision control by mistake.
 
 \justifying
@@ -151,7 +151,7 @@ Consider the following example where the pass program is used to encrypt secrets
 \section{Standard Project Layout}
 
 \justifying
-The code examples in this book are organized in a standard way. The use of a known project 
+The code examples in this book are organized in a standard way. The use of a known project
 layout across all project/repository directories increases the degree to which our projects can be used, reused, and
 interoperate. Attention will be called to the folder and file naming conventions that are defined by this layout
 as we encounter them.
@@ -160,8 +160,8 @@ as we encounter them.
 
 \justifying
 Recall that a properly functioning Docker setup on your local machine is a requirement for the upcoming
-lab exercises. See the Docker website for 
-\href{https://docs.docker.com/get-docker/}{instructions on how to install and configure Docker}. 
+lab exercises. See the Docker website for
+\href{https://docs.docker.com/get-docker/}{instructions on how to install and configure Docker}.
 
 % include markdown file to populate a chapter with a lab from markdown files
 \markdownInput{../labs/ch3/lab-3a.md}

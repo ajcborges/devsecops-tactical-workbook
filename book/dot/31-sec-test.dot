@@ -1,0 +1,14 @@
+digraph githubdirectory {
+  size="8,4";
+  node [fontname="Helvetica" fontsize=14 shape=box];
+  edge [fontname="Symbol" fontsize=10];
+
+  devsecops [shape=folder fontname="Symbol" label="/home/devsecops/workspace/myproject"];
+  tests [shape=folder fontname="Symbol" label="tests"];
+  req [fontname="Symbol" label="requirements-security.txt"];
+  md [fontname="Symbol" label="SECURITY.md"];
+
+  devsecops -> tests;
+  tests -> req;
+  devsecops -> md;
+}

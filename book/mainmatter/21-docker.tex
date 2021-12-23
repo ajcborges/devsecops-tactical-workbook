@@ -1,6 +1,6 @@
 \chapter{Containers}
 
-\includegraphics[scale=0.85]{images/container-4203677_1920.jpg}
+\includegraphics[scale=0.85]{21-docker.jpg}
 
 \justifying
 Containerization is the process of encapsulating the code and dependencies for part or all of a project. The most popular
@@ -144,7 +144,7 @@ It is often desirable to write files between the host system and a running Docke
 \markdownInput{../labs/ch4/lab-4d.md}
 
 \justifying
-With this lab we are able to illustrate the concept of mounting a volume to be shared between our host system and a 
+With this lab we are able to illustrate the concept of mounting a volume to be shared between our host system and a
 container image. The ability to write files between the two environments means we can quickly spin up a small container and have an
 encapsulated ``scratch workspace'' with minimal effort. Often I will use this pattern to try our different dependencies, say
 different versions of a Python module to see how it will interact (or if I can get things to build at all!). The host machine is
@@ -153,7 +153,7 @@ session.
 
 \justifying
 Another interesting result is that we can create files and directories on the host without the usual (albiet minor) annoyance
-that they will all be owned by the superuser. 
+that they will all be owned by the superuser.
 
 \section{Container Orchestration}
 
@@ -178,5 +178,5 @@ so on are the foundational elements you will want to become familiar with in pre
 dimensionality that orchestration realizes.
 
 \justifying
-Later we will look more closely at the sprawling and vibrant topic of Kubernetes. For this stage of our journey to DevSecOps
+Later we will look more closely at the sprawling and vibrant topic of Kubernetes \index{Kubernetes}. For this stage of our journey to DevSecOps
 enlightenment, it is enough to know that orchestration exists and have a bit of familiarity with its purpose.

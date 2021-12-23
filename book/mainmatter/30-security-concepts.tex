@@ -1,9 +1,9 @@
 \chapter{Security Concepts}
 
-\includegraphics[scale=0.85]{images/office-space-1744803_1920.jpg}
+\includegraphics{30-security-concepts.jpg}
 
 \justifying
-Shifting gears a bit so that security is top of mind, there are some ideas we can explore that will help ue meet our goal of 
+Shifting gears a bit so that security is top of mind, there are some ideas we can explore that will help ue meet our goal of
 putting out the most secure product possible.
 
 \section{Security Mindedness}
@@ -26,7 +26,7 @@ in figure \ref{shift}.
 
 \begin{figure}
 	\centering
-	\includegraphics{images/shift_left.png}
+	\includegraphics{30-shift-left.png}
 	\caption{Shifting Left}
 	\label{shift}
 \end{figure}
@@ -39,3 +39,26 @@ Zero Trust model gives organizations a way of thinking when establishing a secur
 while rather simple from the conceptual standpoint, can be anything but when it comes to application. The difficulties in
 scaling this mindset up for larger organizations can quickly become anything but simple.
 
+\section{SAST Security Testing}
+
+\justifying
+A form of white box testing, Static Application Security Testing (SAST)\index{SAST} helps identify
+shortcomings by scanning and evaluating your source code.
+
+\section{DAST Security Testing}
+
+\justifying
+This is testing against an application that we do not have the source code to. In fact, we may not know much
+about the target at all at the beginning of testing. During Dynamic Application Security Testing (DAST)\index{DAST}
+the tester poses as an attacker to help identify gaps and vulnerabilities in the application.
+
+\section{IAST Security Testing}
+
+\justifying
+A combination of the previous two methodologies, Interactive Application Security Testing (IAST)\index{IAST} combines
+SAST and DAST testing.
+
+\section{Policy as Code}
+
+\justifying
+Talk about PaC.

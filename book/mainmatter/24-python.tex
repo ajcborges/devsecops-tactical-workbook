@@ -1,9 +1,9 @@
 \chapter{Useful Python}
 
-\includegraphics[scale=0.85]{images/snake-1634293_1920.jpg}
+\includegraphics{24-python.jpg}
 
 \justifying
-Getting started in writing programs is easy with Python. It is a highly extensible language with many add on modules available. 
+Getting started in writing programs is easy with Python. It is a highly extensible language with many add on modules available.
 There is a collection known as Pypi where many of these Open Source\index{OpenSource} modules are hosted.
 Python is fairly easy to learn, especially when compared to other languages. Python runs ``everywhere'', for all intents and
 purposes. With it's gentle learning vurve, it has become the go to language for Data Scientists, System Administrators, and yes, even
@@ -63,12 +63,14 @@ We also add a check in the Makefile to verify the existence of the requirements.
 The intention is, so we can quickly cut and paste the Makefile into a new project, but
 not break anything if no requirements are present yet.
 
+\subsection{Logging Framework}
+
 \section{Python Virtual Environments}
 
 \section{Python Testing}
 
 \justifying
-Security and reliability in our lab and rapid prototyping work is just as important as it is in our work for the Production environment. 
+Security and reliability in our lab and rapid prototyping work is just as important as it is in our work for the Production environment.
 In fact, you might say it's even more important since today's rapid mock ups
 can easily wind up making it into the build pipeline when folks are under a time crunch to deliver.
 
@@ -111,7 +113,7 @@ test cases to our test suite that fully cover the new classes, functions, and so
 
 \justifying
 Consider the following example unit test case. The purpose is to test
-that the function check\_docker() in the file python/devsecops/lib/helper\_functions.py 
+that the function check\_docker() in the file python/devsecops/lib/helper\_functions.py
 returns True when called from inside a Docker container.
 
 \begin{mybox}{\thetcbcounter: An example Unit test case}
@@ -124,3 +126,15 @@ returns True when called from inside a Docker container.
 As mentioned previously, we can avail ourselves of the coverage module by adding it to test-requirements.txt or
 the deps section of our tox.ini file. The purpose is to automatically generate a report on how much of our code
 is ``covered'' by test cases in python/test.
+
+\subsection{Linting with Tox}
+
+Recall that we are using Tox as our main test framework. To set up Tox
+to do our linting work for us, we can add an environment to our envlist
+called ``pylint'' and then declare it in a new stanza in tox.ini. Notice
+how we let ``deps'' do the work of installing the ``pylint'' dependency for
+us.
+
+\begin{mybox}{\thetcbcounter: An Example tox.ini file}
+    \lstinputlisting{code/41-cicd/toxfile-pylint}
+\end{mybox}

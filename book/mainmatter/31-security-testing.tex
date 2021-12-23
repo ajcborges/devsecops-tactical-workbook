@@ -1,42 +1,29 @@
 \chapter{Security Testing}
 
-\includegraphics[scale=0.85]{images/art-supplies-1324034.jpg}
+\includegraphics{31-security-testing.jpg}
 
-This section is about things we can do to ensure we are driving out bugs and finding security issues as soon as possible in our
-product lifecycle. 
+This section is about things we can do to ensure we are driving out bugs and finding security issues as soon as possible in our product life cycle.
 
-\section{SAST Security Testing}
+\markdownInput{../labs/31-security-testing/lab-31a-sec-test-setup.md}
 
-\justifying
-A form of white box testing, Static Application Security Testing (SAST)\index{SAST} helps identify
-shortcomings by scanning and evaluating your source code.
+\section{Code Scanning}
 
-\section{DAST Security Testing}
-
-\justifying
-This is testing against an application that we do not have the source code to. In fact, we may not know much
-about the target at all at the beginning of testing. During Dynamic Application Security Testing (DAST)\index{DAST}
-the tester poses as an attacker to help identify gaps and vulnerabilities in the application.
-
-\section{IAST Security Testing}
-
-\justifying
-A combination of the previous two methodologies, Interactive Application Security Testing (IAST)\index{IAST} combines
-SAST and DAST testing.
-
-\section{Policy as Code}
-
-\justifying
-Talk about PaC.
+\markdownInput{../labs/31-security-testing/lab-31b-python-scanning.md}
 
 \section{Validating Container Images}
 
 \justifying
-Lab with Hadolint.
+Lab with Hadolint and Trivy.
 
-\section{Linting and Scanning Code}
+\markdownInput{../labs/31-security-testing/lab-31c-containers.md}
 
-\subsection{Python}
+\section{Directory Structure for Security Testing}
 
 \justifying
-Lab with Bandit.
+Relevant files and folders related to our security testing framework are organized as seen below.
+
+\begin{figure}[!htb]
+    \input{dot/31-sec-test.tex}
+    \caption{Security testing related files.}
+    \label{sectest}
+\end{figure}

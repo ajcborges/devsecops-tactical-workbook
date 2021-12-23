@@ -1,19 +1,19 @@
 \chapter{Continuous Integration \& Deployment}
 
-\includegraphics[scale=0.20]{images/finland-905712_1920.jpg}
+\includegraphics[scale=0.25]{41-about-ci-cd.jpg}
 
-\justify{}
+\justifying
 Accommodations for Continuous Integration (CI) and Continuous Deployment
-(CD) in our projects directly corresponds to our chances of success. One of the keys to 
+(CD) in our projects directly corresponds to our chances of success. One of the keys to
 a successful build pipeline is speed. Time matters greatly as project size in terms of
 code base and the number of folks pushing changes grows. It is entirely possible that
 your CI may take hours, or even days. What is the impact of this when you have teams
 of folks pushing new changes with a high frequency? We can easily find our testing
-capacity has been outstripped. 
+capacity has been outstripped.
 
 \section{Linters}
 
-\justify{}
+\justifying
 There are small programs for most (every?) language that you can run before
 pushing your changes to GitHub that will catch syntactical and sometimes
 even programmatic issues. Consider Python, which is very sensitive with
@@ -21,7 +21,7 @@ regard to indentation. You can programatically detect and even correct issues
 before your work gets too far down the pipe. This is also a good way to
 make sure folks are not committing dirty code to your repositories.
 
-\justify{}
+\justifying
 Here are some of the linters I have found useful for languages I encounter
 frequently.
 
@@ -38,27 +38,17 @@ frequently.
 	\end{center}
 \end{table}
 
-\subsection{Linting with Tox}
 
-Recall that we are using Tox as our main test framework. To set up Tox
-to do our linting work for us, we can add an environment to our envlist
-called ``pylint'' and then declare it in a new stanza in tox.ini. Notice
-how we let ``deps'' do the work of installing the ``pylint'' dependency for
-us.
-
-\begin{mybox}{\thetcbcounter: An Example tox.ini file}
-	\lstinputlisting{code/41-cicd/toxfile-pylint}
-\end{mybox}
 
 \section{GitHub Actions}
 
-\justify{}
+\justifying
 GitHub Actions is a recent introduction to the github.com website that
 lets you perform Continuous Integration on your repository, and Continuous
 Deployment as desired.
 
 \subsection{Docker}
-\justify{}
+\justifying
 Let's see how we can leverage Actions to build the docker target in our
 project. Save this YAML file under
 codelab/.github/workflows/docker\_compose.yml to have GitHub Actions
@@ -70,7 +60,7 @@ execute our make docker target from our custom Makefile.
 
 
 \section{Python}
-\justify{}
+\justifying
 Save this YAML file under codelab/.github/workflows/python.yml to have
 GitHub Actions execute our make python target from our custom Makefile.
 
@@ -79,7 +69,7 @@ GitHub Actions execute our make python target from our custom Makefile.
 %\end{mybox}
 
 \subsection{Packer}
-\justify{}
+\justifying
 Save this YAML file under devsecops/.github/workflows/packer.yml to have
 GitHub Actions validate and build our AMI image with Packer.
 
@@ -88,7 +78,7 @@ GitHub Actions validate and build our AMI image with Packer.
 %\end{mybox}
 
 \subsection{Markdown}
-\justify{}
+\justifying
 The following example YAML file illustrates how to validate GitHub
 flavored Markdown text files using a GitHub Action.
 
@@ -96,40 +86,38 @@ flavored Markdown text files using a GitHub Action.
 %	\lstinputlisting{code/makefile-target}
 %\end{mybox}
 
-\justify{}
+\justifying
 Note the designation of a configuration file named .markdownlint.json at
 the top level of our repository. This JSON file is used to skip certain
 checks by the markdownlint tool.
 
-\justify{}
 %\begin{mybox}{\thetcbcounter: The .markdownlint.json config file}
 %	\lstinputlisting{code/makefile-target}
 %\end{mybox}
 
 \section{Circle CI}
-\justify{}
+\justifying
 Circle CI\index{Circle CI} is a Continuous Integration service free for non-commercial
 projects.
 
-\justify{}
 %\begin{mybox}{\thetcbcounter: A Circle CI configuration file}
-%	\lstinputlisting{code/makefile-target} 
+%	\lstinputlisting{code/makefile-target}
 %\end{mybox}
 
 \section{Travis CI}
 
-\justify{}
+\justifying
 Travis CI\index{Travis CI} is a hosted continuous integration service used to build and
 test software projects hosted at GitHub and Bitbucket. They have a great
 tutorial available if you care to dig a bit deeper.
 
-\justify{}
+\justifying
 By enabling Travis CI integration through the GitHub Marketplace you
 can integrate their scanners with your repository.
 
 \subsubsection{Docker}
 
-\justify{}
+\justifying
 You can test Docker containers in your CI/CD pipeline. As seen in the
 following example I created a YAML file named .travis.yml to enable
 automatic molecule testing of Ansible\index{Ansible} roles in Travis CI. I also set a
@@ -139,13 +127,13 @@ Travis CI flags the build as passing.
 %\begin{mybox}{\thetcbcounter: A Docker container test}
 %	\lstinputlisting{code/makefile-target}
 %\end{mybox}
-\justify{}
+\justifying
 The contents of the requirements files and the example Ansible code is
 available in the companion repo.
 
 
 \subsection{Markdown}
-\justify{}
+\justifying
 Save these lines to a file named .travis.yml to scan all the markdown files in your
 repository.
 
@@ -153,7 +141,7 @@ repository.
 %	\lstinputlisting{code/makefile-target}
 %\end{mybox}
 
-\justify{}
+\justifying
 You can also create an .mdlrc file to give mdl direction on what to scan for.
 
 %\begin{mybox}{\thetcbcounter: A Markdown lint config file}
@@ -164,7 +152,7 @@ You can also create an .mdlrc file to give mdl direction on what to scan for.
 
 \section{Directory Structure}
 
-\justify{}
+\justifying
 Relevant folders and files related to our build pipeline are shown below. The users
 home directory
 and workspace subdirectory is implied and removed from the diagram for clarity.
