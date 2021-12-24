@@ -94,7 +94,10 @@ introduce extra control characters that affect the readability of build log file
 \section{Using Makefile with Docker}
 
 \justifying
-Often I will add lines to the Makefile so that certain rules can only be invoked from the host or the container, but not both.
+Often I will add lines to the Makefile so that certain rules can only be invoked from the host or the container, but not both. In the example code block, the `docker` directive checks for the existence of a
+file called `.dockerenv` in the filesystem. The presence of this file is an indication that the current
+shell is running in a docker container. The purpose of this check is to ensure that the user is not running
+the `make docker` directive to build and run a container from inside a running container.
 
 \begin{mybox}{\thetcbcounter: Conditionals and Variable Example}
 	\lstinputlisting{code/23-makefiles/6d-dockerenv}

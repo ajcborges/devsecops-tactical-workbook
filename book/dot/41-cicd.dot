@@ -1,33 +1,25 @@
 digraph cicd {
     
-    rankdir=LR;
+    #rankdir=LR;
     size="8,4";
     node [fontname="Helvetica" fontsize=14 shape=box];
     edge [fontname="Symbol" fontsize=10];
 
-    framework [shape=folder fontname="Symbol" label="devsecops_tactical"];
+    devsecops [shape=folder fontname="Symbol" label="/home/devsecops/workspace/myproject"];
     dotgh [shape=folder fontname="Symbol" label=".github"];
     workflows [shape=folder fontname="Symbol" label="workflows"];
-    dotcircleci [shape=folder label=".circleci"];
-    cy [fontname="Symbol" label="config.yml"];
     dcy [fontname="Symbol" label="docker_compose.yml"];
-    py [fontname="Symbol" label="packer.yml"];
     pyyml [fontname="Symbol" label="python.yml"];
     mdy [fontname="Symbol" label="markdown.yml"];
-    dottr [fontname="Symbol" label=".travis.yml"];
     mdlrc [fontname="Symbol" label=".mdlrc"];
     mdjson [fontname="Symbol" label=".markdownlint.json"];
     
-    framework -> dotgh;
+    devsecops -> dotgh;
     dotgh -> workflows;
-    framework -> dotcircleci;
-    dotcircleci -> cy;
     workflows -> dcy;
-    workflows -> py;
     workflows -> pyyml;
     workflows -> mdy;
-    framework -> dottr;
-    framework -> mdlrc;
-    framework -> mdjson;
+    devsecops -> mdlrc;
+    devsecops -> mdjson;
 
 }

@@ -3,15 +3,23 @@
 \includegraphics[scale=0.25]{41-about-ci-cd.jpg}
 
 \justifying
-Accommodations for Continuous Integration (CI) and Continuous Deployment
-(CD) in our projects directly corresponds to our chances of success. One of the keys to
-a successful build pipeline is speed. Time matters greatly as project size in terms of
-code base and the number of folks pushing changes grows. It is entirely possible that
-your CI may take hours, or even days. What is the impact of this when you have teams
-of folks pushing new changes with a high frequency? We can easily find our testing
+Accommodations for Continuous Integration (CI) and Continuous Deployment (CD) in our projects directly
+corresponds to our chances of success. One of the keys to a successful build pipeline is speed. Time
+matters greatly as project size in terms of code base and the number of folks pushing changes grows. It
+is entirely possible that your CI may take hours, or even days. What is the impact of this when you have
+teams of folks pushing new changes with a high frequency? We can easily find our testing
 capacity has been outstripped.
 
-\section{Linters}
+\section{GitHub Actions}
+
+\justifying
+GitHub Actions is a recent introduction to the github.com website that
+lets you perform Continuous Integration on your repository, and Continuous
+Deployment as desired.
+
+\markdownInput{../labs/41-about-ci-cd/lab-41a-gh-actions.md}
+
+\section{Linting Code in the CI Pipeline}
 
 \justifying
 There are small programs for most (every?) language that you can run before
@@ -38,15 +46,6 @@ frequently.
 	\end{center}
 \end{table}
 
-
-
-\section{GitHub Actions}
-
-\justifying
-GitHub Actions is a recent introduction to the github.com website that
-lets you perform Continuous Integration on your repository, and Continuous
-Deployment as desired.
-
 \subsection{Docker}
 \justifying
 Let's see how we can leverage Actions to build the docker target in our
@@ -68,15 +67,6 @@ GitHub Actions execute our make python target from our custom Makefile.
 %	\lstinputlisting{code/makefile-target}
 %\end{mybox}
 
-\subsection{Packer}
-\justifying
-Save this YAML file under devsecops/.github/workflows/packer.yml to have
-GitHub Actions validate and build our AMI image with Packer.
-
-%\begin{mybox}{\thetcbcounter: AWS Debian host with packer}
-%	\lstinputlisting{code/aws-debian-host.json}
-%\end{mybox}
-
 \subsection{Markdown}
 \justifying
 The following example YAML file illustrates how to validate GitHub
@@ -95,26 +85,6 @@ checks by the markdownlint tool.
 %	\lstinputlisting{code/makefile-target}
 %\end{mybox}
 
-\section{Circle CI}
-\justifying
-Circle CI\index{Circle CI} is a Continuous Integration service free for non-commercial
-projects.
-
-%\begin{mybox}{\thetcbcounter: A Circle CI configuration file}
-%	\lstinputlisting{code/makefile-target}
-%\end{mybox}
-
-\section{Travis CI}
-
-\justifying
-Travis CI\index{Travis CI} is a hosted continuous integration service used to build and
-test software projects hosted at GitHub and Bitbucket. They have a great
-tutorial available if you care to dig a bit deeper.
-
-\justifying
-By enabling Travis CI integration through the GitHub Marketplace you
-can integrate their scanners with your repository.
-
 \subsubsection{Docker}
 
 \justifying
@@ -130,7 +100,6 @@ Travis CI flags the build as passing.
 \justifying
 The contents of the requirements files and the example Ansible code is
 available in the companion repo.
-
 
 \subsection{Markdown}
 \justifying
@@ -158,7 +127,7 @@ home directory
 and workspace subdirectory is implied and removed from the diagram for clarity.
 
 \begin{figure}[!htb]
-	\input{dot/cicd.tex}
+	\input{dot/41-cicd.tex}
 	\caption{CI/CD related files and folders.}
 \label{cicdfiles}
 \end{figure}

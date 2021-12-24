@@ -4,7 +4,7 @@ digraph mypython {
 
   py [shape=folder fontname="Symbol" label="/home/devsecops/workspace/myproject"];
   lib [shape=folder fontname="Symbol" label="lib"];
-  src [shape=folder fontname="Symbol" label="src"];
+  #src [shape=folder fontname="Symbol" label="src"];
   8 [fontname="Symbol" label="tests" shape=folder];
 
   req [fontname="Symbol" label="requirements.txt"];
@@ -14,11 +14,11 @@ digraph mypython {
   C [fontname="Symbol" label="tox.ini"];
 
   py -> req;
-  py -> src;
+  #py -> src;
   py -> 8;
   py -> C;
 
-  {rank=same; tst; src;}
+  #{rank=same; tst; src;}
   src -> lib;
   src -> 9;
   src -> 7;

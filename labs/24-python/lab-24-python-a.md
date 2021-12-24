@@ -1,4 +1,5 @@
-### Getting Setup for Python Success
+### Getting Setup for Success (Lab a)
 
-#### IDE Congfiguration
+1. Install [the latest version of Python for your host OS](https://www.python.org/downloads/) from their website.
+
 
