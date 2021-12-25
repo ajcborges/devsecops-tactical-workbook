@@ -1,0 +1,10 @@
+import logging
+import logging.config
+
+logging.config.fileConfig(
+    "logging.conf",
+    defaults={"logfilename": "devsecops.log"},
+    disable_existing_loggers=False,
+)
+logger = logging.getLogger("__name__")
+
