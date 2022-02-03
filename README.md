@@ -1,9 +1,8 @@
 # DevSecOps Tactical
 
-This book [is available as a PDF download on leanpub.com](https://leanpub.com/devsecops-tactical-book/).
+[![DOI](https://zenodo.org/badge/257359423.svg)](https://zenodo.org/badge/latestdoi/257359423)
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
-<br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+This book [is available as a PDF download on leanpub.com](https://leanpub.com/devsecops-tactical-book/).
 
 ![Cloudy](https://github.com/devsecfranklin/devsecops-tactical-workbook/blob/main/book/images/sky-690293_1920.jpg)
 
@@ -19,3 +18,7 @@ Questions? Comments? Your [feedback is welcome!](https://github.com/devsecfrankl
 ## :hammer_and_wrench: Contributing :hammer_and_wrench:
 
 There is a page that explains [how to contribute](CONTRIBUTING.md).
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
+<br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+
