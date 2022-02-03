@@ -17,7 +17,7 @@ the original project.
 1. Next we create a remote. On your local machine, create a ``remote'' path back
   to the original repo. Use this example command:
 
-    git remote add upstream git@github.com:devsecfranklin/devsecops-tactical-workbook.git
+    `git remote add upstream git@github.com:devsecfranklin/devsecops-tactical-workbook.git`
 
 We are adding a new remote named ``upstream''. Now we can easily submit pull
 requests (PRs) back to the original project.
@@ -26,8 +26,8 @@ requests (PRs) back to the original project.
 branch in the main project repository. From the command line on the
 machine where your clone resides:
 
-    git checkout main  
-    git fetch upstream   
-    git rebase upstream/main   
-    git push origin main  
+    `git checkout main`  
+    `git fetch upstream`  
+    `git rebase upstream/main`  
+    `git push origin main`  
 

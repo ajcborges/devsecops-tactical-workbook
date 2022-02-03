@@ -34,8 +34,6 @@ benefit of being able to switch quickly between base operating system images wit
 project. For example, we could easily modify our container image to be predicated on Debian
 rather than Red Hat distribution of Linux kernel and operating system should the need arise.
 
-\subsection{The .dockerignore File}
-
 \section{Docker Hub}
 
 \justifying
@@ -111,17 +109,12 @@ In later chapters we will explore how to ``clone'' a project repository from \hr
 from there. It is a good practice to keep a Dockerfile at the top level of your GitHub repository that can be used to
 build and test your application.
 
-\markdownInput{../labs/ch4/lab-4b.md}
+\section{The .dockerignore File}
 
 \justifying
-\begin{mybox}{\thetcbcounter: Dockerfile.fixed}
-    \lstinputlisting{code/21-docker/Dockerfile.fixed}
-    \label{fixeddockerfile}
-\end{mybox}
-
-\markdownInput{../labs/ch4/lab-4c.md}
-
-% https://www.paloaltonetworks.com/cyberpedia/what-is-container-security
+When creating a docker image, the docker cli will look in the current directory for a file named ``.dockerignore''. \href{https://docs.docker.com/engine/reference/builder/#dockerignore-file}{As detailed in the documentation}, the goal is to designate files to be excluded from being copied into the container image
+at build time. This is desirable from the perspective of keeping the image as small as possible. Also, as
+a general rule of thumb, less files means a smaller potential attack surface.
 
 %\section{Podman and Buildah}
 

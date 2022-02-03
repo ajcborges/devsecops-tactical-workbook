@@ -2,6 +2,60 @@
 
 \includegraphics{26-test-quality.jpg}
 
+\justifying
+Testing our work products is vital in terms of quality and security. It is a fundamental underpinning in the ``Shift Left'' paradigm
+mentioned earlier. Tesing can also be expensive in terms of money and time, making it a key target for tightening schedules by anxious project managers. Rushing through or skipping testing is a major source of defects and security issues. Many of
+folks out there in the world creating software have no awareness of the concept of ``defect density'' \index{defect density},
+much less how to measure it and work with their teams to reduce it.
+
+\justifying
+While it may be tempting to reduce the soak time for work products and new features in the test environment, this is generally considered a ``bad idea''. One answer to this dilemma is to reduce cycle time for testing and
+improve schedule through automation and reuse of test methodologies and frameworks.
+
+\section{Code Linting}
+
+\markdownInput{../labs/26-test-quality/lab-9b.md}
+
+\justifying
+\begin{mybox}{\thetcbcounter: Dockerfile.fixed}
+    \lstinputlisting{code/21-docker/Dockerfile.fixed}
+    \label{fixeddockerfile}
+\end{mybox}
+
+\section{Unit Testing}
+
+\justifying
+Unit and functional testing is foundational in developing robust, secure code. We want to be sure that when we create new code, we are also adding
+test cases to our test suite that fully cover the new classes, functions, and so on.
+
+\justifying
+Consider the following example unit test case. The purpose is to test that the function check\_docker() in the file ``src/helper\_functions.py''
+returns True when called from inside a Docker container.
+
+\begin{mybox}{\thetcbcounter: An example Unit test case}
+    \lstinputlisting{code/24-python/test-unit-example.py}
+\end{mybox}
+
+\section{Automated Repository Scanning Tools}
+
+\justifying
+There are many GitHub plugins that are free for single-user/non-commercial scenarios. a cursory search of the web of the
+GitHub Marketplace will turn up many of these. Let's leave some of the
+tedious work to the bots, allowing us to focus on our DevSecOps journey to the cloud!
+
+\justifying
+\begin{tabular}{| p{2.3cm}| p{4.5cm} | p{8.5cm} |}
+    \hline
+    \textbf{Tool}& \textbf{Purpose}& \textbf{Source} \\
+    \hline
+    Renovate & dependency scanner & web site \\
+    \hline
+    lgtm & puppet-lint & Looks Good To Me \url{http://puppet-lint.com/} \\
+    \hline
+    metabob & AI based code review tool & website \\
+    \hline
+\end{tabular}
+
 \section{Python Testing}
 
 \justifying
@@ -37,20 +91,6 @@ Note that we can also include test requirements outside of our tox.ini file, as 
 \justifying
 Some requirements are strictly intended to be part of the test harness, but are not needed for the application proper. Using a separate file, such as
 ``src/requirements-test.txt'', makes this delineation clear to folks who are not familiar with the project.
-
-\subsection{Unit Test Cases}
-
-\justifying
-Unit and functional testing is foundational in developing robust, secure code. We want to be sure that when we create new code, we are also adding
-test cases to our test suite that fully cover the new classes, functions, and so on.
-
-\justifying
-Consider the following example unit test case. The purpose is to test that the function check\_docker() in the file python/devsecops/lib/helper\_functions.py
-returns True when called from inside a Docker container.
-
-\begin{mybox}{\thetcbcounter: An example Unit test case}
-	\lstinputlisting{code/24-python/test-unit-example.py}
-\end{mybox}
 
 \subsection{Test Coverage}
 

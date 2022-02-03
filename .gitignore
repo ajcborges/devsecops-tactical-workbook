@@ -22,7 +22,6 @@ _build
 *.lot
 *.lua
 *.out
-*.pdf
 *.pyg
 *.synctex.gz
 *.toc

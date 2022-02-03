@@ -5,10 +5,16 @@ digraph githubdirectory {
 
   devsecops [shape=folder fontname="Symbol" label="/home/devsecops/workspace/myproject"];
   github [shape=folder fontname="Symbol" label=".github"];
+
   codeowners [fontname="Symbol" label="CODEOWNERS"];
   gitignore [fontname="Symbol" label=".gitignore"];
+  license [fontname="Symbol" label="LICENSE.md"];
+  security [fontname="Symbol" label="SECURITY.md"];
 
   devsecops -> github;
   github -> codeowners;
+  github -> security;
   devsecops -> gitignore;
+  devsecops -> license;
 }
+

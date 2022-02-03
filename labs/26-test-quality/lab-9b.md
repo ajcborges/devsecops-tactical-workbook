@@ -1,4 +1,4 @@
-## Linting a Dockerfile with Hadolint (Lab 4b)
+### Linting a Dockerfile with Hadolint (Lab 9b)
 
 Firstly, we install hadolint:
 

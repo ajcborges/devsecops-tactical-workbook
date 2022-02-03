@@ -87,6 +87,60 @@ available in this part of your repository for managing those checks.
 \label{statuscheck}
 \end{figure}
 
+
+\section{Conventions}
+
+\subsection{GitHub Flavored Markdown}
+
+\justifying
+Formatting text files in a repository is made easy with a variant of markdown\index{markdown}. While markdown is not a
+comprehensive text formatting method, it allows for clean looking documents with minimal effort.
+
+\subsection{The SECURITY.md file}
+
+\justifying
+Creating \href{https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository}{a SECURITY.md file} in the top level of your repository, or in the `docs/` or `.github` folder, will populate the Security tab
+of your repository. Users will be able to quickly find information about what to do in the event of a security issue. Notice that the ``.md'' extension on the file indicates that the file can be formatted using markdown.
+
+\subsection{The LICENSE.md File}
+
+\justifying
+Adding an Ope Source\index{Open Source} license to your repository lets people know the policy around taking and reusing
+code from your project for use by others. This file is typically placed at the root of the repository. Notice that the ``.md'' extension on the file indicates that the file can be formatted using markdown.
+
+\subsection{CODEOWNERS}
+
+\justifying
+Creating a CODEOWNERS\index{CODEOWNERS} file is a good way to automatically tag folks in pull requests to make them aware of
+changes to certain files or folders in your projects.
+
+\justifying
+In it's most basic form, the CODEOWNERS file in the .github directory simply lists the file(s) and the owner(s) on a line together.
+
+\justifying
+Consider this example where we add the ``@kevinflynn'' user to the CODEOWNERS file.
+
+\begin{mybox}{\thetcbcounter: Adding a user to CODEOWNERS file}
+    \lstinputlisting{code/22-github/create-codeowners.txt}
+\end{mybox}
+
+\justifying
+In this example, the ``@kevinflynn'' user will be tagged as a reviewer in all pull requests.
+
+\subsection{The .gitignore file}
+
+\justifying
+Use this file\index{.gitignore} to designate items that should be excluded from revision
+control. This is useful for helping keep credentials and other secrets out of the GitHub repository.
+
+\justifying
+Consider the following example .gitignore file. This will prevent you from checking in the .DS-Store that
+Macintosh creates in many folders.
+
+\begin{mybox}{\thetcbcounter: Example .gitignore file}
+    \lstinputlisting{code/22-github/create-gitignore.txt}
+\end{mybox}
+
 \section{Branching and Merging}
 
 When we say we are going to create a branch with git, it simply means we are going to take a snapshot of the code base at a point in time, and make our changes on that snapshot. The goal is to be able to make fixes and improvements without impacting the original code base.
@@ -150,67 +204,12 @@ paradigm is better suited to medium to large size projects that accept contribut
 \section{Template Repositories}
 
 \justifying
-A GitHub Template Repository is available should you decide to follow along with the code examples in this book. The next sets of steps are
-predicated on having Docker installed and running as described in the previous chapter.
+The purpose of \href{https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository}{creating a GitHub Template Repository} is to provide reusability. The files, directories, and project structure can be reimplemented
+by \href{https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template}{creating a new repository from the template} by simply clicking a button in the GitHub web user interface. This template can be
+considered a ``clean start'' when compared to creating a fork of this repository, which may include all the branches and
+commit history of the original repository.
 
 \markdownInput{../labs/ch5/lab-5d.md}
-
-\section{Conventions}
-
-\subsection{CODEOWNERS}
-
-\justifying
-Creating a CODEOWNERS\index{CODEOWNERS} file is a good way to automatically tag folks in pull requests to make them aware of
-changes to certain files or folders in your projects.
-
-\justifying
-In it's most basic form, the CODEOWNERS file in the .github directory simply lists the file(s) and the owner(s) on a line together.
-
-\justifying
-Consider this example where we add the ``@kevinflynn'' user to the CODEOWNERS file.
-
-\begin{mybox}{\thetcbcounter: Adding a user to CODEOWNERS file}
-      \lstinputlisting{code/22-github/create-codeowners.txt}
-\end{mybox}
-
-\justifying
-In this example, the ``@kevinflynn'' user will be tagged as a reviewer in all pull requests.
-
-\subsection{The .gitignore file}
-
-\justifying
-Use this file\index{.gitignore} to designate items that should be excluded from revision
-control. This is useful for helping keep credentials and other secrets out of the GitHub repository.
-
-\justifying
-Consider the following example .gitignore file. This will prevent you from checking in the .DS-Store that
-Macintosh creates in many folders.
-
-\begin{mybox}{\thetcbcounter: Example .gitignore file}
-      \lstinputlisting{code/22-github/create-gitignore.txt}
-\end{mybox}
-
-\section{Automated Repository Scanning}
-
-\justifying
-There are many GitHub plugins that are free for single-user/non-commercial scenarios. a cursory search of the web of the
-GitHub Marketplace will turn up many of these. Let's leave some of the
-tedious work to the bots, allowing us to focus on our DevSecOps journey to the cloud!
-
-\justifying
-\begin{tabular}{| p{2.3cm}| p{4.5cm} | p{8.5cm} |}
-      \hline
-     \textbf{Tool}& \textbf{Purpose}& \textbf{Source} \\
-      \hline
-      Renovate & dependency scanner & web site \\
-      \hline
-      lgtm & puppet-lint & Looks Good To Me \url{http://puppet-lint.com/} \\
-      \hline
-      metabob & AI based code review tool & website \\
-      \hline
-      bridgecrew & PR security scanner & web site \\
-      \hline
-\end{tabular}
 
 \section{Directory Structure}
 
