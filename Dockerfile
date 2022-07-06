@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM ubuntu:bionic
+FROM ubuntu:jammy
 #FROM pandoc/latex
 
 LABEL maintainer="Franklin Diaz <2730246+devsecfranklin@users.noreply.github.com>"
