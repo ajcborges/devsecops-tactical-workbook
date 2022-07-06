@@ -4,7 +4,7 @@
 
 This book [is available as a PDF download on leanpub.com](https://leanpub.com/devsecops-tactical-book/).
 
-![Cloudy](https://github.com/devsecfranklin/devsecops-tactical-workbook/blob/main/book/images/sky-690293_1920.jpg)
+![Cloudy](https://github.com/devsecfranklin/devsecops-tactical-workbook/blob/main/book/images/51-test-lab.jpg)
 
 ## :incoming_envelope: Feedback :thought_balloon:
 
