@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM alpine:3.15
+FROM alpine:3.16
 
 LABEL maintainer="Franklin Diaz <franklin@bitsmasher.net>"
 LABEL org.opencontainers.image.source="https://github.com/devsecfranklin/devsecops-tactical-workbook"
